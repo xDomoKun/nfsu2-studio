@@ -19,18 +19,24 @@
     '030236EE':'Lexus IS300','09D2EFF6':'Mitsubishi Lancer Evolution VIII',
     '03455D6B':'Mazda MX-5 Miata','35165819':'Ford Mustang GT',
     '0219C94A':'Lincoln Navigator','0000DB7C':'Acura RSX','79AEBFEC':'Nissan Sentra',
-    '03B8C48A':'Toyota Supra','000006E7':'Audi TT'}));
+    '03B8C48A':'Toyota Supra','000006E7':'Audi TT',
+    '02CA04DF':'Ford Focus','F77C13EB':'Toyota Corolla',
+    '0150FB80':'Nissan 240SX','0290C04D':'Honda Civic',
+    '00004A76':'Peugeot 106','00004EB7':'Peugeot 206',
+    '0293FAD7':'Vauxhall / Opel Corsa'}));
   // Original vehicle type names in NFSU2's CarTypeInfo table (31..45).
   // Hash uses bStringHash, initial 0xFFFFFFFF, hash = hash*33 + ASCII byte.
   // Traffic cars in saves are experimental. A vehicle type hash does NOT make
   // the engine adopt another vehicle's physics from the save alone.
+  // Unique Underground 2 engine types. VAN, PARCEL VAN and MINIVAN are
+  // distinct identities. 15 types are listed, template availability is separate.
   const TRAFFIC_NAMES = [
-    ['TAXI','Taxi'], ['4DR_SEDAN02','Limousine 02'], ['AMBULANCE','Krankenwagen'],
-    ['TAXI02','Taxi 02'], ['PANELVAN','Kastenwagen'], ['COUPE','Traffic-Coupé'],
-    ['FIRETRUCK','Feuerwehr'], ['PARCELVAN','Lieferwagen (Grolson)'],
-    ['PICKUP','Pickup (Chevrolet)'], ['4DR_SEDAN','Limousine (Chevrolet)'],
-    ['BUS','Silver Eagle Bus'], ['SUV','Traffic-SUV'],
-    ['MINIVAN','Minivan'], ['HATCHBACK','Kleinwagen'], ['HATCHBACK02','Kleinwagen 02']
+    ['TAXI','Taxi 1'], ['4DR_SEDAN02','Limousine 2'], ['AMBULANCE','Krankenwagen'],
+    ['TAXI02','Taxi 2'], ['PANELVAN','Kastenwagen (Van)'], ['COUPE','Traffic-Coupé'],
+    ['FIRETRUCK','Feuerwehr'], ['PARCELVAN','Pakettransporter (Parcel Van)'],
+    ['PICKUP','Pickup'], ['4DR_SEDAN','Limousine 1'], ['BUS','Reisebus'],
+    ['SUV','Traffic-SUV'], ['MINIVAN','Minivan'],
+    ['HATCHBACK','Kleinwagen 1'], ['HATCHBACK02','Kleinwagen 2']
   ];
   function carHash(name){
     if(!/^[A-Z0-9_]+$/.test(name))throw new Error('Ungültiger Fahrzeugtyp.');
@@ -109,6 +115,33 @@
     graphics:[[0x4ce,0x53d]],performance:[[0x586,0x58d]]
   };
   function unlockCategory(d,g,n,cat){if(!Object.hasOwn(UNLOCK,cat))throw new Error('Unbekannte Tuning-Kategorie.');const data=slotData(d,g,n),b=slotBase(n);if(!data[b+0x429])throw new Error('Leerer Garagenslot.');for(const [s,e] of UNLOCK[cat])data.fill(0xff,b+s,b+e+1);}
+  // ProfileCreator/hackch mapped per-car part availability bytes. This does NOT
+  // install equipment or mark races complete. The native shop effect is experimental.
+  function unlockAllParts(d,g,n){
+    const car=slotInfo(d,g,n);
+    if(!car.owned||car.locked)throw Error('Choose an owned, unlocked garage vehicle first.');
+    const data=slotData(d,g,n),start=slotBase(n);
+    const changed=[];
+    for(const ranges of Object.values(UNLOCK))for(const [a,z] of ranges){
+      for(let k=a;k<=z;k++)if(data[start+k]!==0xff)changed.push([start+k,data[start+k]]);
+      data.fill(0xff,start+a,start+z+1);
+    }
+    return {slot:n,modified:changed.length,previous:changed};
+  }
+  function restoreUnlockedParts(d,g,snapshot){
+    if(!snapshot||!Number.isInteger(snapshot.slot)||!Array.isArray(snapshot.previous))throw Error('Invalid unlock snapshot.');
+    const data=slotData(d,g,snapshot.slot),b=slotBase(snapshot.slot);
+    // Validate before any writes; restrict rollback to known mapped ranges.
+    const allowed=new Set(Object.values(UNLOCK).flat().flatMap(([a,z])=>Array.from({length:z-a+1},(_,i)=>b+a+i)));
+    for(const [off,value] of snapshot.previous)if(!allowed.has(off)||!Number.isInteger(value)||value<0||value>255)throw Error('Invalid unlock snapshot bytes.');
+    for(const [off,value] of snapshot.previous)data[off]=value;
+    return snapshot.previous.length;
+  }
+  function partsAvailability(d,g,n){
+    const data=slotData(d,g,n),start=slotBase(n);let total=0,unlocked=0;
+    for(const ranges of Object.values(UNLOCK))for(const [a,z] of ranges)for(let k=a;k<=z;k++){total++;if(data[start+k]===0xff)unlocked++;}
+    return {unlocked,total};
+  }
   // v0.3: NFSU2's genuine five saved DYNO tuning setups. Engine values
   // are normalized byte controls, NOT user-defined power/speed in km/h.
   // See the x86-car tuning trace documented in hackch/technical.md.
@@ -128,7 +161,7 @@
   function dynoData(d,g,n,event){
     const {data,b,start}=setupOffset(d,g,n,event);
     const car=slotInfo(d,g,n);
-    return {event,n,model:car.model,available:car.owned&&!car.locked&&!car.traffic,
+    return {event,n,model:car.model,available:car.owned&&!car.locked&&(!!car.traffic||CARS.has(car.key)),
       traffic:!!car.traffic,installedGearPart:!!data[b+0x310+11],
       controls:DYNO_CONTROLS.map(c=>({...c,value:data[start+c.offset]}))};
   }
@@ -137,14 +170,14 @@
     if(!c)throw new Error('Unbekannter Dyno-Parameter.');
     if(!Number.isInteger(value)||value<0||value>200)throw new Error('Dyno-Wert muss ganzzahlig zwischen 0 und 200 liegen.');
     const info=slotInfo(d,g,n);
-    if(!info.owned||info.locked||info.traffic||!CARS.has(info.key))throw new Error('Dyno nur für bekannte normale, belegte und entsperrte Autos. Traffic Cars sind nicht fahrbar.');
+    if(!info.owned||info.locked||(!info.traffic&&!CARS.has(info.key)))throw new Error('Dyno benötigt einen belegten, entsperrten Fahrzeugslot.');
     const {data,start}=setupOffset(d,g,n,event);
     data[start+c.offset]=value;
     return value;
   }
   function dynoReset(d,g,n,event){
     const info=slotInfo(d,g,n);
-    if(!info.owned||info.locked||info.traffic||!CARS.has(info.key))throw new Error('Dyno benötigt ein normales, belegtes Fahrzeug.');
+    if(!info.owned||info.locked||(!info.traffic&&!CARS.has(info.key)))throw new Error('Dyno benötigt ein belegtes Fahrzeug.');
     const {data,start}=setupOffset(d,g,n,event);
     for(const c of DYNO_CONTROLS)data[start+c.offset]=100;
   }
@@ -174,5 +207,5 @@
     w32(g,8,Number(h&0xffffffffn));w32(g,12,Number((h>>32n)&0xffffffffn));
     return g;
   }
-  return {SIZE,GARAGE_SIZE,UNIQUE,CARS,TRAFFIC,carHash,OFF,u32,i32,hex,crc,assertCareer,assertGarage,checkCareer,repairCareer,getName,setName,money,setMoney,stage,setStage,slotInfo,setTraffic,copyPerformance,setUnlocked,setUnique,replaceIdentity,unlockCategory,DYNO_EVENTS,DYNO_CONTROLS,dynoData,dynoWrite,dynoReset,dynoPriority,garageFingerprint,storedGarageFingerprint,garagePairValid,repairGarageFingerprint};
+  return {SIZE,GARAGE_SIZE,UNIQUE,CARS,TRAFFIC,carHash,OFF,u32,i32,hex,crc,assertCareer,assertGarage,checkCareer,repairCareer,getName,setName,money,setMoney,stage,setStage,slotInfo,setTraffic,copyPerformance,setUnlocked,setUnique,replaceIdentity,unlockCategory,unlockAllParts,restoreUnlockedParts,partsAvailability,DYNO_EVENTS,DYNO_CONTROLS,dynoData,dynoWrite,dynoReset,dynoPriority,garageFingerprint,storedGarageFingerprint,garagePairValid,repairGarageFingerprint};
 });

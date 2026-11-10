@@ -3,13 +3,13 @@
 const core = window.NFSU2;
 const $ = id => document.getElementById(id);
 const state = {filename:'', original:null, zip:null, profilePath:null, garagePath:null, save:null, garage:null, slot:1, dirty:false, loaded:false, event:0};
-const fmt = n => new Intl.NumberFormat('de-DE').format(n);
+const fmt = n => new Intl.NumberFormat(window.USI18N?.getLanguage()==='de'?'de-DE':'en-US').format(n);
 function errorText(e){return e instanceof Error?e.message:String(e);}
 function message(text, error=false){const el=$('message');el.textContent=text;el.className='message'+(error?' error':'');}
 function clearMessage(){$('message').className='message hidden';}
 function copyBytes(b){return new Uint8Array(b);}
 function ready(){if(!state.loaded)throw new Error('Bitte zuerst einen Spielstand öffnen.');}
-function dirty(note){state.dirty=true;renderStats();renderGarage();if(window.UndergroundTrafficUI)window.UndergroundTrafficUI.render();if(note)message(note);}
+function dirty(note){state.dirty=true;renderStats();renderGarage();if(window.UndergroundTrafficUI)window.UndergroundTrafficUI.render();if(window.USCareerTuningUI)window.USCareerTuningUI.render();if(window.USCareerPerfUI)window.USCareerPerfUI.render();if(note)message(note);}
 function show(page){
  document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
  document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id==='page-'+page));
@@ -46,7 +46,7 @@ async function importFile(file){
   state.filename=file.name;state.original=raw;state.zip=archive;state.profilePath=path;state.garagePath=garagePath;
   state.save=copyBytes(selected);state.originalSave=copyBytes(selected);state.garage=garage;state.slot=1;state.event=0;state.dirty=false;state.loaded=true;
   renderAll();
-  if(window.UndergroundTrafficUI)window.UndergroundTrafficUI.onImported();
+  if(window.UndergroundTrafficUI)window.UndergroundTrafficUI.onImported();if(window.USCareerTuningUI)window.USCareerTuningUI.render();if(window.USCareerPerfUI)window.USCareerPerfUI.render();
   show('mycars');
   const c=core.checkCareer(state.save);
   message(`Spielstand „${core.getName(state.save)}“ geladen · ${c.ok?'alle drei Prüfsummen gültig':'Prüfsummen sind fehlerhaft – Export repariert sie'} · ${garage?'10':'5'} Garagenslots verfügbar.`,!c.ok);
@@ -59,12 +59,12 @@ function renderAll(){
  $('saveTop').disabled=false;$('downloadBackup').disabled=false;$('saveFiles').disabled=false;
  $('loadedFilename').value=state.filename;
  $('exportKind').textContent=state.zip?'ZIP inklusive Einstellungen':'Einzelner Karriere-Spielstand';
- $('saveTop').innerHTML=state.zip?'↓ &nbsp; EXPORTIEREN':'↓ &nbsp; EXPORTIEREN';
+ $('saveTop').textContent=window.USI18N?.getLanguage?.()==='de'?'↓ EXPORTIEREN':'↓ EXPORT';
  $('fileDetails').textContent=(state.zip?'nfsu2.xyz / ZIP-Archiv':'Einzeldatei')+(state.profilePath?' · Profil: '+state.profilePath:'')+(state.garagePath?' · GARAGE.DAT erkannt':' · keine zusätzliche Garage');
- renderStats();renderGarage();if(window.UndergroundLabUI)window.UndergroundLabUI.render();if(window.UndergroundTrafficUI)window.UndergroundTrafficUI.render();
+ renderStats();renderGarage();if(window.UndergroundLabUI)window.UndergroundLabUI.render();if(window.UndergroundTrafficUI)window.UndergroundTrafficUI.render();if(window.USCareerTuningUI)window.USCareerTuningUI.render();if(window.USCareerPerfUI)window.USCareerPerfUI.render();
 }
 function renderStats(){if(!state.loaded)return;
- $('statMoney').textContent=fmt(core.money(state.save))+' $';$('statStage').textContent='Stufe '+core.stage(state.save);
+ $('statMoney').textContent=fmt(core.money(state.save))+' $';$('statStage').textContent=(window.USI18N?.getLanguage?.()==='de'?'Stufe ':'Stage ')+core.stage(state.save);
  let owned=0;for(let i=1;i<=10;i++){if(i>5&&!state.garage)break;if(core.slotInfo(state.save,state.garage,i).owned)owned++;}
  $('statSlots').textContent=owned+' / '+(state.garage?10:5);
  const ok=core.checkCareer(state.save).ok;
@@ -77,18 +77,28 @@ function renderGarage(){if(!state.loaded)return;
  for(let i=1;i<=count;i++){
   const car=core.slotInfo(state.save,state.garage,i);
   const b=document.createElement('button');b.className='vehicle'+(state.slot===i?' selected':'');
-  const stateTxt=car.locked?'Gesperrt':car.owned?'Belegt':'Leer';
+  const de=window.USI18N?.getLanguage?.()==='de';const stateTxt=car.locked?(de?'Gesperrt':'Locked'):car.owned?(de?'Belegt':'Occupied'):(de?'Leer':'Empty');
   const tagClass=car.locked?'locked':car.owned?'':'empty';
-  b.innerHTML=`<div class="carpic">${car.owned?(car.traffic?'🚕':'🏎️'):'◌'}</div><div class="slot">SLOT ${i.toString().padStart(2,'0')}</div><div class="model"></div><span class="tag ${tagClass}">${stateTxt}</span>`;
-  b.querySelector('.model').textContent=car.owned?car.model:'Freier Platz';
+  b.innerHTML=`<div class="carpic">${car.owned?(car.traffic?(car.traffic.id==='BUS'?'🚌':['PANELVAN','PARCELVAN','MINIVAN'].includes(car.traffic.id)?'🚐':'🚕'):'🏎️'):'◌'}</div><div class="slot">SLOT ${i.toString().padStart(2,'0')}</div><div class="model"></div><span class="tag ${tagClass}">${stateTxt}</span>`;
+  b.querySelector('.model').textContent=car.owned?car.model:(de?'Freier Platz':'Empty slot');
+  if(car.owned){
+   const art=window.USCarImages?.make(car.key,car.model,'career-card-car-image');
+   if(art){const pic=b.querySelector('.carpic');pic.classList.add('has-car-image');pic.replaceChildren(art);}
+  }
   b.onclick=()=>{state.slot=i;renderGarage();};grid.append(b);
  }
  renderInspector();
 }
 function renderInspector(){const car=core.slotInfo(state.save,state.garage,state.slot);
  $('inspectorTitle').textContent=car.owned?car.model:'Leerer Garagenplatz';$('slotCaption').textContent='Slot '+state.slot;
- $('modelHash').value='0x'+car.key;$('slotId').value='Slot '+state.slot+' / '+(state.slot>5?'GARAGE.DAT':'Karriere');
+ const carArt=car.owned?window.USCarImages?.srcFor(car.key):null;
+ const carStage=$('careerCarImageBox'),carImage=$('careerCarImage');
+ if(carArt){carImage.src=carArt;carImage.alt=car.model;carStage.classList.remove('hidden');}
+ else{carStage.classList.add('hidden');carImage.removeAttribute('src');carImage.alt='';}
+ $('modelHash').value='0x'+car.key;$('slotId').value='Slot '+state.slot+' / '+(state.slot>5?'GARAGE.DAT':(window.USI18N?.getLanguage?.()==='de'?'Karriere':'Career'));
  $('slotUnlocked').checked=!car.locked;
+ $('slotUnlocked').disabled=state.slot===1&&!car.locked;
+ $('slotUnlocked').title=state.slot===1?('Slot 01 must stay unlocked / Slot 01 muss entsperrt bleiben'):'';
  $('emptySlotNote').classList.toggle('hidden',car.owned);
  $('donorTools').classList.toggle('hidden',!car.owned);
  const donor=$('donorSlot'), previous=donor.value;donor.textContent='';
@@ -114,12 +124,12 @@ function renderInspector(){const car=core.slotInfo(state.save,state.garage,state
  const parent=$('uniqueGrid');parent.textContent='';
  for(let i=0;i<car.unique.length;i++){
   const item=car.unique[i];const row=document.createElement('label');row.className='toggle-row';
-  const text=document.createElement('span');text.textContent=item.name;const inp=document.createElement('input');
+  const text=document.createElement('span');text.textContent=window.USI18N?.getLanguage?.()==='de'?item.name:['Weight','Transmission','Nitrous','Engine','Turbo','Suspension','Brakes','ECU','Tires'][i];const inp=document.createElement('input');
   inp.className='switch';inp.type='checkbox';inp.checked=item.on;inp.disabled=!car.owned;
   inp.onchange=()=>{try{core.setUnique(state.save,state.garage,state.slot,i,inp.checked);dirty('Unique-Tuning „'+item.name+'“ geändert. Exportiere den Spielstand, um die Änderung zu übernehmen.');}catch(e){message(errorText(e),true);renderInspector();}};
   row.append(text,inp);parent.append(row);
  }
- renderDyno();
+ renderDyno();window.USAutoTuneUI?.renderCareer();if(window.USCareerTuningUI)window.USCareerTuningUI.render();if(window.USCareerPerfUI)window.USCareerPerfUI.render();window.USTrafficPresetUI?.render();
 }
 function dynoRange(control){
  const row=document.createElement('label');row.className='dyno-control';
@@ -135,7 +145,7 @@ function renderDyno(){
  if(!state.loaded)return;
  const car=core.slotInfo(state.save,state.garage,state.slot);
  const data=core.dynoData(state.save,state.garage,state.slot,state.event);
- const supported=data.available&&core.CARS.has(car.key);
+ const supported=data.available;
  $('dynoUnavail').classList.toggle('hidden',supported);
  $('dynoEditor').classList.toggle('hidden',!supported);
  if(!supported)return;
@@ -151,6 +161,10 @@ function renderDyno(){
 }
 async function exportEdited(){
  try{ready();
+  const required=core.slotInfo(state.save,state.garage,1);
+  if(!required.owned||required.locked)throw new Error(window.USI18N?.getLanguage?.()==='de'?
+    'Export gesperrt: In Garagenslot 01 muss immer ein Fahrzeug stehen und entsperrt sein. Ein leerer erster Platz kann das Spiel abstürzen lassen.':
+    'Export blocked: Garage slot 01 must contain an unlocked car. An empty first slot can crash the game.');
   const game=new Uint8Array(state.save);core.repairCareer(game);
   const garageCopy=state.garage?new Uint8Array(state.garage):null;
   if(garageCopy)core.repairGarageFingerprint(game,garageCopy);
@@ -183,8 +197,8 @@ async function exportEdited(){
     archive.file(profilePath,game);
     if(garageCopy&&garagePath)archive.file(garagePath,garageCopy);
     blob=await archive.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}});
-    filename=state.filename.replace(/\.zip$/i,'')+'-bearbeitet.zip';
-  }else{blob=new Blob([game],{type:'application/octet-stream'});filename=(core.getName(game)||'NFSU2')+'-bearbeitet.sav';}
+    filename=state.filename.replace(/\.zip$/i,'')+(window.USI18N?.getLanguage?.()==='de'?'-bearbeitet.zip':'-edited.zip');
+  }else{blob=new Blob([game],{type:'application/octet-stream'});filename=(core.getName(game)||'NFSU2')+(window.USI18N?.getLanguage?.()==='de'?'-bearbeitet.sav':'-edited.sav');}
   download(blob,filename);message('Export erstellt: '+filename+' · Spielstand-Prüfsummen und '+(garageCopy?'Zusatzgaragen-Fingerprint':'Dateiprüfsummen')+' korrigiert. Das Original bleibt unverändert.'); 
  }catch(e){message(errorText(e),true);}
 }
@@ -194,12 +208,34 @@ function bind(){
  document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.page)));
  $('openTop').onclick=$('startPick').onclick=()=>{$('fileInput').click()};
  $('fileInput').onchange=e=>{if(e.target.files[0])importFile(e.target.files[0]);e.target.value='';};
- const zone=$('startZone');zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag')});zone.addEventListener('dragleave',()=>zone.classList.remove('drag'));zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('drag');if(e.dataTransfer.files[0])importFile(e.dataTransfer.files[0]);});
+ const zone=$('startZone');zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag')});zone.addEventListener('dragleave',()=>zone.classList.remove('drag'));zone.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();hideDropOverlay();zone.classList.remove('drag');if(e.dataTransfer?.files?.[0])importFile(e.dataTransfer.files[0]);});
  zone.addEventListener('click',e=>{if(e.target.id!=='startPick')$('fileInput').click()});
+ // File drops from Finder / Explorer work on any editor page, including after loading.
+ // Do not intercept ordinary in-app drags or images (only OS Files transfers).
+ const overlay=$('usImportOverlay'),filesArea=$('filesDropArea');
+ const hasFiles=e=>Array.from(e.dataTransfer?.types||[]).includes('Files');
+ const showOverlay=()=>{overlay.classList.add('is-visible');overlay.setAttribute('aria-hidden','false');};
+ function hideDropOverlay(){overlay.classList.remove('is-visible');overlay.setAttribute('aria-hidden','true');}
+ window.addEventListener('dragenter',e=>{if(hasFiles(e)){e.preventDefault();showOverlay();}});
+ window.addEventListener('dragover',e=>{if(hasFiles(e)){e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect='copy';showOverlay();}});
+ window.addEventListener('dragleave',e=>{if(!e.relatedTarget)hideDropOverlay();});
+ window.addEventListener('drop',e=>{if(!hasFiles(e))return;e.preventDefault();hideDropOverlay();if(zone.contains(e.target))return;const file=e.dataTransfer?.files?.[0];if(file)importFile(file);});
+ filesArea.onclick=()=>$('fileInput').click();
+ filesArea.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('fileInput').click();}};
+ const localizeDrop=()=>{const de=window.USI18N?.getLanguage?.()==='de';
+   $('usImportOverlayTitle').textContent=de?'SPIELSTAND ZUM ÖFFNEN ABLEGEN':'DROP SAVE FILE TO OPEN';
+   $('usImportOverlaySubtitle').textContent=de?'NFSU2 ZIP / SAV / DAT · Aktuelle Datei bleibt bei fehlerhaftem Import erhalten':'NFSU2 ZIP / SAV / DAT · Current file stays intact if import fails';
+   $('filesDropLabel').textContent=de?'SPIELSTAND HIER ABLEGEN · ZIP / SAV / DAT':'DROP A SAVE HERE · ZIP / SAV / DAT';
+   $('filesDropSub').textContent=de?'Oder klicken, um eine andere Datei zu wählen':'Or click to choose another save';
+ };
+ window.addEventListener('underground-language-change',localizeDrop);localizeDrop();
  $('applyProfile').onclick=()=>{try{ready();core.setName(state.save,$('name').value.trim());core.setMoney(state.save,Number($('money').value));dirty('Profilname und Guthaben übernommen. Bitte bearbeiteten Spielstand exportieren.');}catch(e){message(errorText(e),true);}};
  document.querySelectorAll('[data-cash]').forEach(b=>b.onclick=()=>{$('money').value=b.dataset.cash;});
  $('applyStage').onclick=()=>{try{ready();core.setStage(state.save,Number($('stage').value));dirty('Karrierestufe geändert – dies ersetzt keine absolvierten Rennen oder Missionsziele.');}catch(e){message(errorText(e),true);}};
- $('slotUnlocked').onchange=e=>{try{ready();core.setUnlocked(state.save,state.garage,state.slot,e.target.checked);dirty('Garagenplatz '+state.slot+' angepasst.');}catch(err){message(errorText(err),true);renderInspector();}};
+ $('slotUnlocked').onchange=e=>{try{ready();if(state.slot===1&&!e.target.checked)throw new Error(window.USI18N?.getLanguage?.()==='de'?
+   'Slot 01 darf nicht gesperrt werden: Das Spiel benötigt dort ein nutzbares Auto.':
+   'Slot 01 cannot be locked: the game requires a usable car in the first garage slot.');
+  core.setUnlocked(state.save,state.garage,state.slot,e.target.checked);dirty('Garagenplatz '+state.slot+' angepasst.');}catch(err){message(errorText(err),true);renderInspector();}};
  $('applyTraffic').onclick=()=>{try{
   ready();const chosen=core.TRAFFIC.find(c=>c.id===$('trafficType').value);
   const current=core.slotInfo(state.save,state.garage,state.slot);
@@ -227,6 +263,7 @@ function bind(){
  for(const id of ['saveTop','saveInner','saveFiles'])$(id).onclick=exportEdited;
  $('downloadBackup').onclick=backup;
 }
-window.UndergroundLabHost={get:()=>({loaded:state.loaded,original:state.original,originalSave:state.originalSave,profilePath:state.profilePath,garagePath:state.garagePath,filename:state.filename,zip:!!state.zip,save:state.save,garage:state.garage}),message,changed:dirty};
+window.UndergroundLabHost={get:()=>({loaded:state.loaded,original:state.original,originalSave:state.originalSave,profilePath:state.profilePath,garagePath:state.garagePath,filename:state.filename,zip:!!state.zip,save:state.save,garage:state.garage,slot:state.slot}),message,changed:dirty};
+window.addEventListener('underground-language-change',()=>{if(state.loaded){renderStats();renderGarage();$('saveTop').textContent=window.USI18N?.getLanguage?.()==='de'?'↓ EXPORTIEREN':'↓ EXPORT';}});
 bind();
 })();

@@ -1,0 +1,12 @@
+/* v1.7.9 Global file import drop affordance; no external dependencies. */
+.us-import-overlay{position:fixed;inset:0;z-index:99999;pointer-events:none;display:grid;place-items:center;background:rgba(8,18,13,.82);opacity:0;visibility:hidden;transition:opacity .15s;backdrop-filter:blur(12px)}
+.us-import-overlay.is-visible{opacity:1;visibility:visible}
+.us-import-overlay-card{max-width:min(90vw,640px);padding:44px 52px;display:flex;align-items:center;flex-direction:column;text-align:center;gap:15px;color:#f5f9f0;border:2px dashed #b4e455;border-radius:12px;background:#202b22;box-shadow:0 18px 80px rgba(0,0,0,.25)}
+.us-import-overlay-icon{display:grid;place-items:center;width:72px;height:72px;background:#b4e455;color:#192519;border-radius:50%;font-size:45px}
+.us-import-overlay-card strong{font-size:20px;letter-spacing:.05em}
+.us-import-overlay-card span:last-child{font-size:12px;color:#b6c5b5;line-height:1.6}
+.us-import-again{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;text-align:center;min-height:100px;margin:13px 0;padding:18px;border:2px dashed #728f6c;border-radius:5px;background:rgba(51,76,50,.22);color:#e1f1cf;cursor:pointer;transition:border-color .15s,background .15s}
+.us-import-again:hover,.us-import-again:focus-visible{border-color:#c4e78a;background:rgba(71,100,60,.25);outline:none}
+.us-import-again span:first-child{font-size:12px;font-weight:850;letter-spacing:.08em}
+.us-import-again span:last-child{font-size:11px;color:#aabdac}
+@media(prefers-reduced-motion:reduce){.us-import-overlay,.us-import-again{transition:none}}

@@ -1,0 +1,144 @@
+/* Career refactor v1.7 — intentionally concise, NFSU2-style navigation. */
+:root{--us17-green:#b7e45b;--us17-line:rgba(188,218,208,.22)}
+#page-overview{--panel:#1c2423}
+.us17-banner{display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:1px solid var(--us17-line);padding:15px 4px 21px;margin-bottom:18px}
+.us17-kicker{font-size:11px;letter-spacing:2px;color:var(--us17-green);font-weight:800}
+.us17-banner-title{font-weight:1000;font-style:italic;text-transform:uppercase;font-size:clamp(29px,4vw,48px);letter-spacing:-1.6px;line-height:1.2;color:#eef4ed}
+.us17-caption,.us17-banner-right{color:#a6b4af;font-size:12px}
+.us17-banner-right{border:1px solid var(--us17-line);padding:10px 15px;white-space:nowrap;font-weight:800}
+.us17-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:18px 0 18px}
+.us17-tab{min-height:63px;display:flex;align-items:center;justify-content:center;gap:9px;padding:12px 9px;background:linear-gradient(#252e2e,#181e1e);border:1px solid #576660;box-shadow:inset 0 0 0 2px #101616;cursor:pointer;color:#c3ccc8;font-weight:900;font-size:12px;letter-spacing:.25px;text-transform:uppercase;transform:skew(-5deg);border-radius:4px}
+.us17-tab span{font-size:11px;color:#82938b}.us17-tab:hover{border-color:#d1eda1;color:#fff}
+.us17-tab.active{color:#f6ffe5;border-color:var(--us17-green);background:linear-gradient(110deg,#293c30,#151f1c);box-shadow:inset 0 0 0 2px #162119,0 0 19px #b7e45b19}
+.us17-tab.active span{color:var(--us17-green)}
+.us17-view{display:none}.us17-view.active{display:block}.us17-archive{display:none!important}
+.us17-view-heading{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin:20px 0 14px}
+.us17-view-heading h2,.us17-headline h2{font-size:22px;font-weight:950;font-style:italic;text-transform:uppercase;margin:0;color:#f4f8f3}
+.us17-view-heading p,.us17-headline p{font-size:12px;color:#a2aea8;margin:0;line-height:1.5}
+.us17-headline{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:15px 0}
+.us17-headline h2 small{font-size:11px;font-weight:700;font-style:normal;margin-left:10px;color:var(--us17-green)}
+.us17-profile{margin:8px 0 8px;border:1px solid var(--us17-line);background:#1a2220;color:#d6dfd9;border-radius:3px}
+.us17-profile>summary{cursor:pointer;padding:12px 17px;color:#b5c3bb;font-size:11px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;list-style:none}
+.us17-profile>summary:before,.us17-legacy summary:before{content:'▸';margin-right:9px;color:var(--us17-green)}
+.us17-profile[open]>summary:before,.us17-legacy[open]>summary:before{content:'▾'}
+#us17ProfileInner{padding:0 16px 16px}.us17-profile .cards{margin-top:10px}
+#page-overview .garage{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+#page-overview .vehicle{border-radius:4px;border:1px solid #53605a;background:linear-gradient(#242e2a,#171f1d);min-height:156px;padding:10px;transform:none;box-shadow:inset 0 0 0 2px #111815}
+#page-overview .vehicle.selected{padding:10px;border-color:var(--us17-green);box-shadow:inset 0 0 0 1px var(--us17-green),0 0 15px #b7e45b1a}
+#page-overview .vehicle:hover{border-color:#d7eea8}
+#page-overview .vehicle .slot{color:#acbdad;font-size:10px;letter-spacing:1px}
+#page-overview .vehicle .model{color:#eff5ed;font-size:12px;min-height:33px}
+#page-overview .vehicle .carpic{height:86px;background:transparent;border-radius:2px;margin:0 0 7px}
+#page-overview .vehicle .tag{border-radius:2px;background:#263930;color:#bde879;padding:4px 6px;font-size:9px}
+#page-overview .vehicle .tag.empty{background:#29302e;color:#aab3ad}#page-overview .vehicle .tag.locked{background:#453823;color:#e9b87c}
+.us17-slot-card,.us17-quick,.us17-bodyshop{margin:16px 0;background:linear-gradient(150deg,#222a27,#171d1b);border:1px solid #55645d;border-radius:4px;padding:17px}
+.us17-slot-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:10px;color:#aab8ad;font-size:11px;font-weight:800;letter-spacing:1.2px}
+.us17-slot-title strong{color:var(--us17-green);font-size:16px;letter-spacing:0}
+.us17-slot-tools{display:grid;grid-template-columns:auto minmax(200px,1fr) auto;align-items:center;gap:12px}
+.us17-slot-tools label,.us17-bodyfilters label{color:#a9b7ac;font-size:11px;font-weight:900}
+.us17-slot-tools select,.us17-bodyfilters select,.us17-bodyfilters input{min-width:0;width:100%;background:#171e1b;border:1px solid #697a6f;padding:11px;color:#fff;border-radius:3px}
+.us17-fine{font-size:11px;line-height:1.65;color:#9fab9f;margin:11px 0 0}
+#us17-edit .split{grid-template-columns:minmax(0,1.2fr) minmax(270px,.8fr);gap:12px}
+#us17-edit .card,#us17-shop .card,#us17-tune .card{background:#1d2522;border:1px solid #4d5d55;border-radius:4px}
+#us17-edit #emptySlotNote{display:none!important}
+#us17-edit #donorTools,#us17-edit .career-traffic-details{display:block}
+.career-advanced,.us17-legacy{margin-top:20px;border-top:1px solid var(--us17-line);padding-top:15px}
+.career-advanced summary,.us17-legacy summary{cursor:pointer;list-style:none;font-size:11px;letter-spacing:1px;font-weight:900;color:#b5c3b9}
+.us17-quick{display:flex;justify-content:space-between;gap:20px;align-items:center}.us17-quick p{font-size:11px;color:#acbaac;max-width:650px;margin:5px 0 0}.us17-quick strong{font-weight:900;color:#f3f7ef}
+#us17-shop #careerShop{display:block;visibility:visible;border-radius:3px}#us17-shop #careerShop summary{display:none}
+#us17-shop #careerShop.hidden{display:none}
+.us17-bodyhead{display:flex;justify-content:space-between;gap:12px;align-items:start}.us17-bodyhead h3{font-style:italic;font-size:20px;margin:0;color:#fff}.us17-bodyhead p{font-size:12px;color:#a7b4a6;margin:5px 0 12px}
+.us17-pill{border:1px solid #a6d85f;color:#bce37b;padding:5px;font-size:10px;font-weight:800;white-space:nowrap}
+.us17-bodyfilters{display:grid;grid-template-columns:155px minmax(120px,1fr) minmax(130px,1fr) auto;align-items:center;gap:12px;margin-top:14px}
+.us17-bodyfilters:first-of-type{grid-template-columns:155px minmax(170px,1fr) 135px auto}
+.us17-bodyfilters label{max-width:160px}
+.us17-bodyfilters button{white-space:nowrap}
+#us17-shop .us17-uniques{margin-top:14px}
+#page-overview .hidden{display:none!important}
+#page-overview .btn{border-radius:4px!important}
+#page-overview .section{display:block}
+@media(max-width:1160px){#page-overview .garage{grid-template-columns:repeat(3,minmax(0,1fr))}.us17-tab{font-size:11px}}
+@media(max-width:760px){.us17-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.us17-headline,.us17-view-heading{display:block}.us17-slot-tools{grid-template-columns:1fr}.us17-bodyfilters,.us17-bodyfilters:first-of-type{grid-template-columns:1fr 1fr}.us17-bodyfilters label{max-width:none}}
+@media(max-width:480px){#page-overview .garage{grid-template-columns:repeat(2,minmax(0,1fr))}.us17-bodyfilters,.us17-bodyfilters:first-of-type{grid-template-columns:1fr}.us17-quick{display:block}.us17-quick button{margin-top:12px;width:100%}}
+
+.us17-banner-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px}.us17-banner-right strong{font-size:13px;color:#e8f4de;letter-spacing:.1px}.us17-banner-right span{font-size:10px;color:#a8b9a8}
+
+/* v1.7.1: garage is the Career page, selected car is a persistent panel. */
+#page-overview .us17-view[data-us17-view="garage"],#page-overview .us17-view[data-us17-view="edit"]{display:block!important}
+#page-overview .us17-view[data-us17-view="shop"],#page-overview .us17-view[data-us17-view="tune"]{display:none}
+#page-overview .us17-view[data-us17-view="shop"].active,#page-overview .us17-view[data-us17-view="tune"].active{display:block}
+.us17-tabs{grid-template-columns:repeat(2,minmax(0,1fr));margin:18px 0 11px;gap:10px}
+.us17-tab{min-height:47px;font-size:12px}
+.us17-profile{padding-bottom:12px}
+.us17-profile-heading{font-size:14px;letter-spacing:1.1px;font-weight:900;color:#d5e2d6;padding:15px 18px 5px;margin:0}
+#us17ProfileInner{padding:0 14px 8px}
+#page-overview .us17-retired{display:none!important}
+#page-overview .us17-legacy{display:none!important}
+#us17-edit{border-top:1px solid var(--us17-line);margin-top:18px;padding-top:8px}
+#us17-edit .us17-view-heading{margin:14px 0 9px}
+#us17-edit .us17-view-heading h2{font-size:17px}
+#us17-edit .us17-view-heading p{font-size:10px}
+#us17-edit .split{display:block}
+#us17-edit .us17-edit-inspector{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,280px);gap:8px 18px;align-items:center;padding:15px}
+#us17-edit .us17-edit-inspector>h3{grid-column:1;font-size:18px;margin:0}
+#us17-edit .career-car-image-box{grid-column:2;grid-row:1 / span 4;max-height:155px}
+#us17-edit .us17-edit-inspector>.toggle-row{grid-column:1;margin:0}
+#us17-edit .us17-technical{grid-column:1;max-width:370px;color:#9cad9e;font-size:11px}
+.us17-technical summary,.us17-code-details summary{cursor:pointer;font-weight:800;color:#a5be9e;font-size:11px}
+#us17-shop .us17-quick{margin:12px 0 18px;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;padding:14px 17px}
+#us17-shop .us17-quick strong{font-size:13px}
+#us17-shop .us17-quick .btn{font-size:12px}
+#us17-shop #careerShop{margin-bottom:18px}
+#us17-shop .us17-bodyshop{margin-top:23px}
+#us17-shop .us17-bodyfilters{display:flex;gap:12px;flex-wrap:wrap}
+#us17-shop .us17-bodyfilters>select{flex:1 1 230px}
+#us17-shop .us17-bodyfilters>label{flex:0 0 175px;align-self:center}
+#us17-shop .us17-bodyfilters>button{flex:0 0 auto}
+.us17-code-details{margin-top:13px;border-top:1px solid var(--us17-line);padding-top:9px}
+.us17-code-fields{display:grid;grid-template-columns:110px minmax(150px,1fr) auto;gap:10px;align-items:center;padding-top:11px}
+.us17-code-fields input{min-width:0;background:#171e1b;color:#fff;border:1px solid #66756b;border-radius:3px;padding:9px}
+#careerManualDetails{display:block!important;margin-top:15px}
+#careerManualDetails .us17-manual-head{margin:0 0 15px;font-size:18px;color:#ebf4e9}
+#page-overview .us17-banner{margin-bottom:12px;padding-bottom:13px}
+#page-overview .us17-banner-title{font-size:36px}
+#page-overview .us17-quick p{max-width:700px}
+@media(max-width:850px){#us17-shop .us17-quick{grid-template-columns:1fr 1fr}#us17-shop .us17-quick>div{grid-column:1/-1}}
+@media(max-width:680px){#us17-edit .us17-edit-inspector{grid-template-columns:1fr}#us17-edit .career-car-image-box{grid-column:1;grid-row:auto;max-height:160px}#us17-shop .us17-bodyfilters>label{flex:1 1 100%}.us17-code-fields{grid-template-columns:1fr}}
+/* Compact always-open profile – keeps progress editable without wasted columns. */
+#us17ProfileInner #stats>.split{display:block;}
+#us17ProfileInner #stats>.split>.card.panel{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr);grid-template-rows:auto auto auto;column-gap:22px;row-gap:6px;padding:15px 17px;}
+#us17ProfileInner #stats>.split>.card.panel>h3{grid-column:1/-1;margin:0 0 2px;}
+#us17ProfileInner #stats>.split>.card.panel>.formgrid:nth-of-type(1){grid-column:1;grid-row:2;}
+#us17ProfileInner #stats>.split>.card.panel>.inline-action{grid-column:1;grid-row:3;}
+#us17ProfileInner #stats>.split>.card.panel>.sep{display:none;}
+#us17ProfileInner #stats>.split>.card.panel>.formgrid:nth-of-type(2){grid-column:2;grid-row:2;}
+#us17ProfileInner #stats>.split>.card.panel>.micro{grid-column:2;grid-row:3;align-self:start;}
+#us17-shop>.us17-view-heading,#us17-tune>.us17-view-heading{display:none;}
+@media(max-width:900px){#us17ProfileInner #stats>.split>.card.panel{display:block;}#us17ProfileInner #stats>.split>.card.panel>.formgrid,#us17ProfileInner #stats>.split>.card.panel>.inline-action{margin:10px 0}}
+
+#us17-edit .us17-edit-inspector:has(.career-car-image-box.hidden){grid-template-columns:minmax(0,1fr)}
+#us17-edit .us17-edit-inspector>.toggle-row{max-width:360px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+#us17-edit .us17-edit-inspector>.toggle-row .switch{margin-left:auto}
+
+/* v1.7.3 – clearer garage actions and stacked career stage controls */
+.us17-slot-tools{grid-template-columns:170px minmax(160px,1fr) auto auto;gap:10px}
+.us17-remove-car{border-color:#765c55!important;color:#edc5b6!important;white-space:nowrap}
+.us17-remove-car:hover:not(:disabled){border-color:#dd9887!important;color:#fff!important;background:#55342b!important}
+.us17-remove-car:disabled{opacity:.35}
+#us17ProfileInner #stats>.split>.card.panel>.formgrid:nth-of-type(2){display:flex;flex-direction:column;align-items:stretch;gap:9px;max-width:320px}
+#us17ProfileInner #stats>.split>.card.panel>.formgrid:nth-of-type(2)>.field{width:100%;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start!important}
+#us17ProfileInner #stage,#us17ProfileInner #applyStage{width:100%;max-width:none}
+#us17ProfileInner .us17-stage-action{padding-top:0}
+#us17-shop .us17-quick{margin-top:10px;}
+#us17-shop .shop-category{min-height:42px;gap:10px}
+#us17-shop .shop-category.all-installed .shop-flags{color:#c5e790;font-weight:800}
+#us17-shop .shop-level[data-max-out="true"]{outline:1px solid #e3f5bd;outline-offset:1px}
+@media(max-width:1000px){.us17-slot-tools{grid-template-columns:145px minmax(150px,1fr) auto}.us17-remove-car{grid-column:2/4;justify-self:end}}
+@media(max-width:760px){.us17-slot-tools{grid-template-columns:1fr}.us17-remove-car{grid-column:auto;justify-self:stretch}#us17ProfileInner #stats>.split>.card.panel>.formgrid:nth-of-type(2){max-width:none}}
+
+/* v1.7.3 polish: keep stage input and Apply Stage vertically, eliminate duplicate Unique panel. */
+#us17ProfileInner .us17-stage-grid{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:8px!important;max-width:330px}
+#us17ProfileInner .us17-stage-grid>.field{width:100%!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important}
+#us17ProfileInner .us17-stage-grid #applyStage{width:100%!important}
+#us17-shop .us17-uniques{display:none!important}
+@media(max-width:900px){#us17ProfileInner .us17-stage-grid{max-width:none}}

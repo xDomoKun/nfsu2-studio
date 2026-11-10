@@ -1,8 +1,9 @@
 /* Browser-only UI for confirmed G00/G01 My Cars configuration experiment. */
 (()=>{'use strict';
 const C=window.UndergroundMyCars,core=window.NFSU2,$=id=>document.getElementById(id);
-let selectedSlot=6,selectedTemplate=6,filter='all',search='',undo=null;
-const catalog=C.catalog();
+let selectedSlot=6,selectedTemplate=6,selectedModel='T:COUPE',previewChoice=false,filter='all',search='',catalogSearch='',catalogType='all',undo=null;
+const originalCatalog=C.catalog();
+const catalog=C.catalogAll().all;
 const label=n=>n===1?'Konfigurationsplatz':'Konfigurationsplätze';
 const fmt=i=>String(i).padStart(2,'0');
 const stat=(name,value)=>`<div class="mc-stat"><span>${name}</span><strong>${value}</strong></div>`;
@@ -21,34 +22,54 @@ function activeContext(){const h=window.UndergroundLabHost?.get();if(!h||!h.load
 function notify(msg){window.UndergroundLabHost?.changed(msg);}
 function recordUndo(s){undo={slice:s.save.slice(C.BASE,C.END),when:Date.now()};}
 function execute(note,mutator){const s=activeContext();if(!s)return;try{recordUndo(s);mutator(s.save);notify(note);render();}catch(e){undo=null;window.UndergroundLabHost.message(e.message,true);}}
-function chooseTemplate(){return catalog.find(x=>x.slot===selectedTemplate)||catalog[0];}
-function renderCatalog(){const el=$('mcTemplates');el.replaceChildren();for(const car of catalog){const btn=document.createElement('button');btn.className='mc-template'+(selectedTemplate===car.slot?' selected':'');btn.type='button';btn.innerHTML=`<span class="mc-template-icon">${car.kind==='bus'?menuBusIcon:car.kind==='emergency'?menuEmergencyIcon:menuCarIcon}</span><span class="mc-template-copy"><b></b><small>Originalplatz ${fmt(car.slot)}</small></span><span class="mc-template-tick"><svg class="nfs-icon " viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="m8 5 7 7-7 7"/></svg></span>`;btn.querySelector('b').textContent=car.name;btn.onclick=()=>{selectedTemplate=car.slot;render();};el.append(btn);}}
+function chooseTemplate(){return catalog.find(x=>x.id===selectedModel)||catalog.find(x=>x.id==='T:COUPE')||catalog[0];}
+function renderCatalog(){const el=$('mcTemplates');el.replaceChildren();
+ const shown=catalog.filter(c=>(catalogType==='all'||(catalogType==='normal'&&!c.traffic)||(catalogType==='traffic'&&c.traffic))&&(c.name.toLowerCase().includes(catalogSearch.toLowerCase())||c.key.toLowerCase().includes(catalogSearch.toLowerCase())||c.id.toLowerCase().includes(catalogSearch.toLowerCase())));
+ for(const car of shown){const btn=document.createElement('button');btn.className='mc-template'+(selectedModel===car.id?' selected':'');btn.type='button';
+ btn.innerHTML=`<span class="mc-template-icon">${car.kind==='bus'?menuBusIcon:car.kind==='emergency'?menuEmergencyIcon:menuCarIcon}</span><span class="mc-template-copy"><b></b><small></small></span><span class="mc-template-tick"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="m8 5 7 7-7 7"/></svg></span>`;
+ btn.querySelector('b').textContent=car.name;
+ btn.querySelector('small').textContent=car.traffic?'TRAFFIC · '+(car.source?'MOD #'+fmt(car.source):'NO TEMPLATE'):'STREET CAR';
+ const art=window.USCarImages?.make(car.key,'','mc-template-vehicle-art');if(art){art.alt='';btn.insertBefore(art,btn.querySelector('.mc-template-copy'));}
+ btn.onclick=()=>{selectedModel=car.id;previewChoice=true;if(car.source)selectedTemplate=car.source;render();};el.append(btn);}
+ $('mcCatalogCount').textContent=shown.length+' / '+catalog.length;
+}
 function renderSlots(s){const all=C.list(s.save),el=$('mcSlots');el.replaceChildren();const shown=all.filter(c=>(filter==='all'||(filter==='occupied'&&c.active)||(filter==='traffic'&&c.active&&c.traffic)||(filter==='empty'&&!c.active))&&(String(c.slot).includes(search)||c.name.toLowerCase().includes(search.toLowerCase())||c.key.toLowerCase().includes(search.toLowerCase())));
- for(const c of shown){const b=document.createElement('button');b.type='button';b.className='mc-slot'+(c.active?' is-active':'')+(c.slot===selectedSlot?' is-selected':'');b.innerHTML=`<span class="mc-slot-number">${fmt(c.slot)}</span><span class="mc-slot-symbol">${c.active?menuCarIcon:'+'}</span><span class="mc-slot-name"></span><span class="mc-slot-state"></span>`;b.querySelector('.mc-slot-name').textContent=c.active?c.name:'LEER';b.querySelector('.mc-slot-state').textContent=c.active?(c.traffic?'TRAFFIC':'CUSTOM'):'FREI';b.onclick=()=>{selectedSlot=c.slot;render();};el.append(b);}
+ for(const c of shown){const b=document.createElement('button');b.type='button';b.className='mc-slot'+(c.active?' is-active':'')+(c.slot===selectedSlot?' is-selected':'');b.innerHTML=`<span class="mc-slot-number">${fmt(c.slot)}</span><span class="mc-slot-symbol">${c.active?menuCarIcon:'+'}</span><span class="mc-slot-name"></span><span class="mc-slot-state"></span>`;b.querySelector('.mc-slot-name').textContent=c.active?c.name:'LEER';b.querySelector('.mc-slot-state').textContent=c.active?(c.traffic?'TRAFFIC':'CUSTOM'):'FREI';
+  if(c.active){const art=window.USCarImages?.make(c.key,'','mc-slot-car-image');if(art){art.alt='';b.classList.add('has-car-image');b.querySelector('.mc-slot-symbol').replaceChildren();b.insertBefore(art,b.querySelector('.mc-slot-name'));}}
+  b.onclick=()=>{selectedSlot=c.slot;render();};el.append(b);}
  $('mcNoResults').classList.toggle('hidden',!!shown.length);$('mcCount').textContent=all.filter(x=>x.active).length+' / 20';$('mcTrafficCount').textContent=all.filter(x=>x.active&&x.traffic).length;
 }
-function renderInspector(s){const c=C.info(s.save,selectedSlot),t=chooseTemplate();$('mcCurrentSlot').textContent='SLOT '+fmt(selectedSlot);$('mcCurrentStatus').textContent=c.active?(c.traffic?'TRAFFIC CAR':'CUSTOM CAR'):'LEERER SLOT';$('mcCurrentStatus').dataset.state=c.active?'on':'off';$('mcCurrentName').textContent=c.active?c.name:'Kein Fahrzeug gespeichert';$('mcCurrentId').textContent=c.active?'0x'+c.key:'–';$('mcCurrentHandle').textContent=c.active?'0x'+core.hex(c.handle):'–';$('mcPreview').innerHTML=shape(c.active?c.kind:t.kind);$('mcPreviewLabel').textContent=c.active?(labels[c.kind]||'CUSTOM'):(labels[t.kind]||'TRAFFIC')+' / PREVIEW';$('mcTemplateName').textContent=t.name;$('mcTemplateSource').textContent='Originalplatz '+fmt(t.slot);
- $('mcInstallAtNative').innerHTML='<span>ORIGINALPLATZ '+fmt(t.slot)+'</span>';$('mcInstallAtSelected').innerHTML='<span>SLOT '+fmt(selectedSlot)+' *</span>'; 
+function renderInspector(s){const c=C.info(s.save,selectedSlot),t=chooseTemplate();$('mcCurrentSlot').textContent='SLOT '+fmt(selectedSlot);$('mcCurrentStatus').textContent=c.active?(c.traffic?'TRAFFIC CAR':'CUSTOM CAR'):'LEERER SLOT';$('mcCurrentStatus').dataset.state=c.active?'on':'off';$('mcCurrentName').textContent=c.active?c.name:'Kein Fahrzeug gespeichert';$('mcCurrentId').textContent=c.active?'0x'+c.key:'–';$('mcCurrentHandle').textContent=c.active?'0x'+core.hex(c.handle):'–';$('mcPreview').innerHTML=shape(c.active?c.kind:t.kind);$('mcPreviewLabel').textContent=c.active?(labels[c.kind]||'CUSTOM'):(labels[t.kind]||'TRAFFIC')+' / PREVIEW';$('mcTemplateName').textContent=t.name;$('mcTemplateSource').textContent=t.traffic?(t.source?'Traffic-Mod · Originalplatz '+fmt(t.source):'Traffic · no template'):'Street Car · Career / Stock source';
+ $('mcInstallAtNative').classList.toggle('hidden',!t.traffic||!t.source);$('mcInstallAtNative').disabled=!t.traffic||!t.source;$('mcInstallAtNative').innerHTML='<span>ORIGINALPLATZ '+fmt(t.source||1)+'</span>';$('mcInstallAtSelected').innerHTML='<span>INSTALL IN SLOT '+fmt(selectedSlot)+'</span>'; 
  $('mcRemove').disabled=!c.active;$('mcCopy').disabled=!c.active;
  $('mcCopyTarget').replaceChildren();for(let i=1;i<=20;i++){if(i===selectedSlot)continue;const opt=document.createElement('option');opt.value=i;opt.textContent='Slot '+fmt(i)+(C.info(s.save,i).active?' · belegt':' · frei');$('mcCopyTarget').append(opt);}
  $('mcUndo').disabled=!undo;
 }
 function render(){const s=activeContext();$('mcEmpty').classList.toggle('hidden',!!s);$('mcReady').classList.toggle('hidden',!s);if(!s){$('mcCount').textContent='– / 20';$('mcTrafficCount').textContent='–';renderCatalog();return;}renderSlots(s);renderInspector(s);renderCatalog();window.USExtra?.render(selectedSlot,selectedTemplate);}
-function onImported(){selectedSlot=6;selectedTemplate=6;undo=null;render();}
+function onImported(){selectedSlot=6;selectedTemplate=6;selectedModel='T:COUPE';previewChoice=false;undo=null;render();}
 function askOverwrite(save,slot){const c=C.info(save,slot);return !c.active||confirm(`Slot ${fmt(slot)} ist bereits mit „${c.name}“ belegt. Wirklich überschreiben?`);}
 function bind(){
  $('mcOpen').onclick=$('mcLoadEmpty').onclick=()=>$('fileInput').click();
  $('mcExport').onclick=()=>$('saveTop').click();
  $('mcSearch').oninput=e=>{search=e.target.value.trim();render();};
  $('mcFilter').onchange=e=>{filter=e.target.value;render();};
- $('mcInstallAtNative').onclick=()=>{const s=activeContext();if(!s)return;const t=chooseTemplate();if(!askOverwrite(s.save,t.slot))return;selectedSlot=t.slot;execute(`Originales ${t.name} in Konfiguration #${fmt(t.slot)} übernommen. G01-Methode: unveränderte Mod-Vorlage.`,d=>C.install(d,t.slot));};
- $('mcInstallAtSelected').onclick=()=>{const s=activeContext();if(!s)return;const t=chooseTemplate();if(selectedSlot===t.slot){$('mcInstallAtNative').click();return;}if(!confirm(`EXPERIMENTELL: ${t.name} aus Originalplatz ${fmt(t.slot)} nach ${fmt(selectedSlot)} verlagern? Nur die Originalplatz-Methode wurde im Spiel bestätigt.`))return;if(!askOverwrite(s.save,selectedSlot))return;execute(`${t.name} testweise in Slot ${fmt(selectedSlot)} eingesetzt. Slotverschiebung muss noch im Spiel geprüft werden.`,d=>C.install(d,t.slot,selectedSlot));};
+ $('mcCatalogSearch').oninput=e=>{catalogSearch=e.target.value.trim();renderCatalog();};
+ $('mcCatalogType').onchange=e=>{catalogType=e.target.value;renderCatalog();};
+ $('mcInstallAtNative').onclick=()=>{const s=activeContext(),t=chooseTemplate();if(!s||!t.traffic||!t.source)return;if(!askOverwrite(s.save,t.source))return;
+   selectedSlot=t.source;execute(`Original Traffic Car ${t.name} restored at slot ${fmt(t.source)}.`,d=>C.install(d,t.source));};
+ $('mcInstallAtSelected').onclick=()=>{const s=activeContext(),t=chooseTemplate();if(!s||!t)return;
+   if(!t.traffic&&!C.info(s.save,selectedSlot).active){/* empty is supported */}
+   if(!askOverwrite(s.save,selectedSlot))return;
+   // Moving original generic slots or generating stock car records is not yet
+   // proven by an actual NFSU2 race; keep that warning explicit.
+   if(!confirm(`Install ${t.name} in My Cars slot ${fmt(selectedSlot)}?\n\nFree slot assignment is experimental. Export a backup and test in-game.`))return;
+   execute(`${t.name} installed in arcade slot ${fmt(selectedSlot)} (save-format verified; in-game test pending).`,d=>C.installAny(d,s.garage,selectedSlot,t.id));};
  $('mcInstallAll').onclick=()=>{if(!activeContext())return;if(!confirm('Alle 20 „Meine Autos“-Datensätze durch den originalen, in G00 funktionierenden Traffic-Mod ersetzen? Bestehende Meine-Autos-Konfigurationen werden dadurch überschrieben.'))return;selectedSlot=6;execute('Komplette Original-20er-Konfiguration übernommen (bestätigte G00-Methode).',C.installAll);};
- $('mcInstallCoupe').onclick=()=>{selectedTemplate=6;$('mcInstallAtNative').click();};
+ $('mcInstallCoupe').onclick=()=>{selectedModel='T:COUPE';selectedTemplate=6;$('mcInstallAtSelected').click();};
  $('mcRemove').onclick=()=>{const s=activeContext();if(!s)return;if(!confirm(`Slot ${fmt(selectedSlot)} löschen? Die gespeicherte Fahrzeugkonfiguration wird durch den neutralen Original-Slot ersetzt. Nur mit Backup importieren.`))return;execute('My-Cars-Slot '+fmt(selectedSlot)+' zurückgesetzt.',d=>C.clear(d,selectedSlot));};
  $('mcCopy').onclick=()=>{const s=activeContext();if(!s)return;const target=Number($('mcCopyTarget').value),source=selectedSlot;if(!target||!Number.isInteger(target))return;if(!confirm(`EXPERIMENT: Konfiguration ${fmt(source)} auf Platz ${fmt(target)} kopieren? Eine Platzverschiebung ist bisher nicht im Spiel bestätigt.`))return;if(!askOverwrite(s.save,target))return;selectedSlot=target;execute('Konfiguration kopiert – experimentelle Platzverschiebung.',d=>C.copy(d,source,target));};
  $('mcReset').onclick=()=>{const s=activeContext();if(!s)return;if(!confirm('Den gesamten „Meine Autos“-Bereich exakt auf den Stand beim Import zurücksetzen? Deine Karriere bleibt unverändert.'))return;execute('„Meine Autos“ auf Importzustand zurückgesetzt.',d=>C.restore(d,s.originalSave));};
  $('mcUndo').onclick=()=>{const s=activeContext();if(!s||!undo)return;s.save.set(undo.slice,C.BASE);undo=null;notify('Letzte Meine-Autos-Aktion rückgängig gemacht.');render();};
 }
-bind();window.UndergroundTrafficUI={render,onImported};render();
+bind();window.UndergroundTrafficUI={render,onImported,selectedModel:()=>chooseTemplate(),previewSelected:()=>previewChoice};render();
 })();

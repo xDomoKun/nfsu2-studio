@@ -1,0 +1,64 @@
+/* v1.7.8 — separate profile-first Traffic Car tuning, full normal-car tuning unchanged. */
+.traffic-preset-panel{display:block;margin:0 0 12px;padding:16px;border:1px solid rgba(178,219,93,.35);border-left:3px solid #b4e455;border-radius:6px;background:linear-gradient(115deg,rgba(40,48,40,.98),rgba(20,27,26,.98));color:#edf5dd}
+.traffic-preset-panel.hidden{display:none!important}
+.traffic-preset-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.tp-overline{display:block;font-weight:800;letter-spacing:.12em;font-size:10px;color:#b4df68;margin-bottom:5px}
+#trafficPresetHeading{font-weight:900;letter-spacing:.04em;color:#e4f4c0;font-size:18px;margin:0}
+.traffic-preset-current{font-size:10px;letter-spacing:.05em;font-weight:800;color:#eef6e6;border:1px solid rgba(178,219,93,.45);padding:6px 9px;white-space:nowrap;background:rgba(87,104,54,.22)}
+.traffic-preset-lead{font-size:12px;color:#c7d1be;line-height:1.5;margin:5px 0 14px}
+.traffic-preset-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.traffic-preset-option{appearance:none;-webkit-appearance:none;display:flex;flex-direction:column;text-align:left;align-items:stretch;justify-content:space-between;gap:9px;padding:14px;min-height:134px;border:1px solid #53614b;border-radius:5px;background:linear-gradient(140deg,#323e32,#222b29);color:#eef4e8;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .15s ease,box-shadow .15s ease;font:inherit}
+.traffic-preset-option:hover{background:linear-gradient(140deg,#42543a,#2b3b30);border-color:#a0ca6f;transform:translateY(-1px)}
+.traffic-preset-option.is-active{border-color:#c6f077;background:linear-gradient(145deg,#455b30,#273b24);box-shadow:inset 0 0 0 1px rgba(195,240,107,.55),0 0 0 1px rgba(195,240,107,.14)}
+.traffic-preset-option:focus-visible{outline:2px solid #d2f77b;outline-offset:3px}
+.tp-card-top{display:flex;justify-content:space-between;gap:6px;align-items:center;min-height:18px}
+.tp-card-code{font-size:14px;letter-spacing:.1em;font-weight:950;color:#c0eb75}
+.tp-card-status{font-size:9px;color:#edffd2;font-weight:800;letter-spacing:.08em;line-height:1.3}
+.tp-card-name{font-size:13px;font-weight:800;line-height:1.25;color:#f4f6ef}
+.tp-card-description{font-size:11px;line-height:1.4;color:#b8c6b5}
+.traffic-preset-bottom{display:flex;align-items:center;gap:12px;justify-content:space-between;border-top:1px solid rgba(178,219,93,.22);margin-top:14px;padding-top:13px}
+.traffic-preset-bottom .btn{white-space:normal;flex-shrink:0}
+.tp-bottom-note{font-size:11px;color:#c7d5be;line-height:1.45}
+.traffic-preset-hint{font-size:11px;color:#aebead;margin:12px 0 0;line-height:1.5}
+.traffic-preset-bottom .btn:disabled{opacity:.45;cursor:not-allowed}
+/* Both tuning areas exist in DOM for compatibility, but only the appropriate one is shown. */
+#page-overview[data-tuning-mode="traffic"] #autoCareer,
+#page-overview[data-tuning-mode="traffic"] #careerManualDetails,
+#page-overview[data-tuning-mode="traffic"] #dynoBottomSep,
+#page-overview[data-tuning-mode="traffic"] #dynoBottomInfo,
+#page-overview[data-tuning-mode="traffic"] #dynoUnavail,
+#page-overview[data-tuning-mode="traffic"] #us17-shop .us17-quick,
+#page-overview[data-tuning-mode="traffic"] #careerShop,
+#page-overview[data-tuning-mode="traffic"] #us17-shop .us17-uniques{display:none!important}
+#page-overview[data-tuning-mode="standard"] #trafficPresetPanel{display:none!important}
+.traffic-shop-notice{display:none;padding:15px;margin-bottom:15px;gap:16px;align-items:center;justify-content:space-between;border:1px solid rgba(178,219,93,.28);border-left:3px solid #b4e455;background:rgba(25,41,28,.75);border-radius:5px;color:#edf4e7}
+#page-overview[data-tuning-mode="traffic"] .traffic-shop-notice{display:flex}
+.traffic-shop-notice strong{font-size:12px;letter-spacing:.06em}
+.traffic-shop-notice p{font-size:11px;line-height:1.45;margin:6px 0 0;color:#bbc9ba}
+.traffic-shop-notice .btn{flex-shrink:0}
+@media(max-width:870px){.traffic-preset-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.traffic-preset-options{grid-template-columns:1fr}.traffic-preset-option{min-height:105px}.traffic-preset-bottom,.traffic-shop-notice{flex-direction:column;align-items:stretch}.traffic-preset-top{gap:8px}}
+@media(prefers-reduced-motion:reduce){.traffic-preset-option{transition:none}.traffic-preset-option:hover{transform:none}}
+
+/* v1.7.9: No Appearance / Body Shop section or navigation for Traffic Cars.
+ * Normal cars keep the complete shop, including appearance editing. */
+#page-overview[data-tuning-mode="traffic"] [data-career-tab="shop"],
+#page-overview[data-tuning-mode="traffic"] #us17-shop{display:none!important}
+#page-overview[data-tuning-mode="traffic"] .us17-tabs{grid-template-columns:minmax(0,1fr)}
+
+.tp-experimental-heading{grid-column:1/-1;margin:5px 0 0;padding:12px 0 2px;border-top:1px solid rgba(178,219,93,.22);font-size:10px;letter-spacing:.12em;font-weight:800;color:#bfd69e}
+
+/* v1.7.10 — explicit recovery for old, unplayable PH01 saves. */
+.tp-recovery{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 16px;margin-top:14px;border:1px solid #e4ab56;border-left:4px solid #e4ab56;border-radius:5px;background:rgba(121,77,30,.23);color:#ffe8c6}
+.tp-recovery.hidden{display:none!important}
+.tp-recovery strong{font-size:12px;letter-spacing:.07em}
+.tp-recovery p{font-size:11px;line-height:1.6;margin:6px 0 0;color:#f1d2a7}
+.tp-recovery .btn{flex-shrink:0}
+@media(max-width:600px){.tp-recovery{flex-direction:column;align-items:stretch}}
+
+/* v1.7.11: diagnostic handling variants are intentionally behind a collapsed disclosure. */
+.tp-diagnostics{grid-column:1/-1;border:1px solid rgba(182,215,128,.28);border-radius:6px;background:rgba(8,16,9,.21);padding:10px 13px;margin-top:8px}
+.tp-diagnostics summary{cursor:pointer;font-size:11px;letter-spacing:.07em;font-weight:750;color:#d5eabf;list-style:revert}
+.tp-diagnostics .traffic-preset-hint{margin:10px 0 13px;line-height:1.5}
+.tp-diagnostic-grid{padding-bottom:3px}
+.tp-diagnostics .traffic-preset-option{min-width:0}

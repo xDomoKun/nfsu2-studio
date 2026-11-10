@@ -1,0 +1,15 @@
+/* v1.7.13: unified arcade car picker and selected-career-car part unlock */
+.mc-model-filters{display:flex;gap:8px;margin:10px 0 12px;align-items:stretch}
+.mc-model-filters input,.mc-model-filters select{min-width:0;flex:1;background:rgba(8,16,23,.82);border:1px solid rgba(255,255,255,.17);color:var(--text,#eaeef1);padding:11px;border-radius:6px;font:inherit}
+.mc-model-filters select{flex:0 1 178px}
+.mc-template{position:relative;min-width:0}
+.mc-template-vehicle-art{display:block;width:86px;max-height:42px;object-fit:contain;position:absolute;right:28px;top:50%;transform:translateY(-50%);pointer-events:none}
+.mc-template-icon:has(+ .mc-template-vehicle-art){opacity:.2}
+.mc-template-copy small{opacity:.72}
+.us-unlock-all{padding:16px 14px;margin:15px 0;border:1px solid rgba(190,232,96,.33);border-radius:8px;background:rgba(190,232,96,.055)}
+.us-unlock-head{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.88rem;letter-spacing:.04em}
+.us-unlock-head small{font-variant-numeric:tabular-nums;color:var(--muted,#adb5bc)}
+.us-unlock-all p{margin:9px 0 12px;font-size:.82rem;line-height:1.5;opacity:.77}
+.us-unlock-all .inline-action{flex-wrap:wrap}
+.mc-preview-label-model{font-size:.75rem}
+@media(max-width:650px){.mc-model-filters{flex-direction:column}.mc-model-filters select{flex:auto}.mc-template-vehicle-art{width:65px}}
