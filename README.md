@@ -2,7 +2,7 @@
 
 **Browser Editor:**
 
-**🎮 [NSFU2-Studio v1.7.15](https://xdomokun.github.io/underground-studio/)**
+**🎮 [NSFU2-Studio v1.7.15](https://xdomokun.github.io/nfsu2-studio/)**
 
 ---
 
