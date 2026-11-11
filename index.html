@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Underground Studio — NFSU2 Save Editor</title>
+<title>NFSU2 Studio — Save Editor</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;color:#172137;background:#f5f7fa;--blue:#3378f6;--text:#172137;--muted:#768094;--stroke:#e3e8ef;--panel:#fff;--shadow:0 10px 40px rgba(37,53,81,.04)}*{box-sizing:border-box}body{margin:0;font-size:14px}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}.app{display:grid;grid-template-columns:236px 1fr;min-height:100vh}.sidebar{background:#fff;border-right:1px solid var(--stroke);padding:30px 16px 22px;display:flex;flex-direction:column;gap:20px}.brand{display:flex;align-items:center;gap:12px;padding:0 12px;margin-bottom:19px}.logo{height:40px;width:40px;border-radius:13px;background:linear-gradient(140deg,#326fe9,#74a7ff);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:0 6px 17px #3378f62c}.brand b{font-size:16px;letter-spacing:-.4px}.eyebrow{font-size:10px;color:#8c96a6;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;padding-left:12px}.nav{display:grid;gap:7px}.nav button{text-align:left;border:0;background:transparent;color:#667187;border-radius:10px;padding:12px 13px;display:flex;align-items:center;gap:13px;font-weight:650}.nav button.active{background:#eef4ff;color:#2770ee}.nav button:hover:not(.active){background:#f5f7fb}.nav .symbol{font-size:18px;width:22px;text-align:center}.sidebottom{margin-top:auto;padding:15px 12px;border-top:1px solid var(--stroke);color:#8a94a5;font-size:12px;line-height:1.7}.main{min-width:0;max-width:1420px;width:100%;margin:auto;padding:38px clamp(23px,4vw,66px) 70px}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:31px}.top h1{font-size:34px;margin:6px 0 8px;font-weight:770;letter-spacing:-1.2px}.subtitle{color:#7c8799;margin:0}.top-actions{display:flex;gap:10px;flex-wrap:wrap}.btn{background:var(--panel);border:1px solid var(--stroke);color:#263551;border-radius:11px;padding:11px 16px;font-weight:680;display:inline-flex;gap:8px;align-items:center;justify-content:center;box-shadow:0 1px 3px #18243d09}.btn:hover{background:#f8faff}.btn.primary{background:var(--blue);border-color:var(--blue);color:white;box-shadow:0 6px 18px #3378f638}.btn.primary:hover{background:#246aed}.btn.small{padding:8px 11px;font-size:12px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-bottom:22px}.card{background:var(--panel);border:1px solid var(--stroke);border-radius:17px;padding:22px;box-shadow:var(--shadow);min-width:0}.stat .label{color:#818c9b;font-size:12px;font-weight:600}.stat .value{font-size:30px;font-weight:750;margin:11px 0 7px;letter-spacing:-1px}.stat .note{color:#8994a4;font-size:12px}.wide{grid-column:span 2}.pane-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 16px}.pane-title h2{margin:0;font-size:20px;letter-spacing:-.5px}.pane-title small{color:var(--muted)}.garage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.vehicle{min-width:0;text-align:left;padding:17px 14px 15px;border:1px solid var(--stroke);background:#fff;border-radius:15px;transition:transform .15s,border-color .15s,box-shadow .15s;box-shadow:var(--shadow)}.vehicle:hover{border-color:#9dc0ff;transform:translateY(-2px)}.vehicle.selected{border:2px solid #3378f6;padding:16px 13px 14px;box-shadow:0 5px 20px #3378f61c}.carpic{height:68px;background:#f4f7fa;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;font-size:42px;color:#7e8fa5}.vehicle .slot{font-size:11px;color:#8c97a8;margin-bottom:6px;font-weight:650}.vehicle .model{font-size:13px;font-weight:730;color:#263550;min-height:34px;line-height:1.35;word-break:break-word}.tag{display:inline-block;font-size:10px;font-weight:750;border-radius:100px;padding:5px 9px;margin-top:10px;background:#ecf8f3;color:#258967}.tag.empty{background:#f3f4f6;color:#9ca5b0}.tag.locked{background:#fff4e9;color:#b87929}.split{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(310px,1fr);gap:19px;align-items:start}.panel h3{font-size:16px;margin:0 0 16px;letter-spacing:-.2px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.field{display:flex;flex-direction:column;gap:9px;min-width:0}.field label{font-size:12px;font-weight:690;color:#5e6b7e}.field input,.field select{width:100%;border:1px solid #e0e6ef;background:#fbfcfe;color:#25334c;border-radius:11px;padding:12px;outline:none}.field input:focus,.field select:focus{border-color:#7eabff;box-shadow:0 0 0 3px #3378f617}.field .hint{color:#99a2af;font-size:11px;line-height:1.6}.inline-action{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.sep{height:1px;background:var(--stroke);margin:19px 0}.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0}.toggle-row span{font-weight:640}.switch{position:relative;appearance:none;border:0;background:#d5dbe4;width:43px;height:25px;border-radius:30px;flex:none;cursor:pointer;transition:background .15s}.switch:checked{background:#3378f6}.switch:after{content:"";position:absolute;top:3px;left:3px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 1px 2px #17213722;transition:transform .2s}.switch:checked:after{transform:translateX(18px)}.tuning{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 14px}.micro{font-size:12px;color:#8794a6;line-height:1.7}.info{border:1px solid #d7e4ff;background:#f4f8ff;padding:14px;border-radius:12px;color:#53709d;font-size:12px;line-height:1.7}.warning{background:#fffaf2;border-color:#f1debf;color:#a17839}.hidden{display:none!important}.dropzone{border:2px dashed #a9c7ff;border-radius:16px;padding:46px 22px;text-align:center;background:#f8fbff;cursor:pointer;transition:.16s}.dropzone.drag{background:#e9f2ff;border-color:var(--blue)}.dropzone .dicon{font-size:42px}.dropzone h3{margin:14px 0 8px;font-size:18px}.dropzone p{color:var(--muted);margin:0 0 17px}.message{padding:12px 15px;border-radius:11px;margin-bottom:18px;font-size:13px;background:#eff5ff;color:#2e64a7}.message.error{background:#fff0ed;color:#bd4737}.section{display:none}.section.active{display:block}.mini{font-size:12px;color:#8793a5}.footer-note{margin-top:35px;color:#9aa4b2;font-size:12px;line-height:1.8}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px}.empty-state{padding:55px 25px;text-align:center;background:#fff;border:1px solid var(--stroke);border-radius:17px;color:#8894a5}.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#389674;font-weight:660}.status:before{content:"";height:8px;width:8px;border-radius:50%;background:#36ba87}.status.bad{color:#c66c46}.status.bad:before{background:#d88158}.dropfile{display:none}.spacer{flex:1}@media (max-width:1100px){.garage{grid-template-columns:repeat(3,minmax(0,1fr))}.split{grid-template-columns:1fr 1fr}}@media (max-width:860px){.app{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--stroke);padding:14px 20px;flex-direction:row;align-items:center;gap:18px}.brand{padding:0;margin:0}.eyebrow,.sidebottom{display:none}.nav{display:flex;gap:4px}.nav button{font-size:12px;padding:10px}.nav .symbol{display:none}.main{padding-top:25px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:1fr}.garage{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (max-width:580px){.top{display:block}.top-actions{margin-top:18px}.cards{grid-template-columns:1fr}.wide{grid-column:auto}.garage{grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar{flex-wrap:wrap}.formgrid{grid-template-columns:1fr}}
 
@@ -613,15 +613,219 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
 @media(max-width:760px){.mc-bulk-picker{width:100%;min-width:0}.race-hero .hero-buttons{width:100%;flex-wrap:wrap}.mc-drag-hint{text-align:left}}
 
 </style>
+<style>
+
+/* NFSU2 Studio v1.7.16 – common content grid, compact selection, slot actions */
+:root{--nfs-content-max:1440px;--nfs-gutter:clamp(18px,2vw,30px)}
+.sidebar{
+ padding-left:max(var(--nfs-gutter),calc((100vw - var(--nfs-content-max))/2 + var(--nfs-gutter)))!important;
+ padding-right:max(var(--nfs-gutter),calc((100vw - var(--nfs-content-max))/2 + var(--nfs-gutter)))!important;
+ box-sizing:border-box;gap:20px
+}
+.main{max-width:var(--nfs-content-max)!important;width:100%;margin-inline:auto!important;
+ padding:23px var(--nfs-gutter) 56px!important}
+.brandcopy{min-width:0}.brandcopy b{white-space:nowrap}
+#page-files,.nav [data-page="files"],#mcOpen{display:none!important}
+#page-overview .garage .nfs-slot-wrap{position:relative;min-width:0;display:flex}
+#page-overview .garage .nfs-slot-wrap>.vehicle{width:100%;height:100%;min-height:165px;padding-bottom:40px!important}
+#page-overview .garage .nfs-slot-wrap>.nfs-slot-lock{
+ position:absolute;bottom:10px;left:10px;right:10px;z-index:1;min-height:25px;
+ padding:4px 8px;background:#27322b;color:#d1ebaf;border:1px solid #607457;
+ border-radius:3px;font-size:10px;font-weight:750;text-align:center;cursor:pointer
+}
+#page-overview .garage .nfs-slot-wrap>.nfs-slot-lock:hover:not(:disabled){background:#3d543b;border-color:#b4d47d;color:white}
+#page-overview .garage .nfs-slot-wrap>.nfs-slot-lock.is-locked{background:#49342c;color:#ffc5ad;border-color:#865f4c}
+#page-overview .garage .nfs-slot-wrap>.nfs-slot-lock:disabled{opacity:.55;cursor:default;border-style:dashed}
+#us17-edit .us17-edit-inspector{
+ display:grid!important;grid-template-columns:minmax(0,1fr) minmax(180px,265px)!important;
+ grid-auto-rows:min-content;align-items:center!important;column-gap:26px!important;row-gap:10px!important;
+ padding:18px 22px!important;min-height:0!important
+}
+#us17-edit .us17-edit-inspector>h3{grid-column:1!important;grid-row:1;margin:0!important;
+ font-size:20px!important;letter-spacing:.3px}
+#us17-edit .us17-edit-inspector>.sep,
+#us17-edit .us17-edit-inspector>.toggle-row{display:none!important}
+#us17-edit .us17-edit-inspector>.career-car-image-box{
+ grid-column:2!important;grid-row:1 / span 3!important;display:flex;
+ align-items:center;justify-content:center;max-height:155px!important;margin:0!important;padding:0!important
+}
+#us17-edit .us17-edit-inspector>.career-car-image-box.hidden{display:none!important}
+#us17-edit .career-car-image-box img{max-height:145px;width:100%;height:100%;object-fit:contain}
+#us17-edit .us17-edit-inspector>.us-unlock-all{
+ grid-column:1;grid-row:2;margin:0!important;padding:10px 13px!important;
+ border-radius:5px!important;max-width:none!important
+}
+#us17-edit .us-unlock-all .us-unlock-head{font-size:12px}
+#us17-edit .us-unlock-all p{font-size:11px;margin:5px 0 9px!important;line-height:1.3}
+#us17-edit .us-unlock-all .btn{padding:7px 12px;font-size:11px}
+#us17-edit .us17-edit-inspector>.us17-technical{grid-column:1!important;grid-row:3!important;margin:0;max-width:100%}
+#us17-edit .us17-edit-inspector:has(>.career-car-image-box.hidden){grid-template-columns:1fr!important}
+#shopUniques{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:7px;margin:0 0 8px}
+#shopUniqueTitle{margin:17px 0 10px;padding-top:14px;border-top:1px solid #5b695e}
+.shop-unique-readonly{display:flex;align-items:center;justify-content:space-between;gap:9px;
+ font-size:11px;padding:9px 11px;border:1px solid #526052;background:#202b25;color:#afbcaf;border-radius:4px}
+.shop-unique-readonly strong{color:#8c978d;font-weight:700;font-size:10px}
+.shop-unique-readonly.is-installed{border-color:#7a995f;color:#e0f5c7;background:#2b3a29}
+.shop-unique-readonly.is-installed strong{color:#c8eb91}
+.mc-tune-panel.traffic-mode #autoArcade,
+.mc-tune-panel.traffic-mode>details.us-manual{display:none!important}
+#arcadeTrafficPresetPanel:not(.hidden){display:block!important;margin-top:10px}
+#arcadeTrafficPresetPanel .traffic-preset-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:9px}
+#arcadeTrafficPresetPanel .traffic-preset-option{min-height:90px;align-items:stretch}
+#arcadeTrafficPresetPanel .traffic-preset-hint{margin-top:12px;color:#b7c3b3;font-size:11px;line-height:1.45}
+#arcadeTrafficPresetPanel .inline-action{margin-top:12px}
+@media(max-width:980px){.sidebar{padding-inline:var(--nfs-gutter)!important}
+ .nav button{min-width:80px}.main{padding-inline:var(--nfs-gutter)!important}}
+@media(max-width:680px){
+ #us17-edit .us17-edit-inspector{grid-template-columns:1fr!important;padding:13px!important}
+ #us17-edit .us17-edit-inspector>.career-car-image-box{grid-column:1!important;grid-row:auto!important}
+ #us17-edit .us17-edit-inspector>.us-unlock-all,#us17-edit .us17-edit-inspector>.us17-technical{grid-column:1!important;grid-row:auto!important}
+ .sidebar{flex-wrap:wrap;justify-content:center!important}
+ .nav{margin-left:0!important}
+ .nav button{min-width:90px}
+}
+
+</style>
+<style>
+
+/* NFSU2 Studio v1.7.17 · two model categories, uniform full-bleed car previews */
+.nav .nfs-icon{height:29px;width:29px;stroke-width:1.8}
+.mc-template-icon{width:46px!important;height:42px!important;flex:none;opacity:1!important;background:#202d29!important;border-color:#596b5d!important;border-radius:4px}
+.mc-template-icon .mc-mini-icon{width:27px;height:27px;opacity:1;stroke-width:1.8}
+.mc-template.selected .mc-template-icon{background:#38513b!important;color:#d9f6aa!important;border-color:#b4df85!important}
+.mc-template{min-height:76px;padding:11px 9px}
+.mc-template-vehicle-art{width:112px!important;height:64px!important;max-height:none!important;right:28px;object-fit:cover!important;object-position:center 54%;border-radius:2px;background:#121917}
+.mc-template-copy{padding-right:110px;max-width:calc(100% - 60px)}
+.mc-template-copy b{font-size:12px}
+.mc-template-copy small{font-size:10px}
+.mc-car-preview:has(.mc-real-photo:not(.hidden)){aspect-ratio:16/9;min-height:215px}
+.mc-real-photo{object-fit:cover!important;object-position:center 52%!important}
+.mc-slot-car-image,.career-card-car-image,.career-car-image-box img{object-fit:cover!important;object-position:center 53%!important}
+.mc-slot-car-image{aspect-ratio:16/9!important}
+.carpic.has-car-image{aspect-ratio:16/9;height:auto!important;min-height:90px}
+/* The picker is a visual mirror of the existing Career select; only its canonical
+   select and install handler are allowed to modify save bytes. */
+.us-career-catalog{margin:10px 0 17px;min-width:0}
+.us-career-catalog-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:9px;color:#dfedd6;font-size:12px;letter-spacing:.6px}
+.us-career-catalog-heading span{font-size:10px;color:#a4b4a5}
+.us-career-catalog-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(145px,215px);gap:8px;margin-bottom:10px}
+.us-career-catalog-controls input,.us-career-catalog-controls select{width:100%;min-width:0;min-height:37px;padding:8px 10px;background:#141d19;border:1px solid #667a69;color:#e0eada;border-radius:4px;font-size:11px}
+.us-career-catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:330px;overflow-y:auto;padding-right:4px;scrollbar-color:#769d57 #1a2820}
+.us-career-model{position:relative;display:flex;align-items:center;gap:11px;min-width:0;min-height:88px;padding:10px;background:#1a2521;border:1px solid #506658;border-radius:4px;color:#ecf3e9;text-align:left;cursor:pointer;transition:border-color .14s,background .14s}
+.us-career-model:hover{border-color:#c0df8d;background:#29392c}
+.us-career-model.selected{border:2px solid #c9ef8b;background:#31452d;box-shadow:0 0 0 1px #a9c87855}
+.us-career-model-icon{display:flex;align-items:center;justify-content:center;width:38px;height:36px;flex:none;border:1px solid #5b705f;background:#26352b;color:#d4edaf;border-radius:3px}
+.us-career-model-icon .nfs-icon{height:24px;width:24px}
+.us-career-model-label{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0;z-index:1}
+.us-career-model-label b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.us-career-model-label small{color:#adbea6;font-size:10px}
+.us-career-model-image{width:128px;height:73px;flex:none;border-radius:2px;overflow:hidden;background:#17211d;display:flex;align-items:center}
+.us-career-model-art{width:100%;height:100%;object-fit:cover;object-position:center 52%;display:block}
+@media(max-width:980px){.us-career-catalog-grid{grid-template-columns:1fr}.mc-template-vehicle-art{width:95px!important}.mc-template-copy{padding-right:88px}}
+@media(max-width:660px){.us-career-catalog-controls{grid-template-columns:1fr}.us-career-model-image{width:100px;height:62px}.mc-template-vehicle-art{width:72px!important;height:54px!important;right:22px}.mc-template-copy{padding-right:67px}}
+
+
+/* NFSU2 Studio v1.7.21 · selected career vehicle inspector */
+#us17-edit .us17-view-heading p{display:none!important}
+#us17-edit .us17-edit-inspector{
+ display:grid!important;grid-template-columns:minmax(0,1fr) minmax(345px,37%)!important;
+ grid-template-rows:auto auto auto!important;align-items:start!important;
+ gap:11px 27px!important;padding:20px 23px!important;min-height:0!important;
+}
+#us17-edit .us17-edit-inspector>.us18-car-head{grid-column:1!important;grid-row:1!important;min-width:0;display:flex;flex-direction:column;gap:7px}
+#us17-edit .us17-edit-inspector .us18-slot-badge{display:block;color:#b8ea64;font-size:12px;line-height:1.4;font-weight:900;letter-spacing:.13em}
+#us17-edit .us17-edit-inspector .us18-car-head>h3{font-size:24px;line-height:1.15;margin:0!important;letter-spacing:.4px;overflow-wrap:anywhere;color:#e6efe6}
+#us17-edit .us17-edit-inspector>.us-unlock-all{grid-column:1!important;grid-row:2!important;width:100%;margin:0!important;padding:11px 14px!important}
+#us17-edit .us17-edit-inspector>.us17-technical{grid-column:1!important;grid-row:3!important;max-width:100%!important;margin:0!important}
+#us17-edit .us17-edit-inspector>.career-car-image-box{grid-column:2!important;grid-row:1 / span 3!important;max-height:none!important;min-height:265px;height:100%;align-self:stretch;align-items:center;justify-content:center;margin:0!important;padding:0!important;border-radius:4px;overflow:hidden;background:#131b16}
+#us17-edit .us17-edit-inspector>.career-car-image-box img{display:block;width:100%!important;height:100%!important;max-height:none!important;aspect-ratio:16/10;object-fit:cover!important;object-position:center 53%}
+#us17-edit .us17-edit-inspector:has(>.career-car-image-box.hidden){grid-template-columns:1fr!important}
+#us17-edit .us17-edit-inspector>.us-unlock-all p{max-width:650px;line-height:1.35}
+.us18-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:7px 0 0}
+.us18-metric{position:relative;min-width:0;border:1px solid #4a5c4b;background:#202b24;border-radius:4px;padding:10px 11px 11px}
+.us18-metric-label{font:800 10px/1.3 Arial,sans-serif;letter-spacing:.04em;color:#afc0ac;white-space:normal}
+.us18-metric-number{font:900 17px/1.3 Arial,sans-serif;color:#d9efbd;margin-top:3px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.us18-metric-track{height:3px;margin-top:8px;background:#405042;overflow:hidden;border-radius:2px}
+.us18-metric-track>span{display:block;width:0;height:100%;background:#b8eb76;transition:width .17s}
+.us18-metrics.is-unavailable .us18-metric{opacity:.55}
+.us18-metric-note{font:700 9px/1.4 Arial,sans-serif;color:#8eaa8e;letter-spacing:.035em;margin:1px 0 0}
+@media(max-width:990px){#us17-edit .us17-edit-inspector{grid-template-columns:minmax(0,1fr) minmax(260px,37%)!important;gap:12px 16px!important}.us18-metrics{gap:5px}.us18-metric{padding:8px}.us18-metric-number{font-size:14px}}
+@media(max-width:690px){#us17-edit .us17-edit-inspector{grid-template-columns:1fr!important;grid-template-rows:auto!important;padding:14px!important}#us17-edit .us17-edit-inspector>.us18-car-head{grid-column:1!important;grid-row:auto!important}#us17-edit .us17-edit-inspector>.career-car-image-box{grid-column:1!important;grid-row:auto!important;min-height:190px;max-height:300px!important;aspect-ratio:16/9;height:auto}#us17-edit .us17-edit-inspector>.us-unlock-all,#us17-edit .us17-edit-inspector>.us17-technical{grid-column:1!important;grid-row:auto!important}.us18-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+
+/* NFSU2 Studio v1.7.21 · Career preview: larger photo, zero edge cropping. */
+@media(min-width:991px){
+ #us17-edit .us17-edit-inspector{grid-template-columns:minmax(0,1fr) minmax(410px,47%)!important;column-gap:22px!important}
+}
+@media(min-width:741px) and (max-width:990px){
+ #us17-edit .us17-edit-inspector{grid-template-columns:minmax(0,1fr) minmax(260px,43%)!important;column-gap:16px!important}
+}
+@media(min-width:741px){
+ #us17-edit .us17-edit-inspector>.career-car-image-box{
+  grid-column:2!important;grid-row:1 / span 3!important;
+  width:100%!important;height:auto!important;aspect-ratio:16/9!important;
+  align-self:center!important;justify-self:stretch!important;
+  min-height:0!important;max-height:none!important;
+  overflow:hidden!important;border-radius:5px!important;
+  background:#17201b!important;
+ }
+}
+#us17-edit .us17-edit-inspector>.career-car-image-box img{
+ width:100%!important;height:100%!important;max-height:none!important;
+ aspect-ratio:auto!important;object-fit:contain!important;object-position:center center!important;
+}
+@media(max-width:740px){
+ #us17-edit .us17-edit-inspector{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto!important}
+ #us17-edit .us17-edit-inspector>.career-car-image-box{
+   grid-column:1!important;grid-row:auto!important;
+   width:100%!important;min-height:0!important;height:auto!important;
+   max-height:none!important;aspect-ratio:16/9!important;
+   align-self:center!important;
+ }
+}
+
+/* NFSU2 Studio v1.7.21 — game-like horizontal performance display, clearly estimated. */
+#us17-edit .us18-metrics{display:flex!important;flex-direction:column;gap:7px;margin:10px 0 0}
+#us17-edit .us18-metric{display:grid;grid-template-columns:minmax(110px, 135px) minmax(0,1fr);align-items:center;gap:10px;border:0!important;background:transparent!important;padding:3px 0!important;border-radius:0!important;min-width:0}
+#us17-edit .us18-metric-label{grid-column:1;grid-row:1;font-size:10px!important;line-height:1.2;font-style:italic;font-weight:900;color:#e0e9d7}
+#us17-edit .us18-metric-track{grid-column:2;grid-row:1;position:relative;margin:0!important;height:11px!important;background:#353e38;border:1px solid #667468;border-radius:1px!important;overflow:visible!important;box-shadow:inset 0 1px 2px #0005}
+#us17-edit .us18-metric-track:before{content:'';position:absolute;inset:1px;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(10% - 1px),#ffffff15 calc(10% - 1px),#ffffff15 10%);z-index:2}
+#us17-edit .us18-metric-track>span{height:100%;background:linear-gradient(180deg,#c5eb78 0%,#91bf3b 63%,#6a9b29 100%);border-radius:0!important;position:relative;transition:width .17s ease;max-width:100%}
+#us17-edit .us18-metric-track>span:after{content:'';position:absolute;right:-5px;top:-3px;width:9px;height:15px;background:#f1f8de;border:1px solid #a3b58c;box-shadow:0 0 2px #d5f38e}
+#us17-edit .us18-metric-number{grid-column:3;grid-row:1;font:700 10px/1.2 Arial,sans-serif!important;color:#a9ba9d!important;margin:0!important;text-align:right;min-width:55px}
+#us17-edit .us18-metric-note{font-weight:650;letter-spacing:0;line-height:1.45;color:#99ac9a;margin-top:6px}
+.us20-game-data{border-top:1px solid #425444;margin-top:11px;padding-top:8px;max-width:100%;color:#d6e5d0;font:12px/1.45 Arial,sans-serif}
+.us20-game-data>summary{cursor:pointer;display:flex;gap:8px;align-items:center;justify-content:space-between;font:800 10px/1.4 Arial,sans-serif;letter-spacing:.04em;color:#b6df84;user-select:none}
+.us20-game-data>summary #us20DataIndicator{font-size:9px;color:#aac0a4;white-space:nowrap}
+.us20-game-data-body{padding:10px 0 3px}
+.us20-game-data-body p{margin:0 0 11px;color:#bdcabe;font-size:11px;line-height:1.5}
+.us20-input-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+.us20-input-line>span{color:#bad2b1;font-size:10px;line-height:1.35;flex:1;min-width:140px;overflow-wrap:anywhere}
+.us20-physics-readout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.us20-phys-cell{background:#19241e;border:1px solid #3d5141;border-radius:4px;padding:7px 9px;min-width:0}
+.us20-phys-label{display:block;color:#a9bba6;font:700 9px/1.4 Arial,sans-serif;letter-spacing:.04em}
+.us20-phys-value{display:block;color:#ddefcc;font:800 13px/1.4 Arial,sans-serif;overflow-wrap:anywhere}
+.us20-phys-cell.is-wide{grid-column:span 2}
+.us20-game-data-warning{margin-top:9px;padding:8px 9px;background:#202b21;border-left:2px solid #96ba6d;color:#a9bd9f;font-size:10px;line-height:1.45}
+@media(max-width:780px){#us17-edit .us18-metric{grid-template-columns:94px minmax(0,1fr);gap:6px}.us20-physics-readout{grid-template-columns:1fr}.us20-phys-cell.is-wide{grid-column:1}}
+
+/* v1.7.21 — original-style bars without fake 0–100 numbers. */
+#us17-edit .us18-metric-number{display:none!important}
+#us21ResetBuiltIn[hidden]{display:none!important}
+#us17-edit .us18-metric-track{grid-column:2!important;min-width:0;width:100%}
+#us17-edit .us18-metric{grid-template-columns:minmax(106px,135px) minmax(0,1fr)!important}
+@media(max-width:780px){#us17-edit .us18-metric{grid-template-columns:94px minmax(0,1fr)!important}}
+
+</style>
 </head>
 <body>
 <div class="app">
-<aside class="sidebar"><div class="brand"><div class="logo"><span>U<span class="logo-slash">/</span>2</span></div><div class="brandcopy"><b>UNDERGROUND<span>STUDIO</span></b><small>SAVE EDITOR · v1.7.15</small></div></div><div class="nav"><button class="active" data-page="mycars" type="button"><span class="symbol"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 14.5 5.7 9h12.6l2.7 5.5V19h-2v-2H5v2H3v-4.5Z"></path><path d="m6.5 9 2-4h7l2 4M4 14h4m8 0h4"></path><circle cx="7" cy="17" fill="currentColor" r=".8" stroke="none"></circle><circle cx="17" cy="17" fill="currentColor" r=".8" stroke="none"></circle></svg></span><span>ARCADE</span></button><button class="" data-page="overview" type="button"><span class="symbol"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 3v18M5 4c3-2 5 2 8 0s5-1 7-1v11c-2 0-4-1-7 1s-5-2-8 0"></path><path d="M8 4v4h4V5m4-1v4h4M8 11h4v4m4-6v5"></path></svg></span><span>CAREER</span></button><button class="" data-page="files" type="button"><span class="symbol"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 3.5h13l3 3V20H4V3.5Z"></path><path d="M8 3.5V10h9V3.5M8 20v-7h9v7"></path><path d="M10 5.5h4"></path></svg></span><span>DATEIEN</span></button></div></aside>
+<aside class="sidebar"><div class="brand"><div class="logo"><span>N<span class="logo-slash">/</span>2</span></div><div class="brandcopy"><b>NFSU2<span>STUDIO</span></b><small>SAVE EDITOR · v1.7.21</small></div></div><div class="nav"><button class="active" data-page="mycars" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M4.1 10.4c2.7-.3 4.8.5 6 2.7M19.9 10.4c-2.7-.3-4.8.5-6 2.7M12 14.5V20.5"/></svg></span><span>ARCADE</span></button><button class="" data-page="overview" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 2c3.1-2.1 5.1 2 8.2 0 2.6-1.6 4.3-.3 6.8-.9v12c-2.5.6-4.2-.8-6.8.9-3.1 2-5.1-2.1-8.2 0"/><path d="M9 4.9v4.1h4V5.2m3.2-.2v4.1h3.6M5 13h4v4.2m4-8.2v4.2h4"/></svg></span><span>CAREER</span></button></div></aside>
 <main class="main">
 <header class="top"><div><div class="eyebrow" style="">NFS UNDERGROUND 2 / SAVE EDITOR</div><h1 id="title">Arcade</h1><p class="subtitle" id="subtitle">Arcade · 20 Plätze</p></div><div class="top-actions"><div aria-label="Language / Sprache" class="language-switch" role="group"><button aria-pressed="true" class="lang-btn active" data-lang="en" type="button">EN</button><span aria-hidden="true" class="language-divider"></span><button aria-pressed="false" class="lang-btn" data-lang="de" type="button">DE</button></div><button class="btn" id="openTop"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16V3m0 0L7 8m5-5 5 5M4 15v5h16v-5"></path></svg><span>LADEN</span></button><button class="btn primary" disabled="" id="saveTop"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v13m0 0 5-5m-5 5-5-5M4 17v4h16v-4"></path></svg><span>SPEICHERN</span></button></div></header>
 <div class="message hidden" id="message" role="status"></div>
 <section class="section active" id="page-mycars">
-<div class="race-hero"><div class="race-hero-content"><div class="race-kicker">ARCADE GARAGE</div><h2>FAHRZEUGAUSWAHL <span>20 SLOTS</span></h2><div class="hero-buttons"><button class="btn" id="mcOpen" type="button"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16V3m0 0L7 8m5-5 5 5M4 15v5h16v-5"></path></svg><span>SPIELSTAND LADEN</span></button><div class="mc-bulk-picker"><select id="mcBulkAction" aria-label="ALLE ARCADE-SLOTS"><option value="traffic">ALLE TRAFFIC CARS</option><option value="street">ALLE STRASSENFAHRZEUGE</option><option value="empty">ALLE SLOTS LEEREN</option></select><button class="btn primary" id="mcBulkApply" type="button"><span>ANWENDEN</span></button></div></div></div></div>
+<div class="race-hero"><div class="race-hero-content"><div class="race-kicker">ARCADE GARAGE</div><h2>FAHRZEUGAUSWAHL <span>20 SLOTS</span></h2><div class="hero-buttons"><button class="btn hidden" id="mcOpen" type="button"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16V3m0 0L7 8m5-5 5 5M4 15v5h16v-5"></path></svg><span>SPIELSTAND LADEN</span></button><div class="mc-bulk-picker"><select id="mcBulkAction" aria-label="ALLE ARCADE-SLOTS"><option value="traffic">ALLE TRAFFIC CARS</option><option value="street">ALLE STRASSENFAHRZEUGE</option><option value="empty">ALLE SLOTS LEEREN</option></select><button class="btn primary" id="mcBulkApply" type="button"><span>ANWENDEN</span></button></div></div></div></div>
 <div class="mc-overline"><span>KONFIGURATIONEN</span><div><span id="mcCount">– / 20</span><span class="mc-separator"> / </span><span id="mcTrafficCount">–</span> TRAFFIC</div></div>
 <div class="mc-empty" id="mcEmpty"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 14.5 5.7 9h12.6l2.7 5.5V19h-2v-2H5v2H3v-4.5Z"></path><path d="m6.5 9 2-4h7l2 4M4 14h4m8 0h4"></path><circle cx="7" cy="17" fill="currentColor" r=".8" stroke="none"></circle><circle cx="17" cy="17" fill="currentColor" r=".8" stroke="none"></circle></svg><h3>SPIELSTAND LADEN</h3><p>ZIP-Datei von nfsu2.xyz öffnen.</p><button class="btn primary" id="mcLoadEmpty"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16V3m0 0L7 8m5-5 5 5M4 15v5h16v-5"></path></svg><span>ZIP ÖFFNEN</span></button></div>
 <div class="hidden" id="mcReady">
@@ -633,7 +837,7 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
 <div class="mc-quick-actions"><button class="btn" id="mcAddCar" type="button"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></svg><span>FAHRZEUG HINZUFÜGEN</span></button><button class="btn" disabled="" id="mcUndo"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 7 3 12l5 5M4 12h10a6 6 0 0 1 0 12"></path></svg><span>RÜCKGÄNGIG</span></button></div>
 </div>
 <div class="mc-right">
-<div class="mc-car-preview"><div class="mc-preview-top"><span>UNDERGROUND // GARAGE</span><span id="mcPreviewLabel">TRAFFIC / PREVIEW</span></div><div class="mc-stage" id="mcPreview"></div><img alt="Eigenes Ingame-Fahrzeugbild" class="mc-real-photo hidden" id="mcRealImage"/><div class="mc-image-caption" id="mcPhotoHint">INGAME-BILD LADEN</div></div>
+<div class="mc-car-preview"><div class="mc-preview-top"><span>NFSU2 // GARAGE</span><span id="mcPreviewLabel">TRAFFIC / PREVIEW</span></div><div class="mc-stage" id="mcPreview"></div><img alt="Eigenes Ingame-Fahrzeugbild" class="mc-real-photo hidden" id="mcRealImage"/><div class="mc-image-caption" id="mcPhotoHint">INGAME-BILD LADEN</div></div>
 <div class="mc-photo-actions"><button class="btn small" id="mcAddPhoto" type="button">+ INGAME-BILD</button><button class="btn small" id="mcRemovePhoto" type="button">BILD LÖSCHEN</button><input accept="image/*" class="dropfile" id="mcPhotoFile" type="file"/></div>
 <div class="mc-selection"><div class="mc-selection-head"><span id="mcCurrentSlot">SLOT 06</span><span data-state="off" id="mcCurrentStatus">LEERER SLOT</span></div><h3 id="mcCurrentName">Kein Fahrzeug gespeichert</h3><div class="mc-technical hidden">CAR TYPE <b id="mcCurrentId">–</b> HANDLE <b id="mcCurrentHandle">–</b></div></div>
 <div class="mc-templates-panel"><div class="mc-header-line"><h3 id="mcCatalogTitle">SELECT VEHICLE</h3><span id="mcCatalogCount">31 + 15</span></div><div class="mc-model-filters"><input id="mcCatalogSearch" type="search" placeholder="Search models / Modelle suchen …" aria-label="Search vehicle models"/><select id="mcCatalogType" aria-label="Filter vehicle types"><option value="all">ALL VEHICLES</option><option value="normal">STREET CARS · 31</option><option value="traffic">TRAFFIC CARS · 15</option></select></div><div class="mc-template-grid" id="mcTemplates"></div></div>
@@ -641,6 +845,14 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
 <section class="mc-tune-panel" id="mcTuneBody">
 <div class="mc-header-line"><h3>LEISTUNGSTUNING</h3><span id="mcPerfOn">– / 56</span></div>
 <div class="mc-tune-title" id="mcTuneName">FAHRZEUG</div>
+<section aria-label="Arcade traffic performance profiles" class="traffic-preset-panel hidden" id="arcadeTrafficPresetPanel">
+ <div class="traffic-preset-top"><div><span class="tp-overline" id="atpEyebrow">TRAFFIC CAR · PROFILE TUNING</span>
+ <h3 id="atpTitle">TRAFFIC PERFORMANCE</h3></div><span class="traffic-preset-current" id="atpCurrent">CURRENT · CUSTOM</span></div>
+ <p class="traffic-preset-lead" id="atpLead">Only presets are available for Traffic Cars. Each changes this vehicle's five race setups.</p>
+ <div class="traffic-preset-options" id="atpOptions"></div>
+ <div class="inline-action"><button class="btn small" id="atpUndo" type="button" disabled>UNDO LAST PROFILE</button></div>
+ <p class="traffic-preset-hint" id="atpWarning"></p>
+ </section>
 <section aria-label="Arcade Auto Tuning" class="auto-panel" id="autoArcade">
 <div class="auto-head"><div><span class="auto-overline">CUSTOM DYNO / ARCADE</span><h3>AUTO-TUNE · <span id="arcadeAutoName">CAR</span></h3></div><span class="auto-status" id="arcadeAutoBadge">SUGGESTED</span></div>
 <div class="auto-best-all"><button class="btn primary auto-main-action" id="arcadeAutoAll" type="button">BEST SETUPS · ALL 5 RACES</button><p class="auto-best-hint" id="arcadeAutoAllHint">Apply one suggested setup per race type to this car.</p></div>
@@ -671,8 +883,17 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
 </section><section class="section" id="page-overview">
 <div class="dropzone" id="startZone"><div class="dicon">📂</div><h3>Deinen NFSU2-Spielstand öffnen</h3><p>ZIP-Export von nfsu2.xyz oder eine einzelne Karriere-Datei hier ablegen</p><button class="btn primary" id="startPick">Datei auswählen</button></div><section class="us17-profile"><h2 class="us17-profile-heading">PROFILE &amp; CAREER PROGRESS</h2><div id="us17ProfileInner"><div class="hidden" id="stats"><div class="cards"><div class="card stat"><div class="label">Aktuelles Guthaben</div><div class="value" id="statMoney">—</div><div class="note">Frei bearbeitbar bis 2,1 Mrd.</div></div><div class="card stat"><div class="label">Karriere</div><div class="value" id="statStage">—</div><div class="note">Aktueller Stufenindex</div></div><div class="card stat"><div class="label">Garagenplätze</div><div class="value" id="statSlots">—</div><div class="note">Inklusive fünf Zusatzplätze</div></div></div>
 <div class="split"><div class="card panel"><h3>Profil bearbeiten</h3><div class="formgrid"><div class="field"><label for="name">Fahrername</label><input autocomplete="off" id="name" maxlength="7"/><div class="hint">Bis zu 7 ASCII-Zeichen.</div></div><div class="field"><label for="money">Geldbetrag ($)</label><input id="money" max="2147483647" min="0" step="1" type="number"/><div class="hint">Wird als 32-Bit-Zahl gespeichert.</div></div></div><div class="inline-action"><button class="btn small" data-cash="999999">999.999 $</button><button class="btn small" data-cash="10000000">10 Mio. $</button><button class="btn small primary" id="applyProfile">Profil übernehmen</button></div><div class="sep"></div><div class="formgrid us17-stage-grid"><div class="field"><label for="stage">Karrierestufe · experimentell</label><select id="stage"><option value="0">0 – Intro</option><option value="1">1 – Stufe 1</option><option value="2">2 – Stufe 2</option><option value="3">3 – Stufe 3</option><option value="4">4 – Stufe 4</option><option value="5">5 – Stufe 5</option><option value="6">6 – Nach Karriere</option></select></div><div class="field us17-stage-action"><button class="btn" id="applyStage">Stufe ändern</button></div></div><p class="micro">Die Stufe ändert nicht automatisch gewonnene Rennen oder Freischalt-Voraussetzungen.</p></div>
-</div></div></div></section><div class="us17-view active" data-us17-view="garage" id="us17-garage"><div class="empty-state" id="garageNone">Öffne zuerst einen Karriere-Spielstand.</div><div class="hidden" id="garageContent"><div class="us17-headline"><h2>GARAGE <small>SELECT A SLOT</small></h2><p>Any of the 31 standard models or the available traffic templates can be selected. Untested combinations are marked experimental.</p></div><div id="us17SlotOneNotice" class="us17-slot-one-notice" role="status" aria-live="polite" hidden></div><div class="garage" id="garageGrid"></div><div class="us17-slot-card"><div class="us17-slot-title"><span>SELECTED SLOT</span><strong id="us17SelectedSlot">SLOT 01</strong></div><div class="us17-slot-tools">
-<label for="us17CarSelect">ADD / REPLACE CAR</label><select id="us17CarSelect"></select><button class="btn primary" id="us17AddCar" type="button">INSTALL CAR</button><button class="btn small us17-remove-car" id="us17RemoveCar" type="button" disabled>REMOVE CAR</button></div><p class="us17-fine" id="us17AddHint">Standard models use saved donor records. Traffic K01 is confirmed in slot 4; other slots are experimental.</p></div></div></div><div class="us17-view" data-us17-view="edit" id="us17-edit"><div class="us17-view-heading"><h2>SELECTED CAR</h2><p><small id="slotCaption">SLOT 01</small></p></div><div class="split"><div class="card panel us17-edit-inspector"><h3 id="inspectorTitle">VEHICLE DETAILS</h3><div class="career-car-image-box hidden" id="careerCarImageBox"><img alt="" id="careerCarImage"/></div><div class="sep"></div><div class="toggle-row"><span>Slot unlocked</span><input class="switch" id="slotUnlocked" type="checkbox"/></div><div class="us-unlock-all" id="usUnlockPanel"><div class="us-unlock-head"><strong id="usUnlockTitle">UNLOCK ALL PARTS</strong><small id="usUnlockCount">0 / 420</small></div><p id="usUnlockDescription">Make the mapped body, graphics, specialty and performance parts available for the selected car. No parts are installed. Experimental in-game shop effect.</p><div class="inline-action"><button class="btn primary" id="usUnlockAll" type="button">UNLOCK ALL PARTS</button><button class="btn small" id="usUnlockUndo" type="button" disabled>UNDO UNLOCK</button></div></div><div class="info hidden" id="emptySlotNote">Dieser Platz ist aktuell leer. Fahrzeuge können in dieser Version nur zwischen bereits belegten Slots übertragen werden.</div><details class="career-advanced us17-retired"><summary>ADVANCED · LEGACY TRANSFERS</summary><p class="us17-fine">Older slot-copy and identity-only tools. These methods are not the confirmed K01/K03 traffic import.</p><div id="donorTools"><div class="sep"></div><h3>Fahrzeugmodell übernehmen <span class="mini">· experimentell</span></h3><div class="formgrid"><div class="field"><label for="donorSlot">Fahrzeugquelle</label><select id="donorSlot"></select></div><div class="field" style="justify-content:end"><button class="btn" id="applyDonor">Modell übernehmen</button></div></div><div class="sep"></div>
+</div></div></div></section><div class="us17-view active" data-us17-view="garage" id="us17-garage"><div class="empty-state" id="garageNone">Öffne zuerst einen Karriere-Spielstand.</div><div class="hidden" id="garageContent"><div class="us17-headline"><h2>GARAGE <small>SELECT A SLOT</small></h2><p>Any of the 31 standard models or the available traffic templates can be selected. Untested combinations are marked experimental.</p></div><div id="us17SlotOneNotice" class="us17-slot-one-notice" role="status" aria-live="polite" hidden></div><div class="garage" id="garageGrid"></div><div class="us17-slot-card"><div class="us17-slot-title"><span>SELECTED SLOT</span><strong id="us17SelectedSlot">SLOT 01</strong></div><div class="us-career-catalog" id="usCareerCatalog"><div class="us-career-catalog-heading"><strong id="usCareerCatalogHeading">SELECT VEHICLE</strong><span id="usCareerCatalogCount">46 VEHICLES</span></div><div class="us-career-catalog-controls"><input type="search" id="usCareerCatalogSearch" placeholder="Search models…" aria-label="Search career vehicles"/><select id="usCareerCatalogType" aria-label="Filter career vehicle types"><option value="all">ALL VEHICLES</option><option value="normal">STREET CARS</option><option value="traffic">TRAFFIC CARS</option></select></div><div class="us-career-catalog-grid" id="usCareerCatalogGrid" aria-label="Career vehicle models"></div></div><div class="us17-slot-tools">
+<label for="us17CarSelect">ADD / REPLACE CAR</label><select id="us17CarSelect"></select><button class="btn primary" id="us17AddCar" type="button">INSTALL CAR</button><button class="btn small us17-remove-car" id="us17RemoveCar" type="button" disabled>REMOVE CAR</button></div><p class="us17-fine" id="us17AddHint">Standard models use saved donor records. Traffic K01 is confirmed in slot 4; other slots are experimental.</p></div></div></div><div class="us17-view" data-us17-view="edit" id="us17-edit"><div class="us17-view-heading"><h2>SELECTED CAR</h2><p class="hidden"><small id="slotCaption">SLOT 01</small></p></div><div class="split"><div class="card panel us17-edit-inspector"><div class="us18-car-head"><span id="us18SlotBadge" class="us18-slot-badge">SLOT 01</span><h3 id="inspectorTitle">VEHICLE DETAILS</h3><div class="us18-metrics" id="us18Metrics" aria-label="Vehicle upgrade indices">
+<div class="us18-metric"><div class="us18-metric-label" id="us18SpeedLabel">TOP SPEED</div><div class="us18-metric-number" id="us18Speed">—</div><div class="us18-metric-track"><span id="us18SpeedBar"></span></div></div>
+<div class="us18-metric"><div class="us18-metric-label" id="us18AccelLabel">ACCELERATION</div><div class="us18-metric-number" id="us18Accel">—</div><div class="us18-metric-track"><span id="us18AccelBar"></span></div></div>
+<div class="us18-metric"><div class="us18-metric-label" id="us18HandlingLabel">HANDLING</div><div class="us18-metric-number" id="us18Handling">—</div><div class="us18-metric-track"><span id="us18HandlingBar"></span></div></div>
+</div><p class="us18-metric-note" id="us18MetricNote">ESTIMATED SAVE TUNING · NOT ORIGINAL IN-GAME RATINGS</p>
+<details class="us20-game-data" id="us20GameDataPanel"><summary><span id="us20GameDataHeading">GAME PHYSICS · GLOBALB</span><span id="us20DataIndicator">BUILT-IN · 46 CARS</span></summary>
+<div class="us20-game-data-body"><p id="us20GameDataHelp">Physics parameters from your modified GLOBALB are already included. Optionally load a different GLOBALB.lzc or GLOBALB.BUN to compare. No game asset archive is bundled or uploaded.</p>
+<div class="us20-input-line"><button class="btn small" type="button" id="us20OpenGameData">LOAD OTHER GLOBALB</button><button class="btn small" type="button" id="us21ResetBuiltIn" hidden>USE BUILT-IN DATA</button><input type="file" id="us20GameDataFile" accept=".lzc,.bun,.bin" hidden/><span id="us20GameDataStatus" role="status">Included modified GlobalB · 46 cars</span></div>
+<div id="us20CarPhysics" class="us20-physics-readout" aria-live="polite"></div>
+<div class="us20-game-data-warning" id="us20GameDataWarning">The performance bars remain estimated save-tuning indices, NOT the game’s original ratings. Loading a modded GLOBALB changes the engine reference data, not the save-only tuning limits.</div></div></details></div><div class="career-car-image-box hidden" id="careerCarImageBox"><img alt="" id="careerCarImage"/></div><div class="sep"></div><div class="toggle-row"><span>Slot unlocked</span><input class="switch" id="slotUnlocked" type="checkbox"/></div><div class="us-unlock-all" id="usUnlockPanel"><div class="us-unlock-head"><strong id="usUnlockTitle">UNLOCK ALL PARTS</strong><small id="usUnlockCount">0 / 420</small></div><p id="usUnlockDescription">Make the mapped body, graphics, specialty and performance parts available for the selected car. No parts are installed. Works in the NFSU2 garage. Does not install parts.</p><div class="inline-action"><button class="btn primary" id="usUnlockAll" type="button">UNLOCK ALL PARTS</button><button class="btn small" id="usUnlockUndo" type="button" disabled>UNDO UNLOCK</button></div></div><div class="info hidden" id="emptySlotNote">Dieser Platz ist aktuell leer. Fahrzeuge können in dieser Version nur zwischen bereits belegten Slots übertragen werden.</div><details class="career-advanced us17-retired"><summary>ADVANCED · LEGACY TRANSFERS</summary><p class="us17-fine">Older slot-copy and identity-only tools. These methods are not the confirmed K01/K03 traffic import.</p><div id="donorTools"><div class="sep"></div><h3>Fahrzeugmodell übernehmen <span class="mini">· experimentell</span></h3><div class="formgrid"><div class="field"><label for="donorSlot">Fahrzeugquelle</label><select id="donorSlot"></select></div><div class="field" style="justify-content:end"><button class="btn" id="applyDonor">Modell übernehmen</button></div></div><div class="sep"></div>
 <div class="sep"></div><h3>Performance eines normalen Autos übernehmen <span class="mini">· Experiment</span></h3>
 <p class="micro">Übernimmt vorhandene Tuningwerte; keine Engine-Physik.</p>
 <div class="formgrid"><div class="field"><label for="perfDonorSlot">Performance-Quelle</label><select id="perfDonorSlot"></select></div><div class="field" style="justify-content:end"><button class="btn" id="applyPerfDonor">Performance übernehmen</button></div></div>
@@ -781,11 +1002,15 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
 </div>
 </div>
 </section>
-<section class="section" id="page-files"><div class="card panel"><h3>Spielstand verwalten</h3><div class="field"><label>Geladene Datei</label><input id="loadedFilename" readonly=""/></div><div class="us-import-again" id="filesDropArea" tabindex="0" role="button" aria-label="Import game save via drag and drop or file picker"><span id="filesDropLabel">DROP A SAVE HERE · ZIP / SAV / DAT</span><span id="filesDropSub">Or click to choose another save</span></div><div class="sep"></div><div class="micro" id="fileDetails">Noch keine Datei geöffnet.</div><div class="inline-action"><button class="btn" disabled="" id="downloadBackup">Unbearbeitetes Original herunterladen</button><button class="btn primary" disabled="" id="saveFiles">Bearbeiteten Export laden</button></div><div class="sep"></div><div class="info">ZIP-Dateien von nfsu2.xyz behalten den ursprünglichen Ordneraufbau, einschließlich <span class="mono">settings.ini</span>, <span class="mono">registry.txt</span>, <span class="mono">GARAGE.OLD</span> und <span class="mono">MODPARTS.DAT</span>. Bearbeitet werden nur die Karriere-Datei und, falls benötigt, <span class="mono">GARAGE.DAT</span>.</div></div><div class="card panel"><h3>Spielstand-Sicherheit</h3><div class="toggle-row"><span>Signatur und Prüfsummen</span><span class="status" id="checksumStatus">Gültig</span></div><div class="toggle-row"><span>Originaldatei unverändert</span><span class="status">Ja</span></div><div class="toggle-row"><span>Export</span><span class="mini" id="exportKind">ZIP inklusive Einstellungen</span></div><div class="sep"></div><div class="info">Beim Export werden alle drei Spielstand-Prüfsummen <b>und</b> der 64-Bit-Garagen-Fingerprint von nfsu2.xyz automatisch neu berechnet. Deine ursprüngliche ZIP-Datei wird niemals überschrieben. Vor einem Browserimport das Original sichern.</div><div class="inline-action"><button class="btn primary" id="saveInner">Bearbeiteten Spielstand exportieren</button></div></div></section>
-<div class="footer-note">UNDERGROUND STUDIO · FAN PROJECT · KEEP A SAVE BACKUP</div>
+<section class="section hidden" id="page-files" aria-hidden="true"><div class="card panel"><h3>Spielstand verwalten</h3><div class="field"><label>Geladene Datei</label><input id="loadedFilename" readonly=""/></div><div class="us-import-again" id="filesDropArea" tabindex="0" role="button" aria-label="Import game save via drag and drop or file picker"><span id="filesDropLabel">DROP A SAVE HERE · ZIP / SAV / DAT</span><span id="filesDropSub">Or click to choose another save</span></div><div class="sep"></div><div class="micro" id="fileDetails">Noch keine Datei geöffnet.</div><div class="inline-action"><button class="btn" disabled="" id="downloadBackup">Unbearbeitetes Original herunterladen</button><button class="btn primary" disabled="" id="saveFiles">Bearbeiteten Export laden</button></div><div class="sep"></div><div class="info">ZIP-Dateien von nfsu2.xyz behalten den ursprünglichen Ordneraufbau, einschließlich <span class="mono">settings.ini</span>, <span class="mono">registry.txt</span>, <span class="mono">GARAGE.OLD</span> und <span class="mono">MODPARTS.DAT</span>. Bearbeitet werden nur die Karriere-Datei und, falls benötigt, <span class="mono">GARAGE.DAT</span>.</div></div><div class="card panel"><h3>Spielstand-Sicherheit</h3><div class="toggle-row"><span>Signatur und Prüfsummen</span><span class="status" id="checksumStatus">Gültig</span></div><div class="toggle-row"><span>Originaldatei unverändert</span><span class="status">Ja</span></div><div class="toggle-row"><span>Export</span><span class="mini" id="exportKind">ZIP inklusive Einstellungen</span></div><div class="sep"></div><div class="info">Beim Export werden alle drei Spielstand-Prüfsummen <b>und</b> der 64-Bit-Garagen-Fingerprint von nfsu2.xyz automatisch neu berechnet. Deine ursprüngliche ZIP-Datei wird niemals überschrieben. Vor einem Browserimport das Original sichern.</div><div class="inline-action"><button class="btn primary" id="saveInner">Bearbeiteten Spielstand exportieren</button></div></div></section>
+<div class="footer-note">NFSU2 STUDIO · FAN PROJECT · KEEP A SAVE BACKUP</div>
 </main></div>
 <div class="us-import-overlay" id="usImportOverlay" aria-hidden="true"><div class="us-import-overlay-card"><span class="us-import-overlay-icon" aria-hidden="true">↓</span><strong id="usImportOverlayTitle">DROP SAVE FILE TO OPEN</strong><span id="usImportOverlaySubtitle">NFSU2 ZIP / SAV / DAT · Current file stays intact until a valid import</span></div></div>
 <input accept=".zip,.dat,*/*" class="dropfile" id="fileInput" type="file"/>
+<script>
+/* NFSU2 Studio v1.7.17: original SVG icon set, no icon font or external files. */
+window.NFSStudioIcons=Object.freeze({street:'<svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 14.8 5 10.6l4.1-1.3 2.6-3.5h4.1l3.4 4.3 2.3 2v5H19V19h-3v-1.9H8V19H5v-1.9H2.5z"/><path d="M9.1 9.3h8.2l-2.1-2.4h-3.6zM3.2 14.3H7m10.3 0h3.6"/></svg>',traffic:'<svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.4" y="4.8" width="6.2" height="11.4" rx="2"/><circle cx="5.5" cy="7.5" r=".8" fill="currentColor" stroke="none"/><circle cx="5.5" cy="10.5" r=".8" fill="currentColor" stroke="none"/><circle cx="5.5" cy="13.5" r=".8" fill="currentColor" stroke="none"/><path d="M11 17.5V14l2.1-4.1h6.1L21.5 14v3.5h-2V19h-2v-1.5h-4V19h-2v-1.5zM12.4 14.1h7.7M12.4 10.4l1.4-3h4.9l1.4 3"/></svg>',arcade:'<svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M4.1 10.4c2.7-.3 4.8.5 6 2.7M19.9 10.4c-2.7-.3-4.8.5-6 2.7M12 14.5V20.5"/></svg>',career:'<svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 2c3.1-2.1 5.1 2 8.2 0 2.6-1.6 4.3-.3 6.8-.9v12c-2.5.6-4.2-.8-6.8.9-3.1 2-5.1-2.1-8.2 0"/><path d="M9 4.9v4.1h4V5.2m3.2-.2v4.1h3.6M5 13h4v4.2m4-8.2v4.2h4"/></svg>'});
+</script>
 <!-- jszip.min.js -->
 <script>
 /*!
@@ -1019,16 +1244,27 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 </script><!-- car-images.js -->
 <script>
 /* Underground Studio v1.6.1: bundled regular-car artwork supplied by user.
-   Keyed by the NFSU2 vehicle hash; traffic art uses verified original IDs; Minivan and Panel Van have no verified image yet.
+   Keyed by the NFSU2 vehicle hash; traffic art uses verified original IDs; All 15 traffic car models now have user-supplied screenshots.
    No network requests. Standalone HTML gets embedded data while ZIP uses images/.
 */
 (()=>{'use strict';
-const files = {"0000DB7C":"images/01_Acura_RSX.webp","00000453":"images/02_Audi_A3.webp","000006E7":"images/03_Audi_TT.webp","CF704771":"images/04_Cadillac_Escalade.webp","02CA04DF":"images/05_Ford_Focus.webp","35165819":"images/06_Ford_Mustang.webp","0290C04D":"images/07_Honda_Civic.webp","6126DD4D":"images/08_Hummer_H2.webp","04FD0522":"images/09_Hyundai_Coupe.webp","0000A86E":"images/10_Infinity_G35.webp","030236EE":"images/11_Lexus_IS300.webp","0219C94A":"images/12_Lincoln_Navigator.webp","03455D6B":"images/13_Mazda_MX5.webp","0000DC00":"images/14_Mazda_RX7.webp","0000DC01":"images/15_Mazda_RX8.webp","2D7C9B5D":"images/16_Mitsubishi_3000GT.webp","7502DA84":"images/17_Mitsubishi_Eclipse.webp","09D2EFF6":"images/18_Mitsubishi_Lancer.webp","0150FB80":"images/19_Nissan_240SX.webp","000AC6D1":"images/20_Nissan_350Z.webp","79AEBFEC":"images/21_Nissan_Sentra.webp","BE48375E":"images/22_Nissan_Sykline.webp","00004A76":"images/23_Peugeot_106.webp","00004EB7":"images/24_Peugeot_206.webp","0000ACC9":"images/25_Pontiac_GTO.webp","CF4458F8":"images/26_Subaru_WRX_STi.webp","545AEC60":"images/27_Toyota_Celica.webp","F77C13EB":"images/28_Toyota_Corolla.webp","03B8C48A":"images/29_Toyota_Supra.webp","0293FAD7":"images/30_Vauxhaul_Opel_Corsa.webp","00163087":"images/31_Volkswagen_Golf.webp","43A98EA7":"images/traffic/AMBULANCE.webp","000097A9":"images/traffic/BUS.webp","0294073B":"images/traffic/COUPE.webp","83FBE66E":"images/traffic/FIRETRUCK.webp","AAF20CDA":"images/traffic/HATCHBACK02.webp","A90CA25B":"images/traffic/PARCELVAN.webp","72F17A0B":"images/traffic/PICKUP.webp","0000DFFD":"images/traffic/SUV.webp","F27F6A53":"images/traffic/4DR_SEDAN.webp","90035175":"images/traffic/4DR_SEDAN02.webp","001D1775":"images/traffic/TAXI.webp","7BC0CF17":"images/traffic/TAXI02.webp"};
+const files = {"0000DB7C":"images/01_Acura_RSX.webp","00000453":"images/02_Audi_A3.webp","000006E7":"images/03_Audi_TT.webp","CF704771":"images/04_Cadillac_Escalade.webp","02CA04DF":"images/05_Ford_Focus.webp","35165819":"images/06_Ford_Mustang.webp","0290C04D":"images/07_Honda_Civic.webp","6126DD4D":"images/08_Hummer_H2.webp","04FD0522":"images/09_Hyundai_Coupe.webp","0000A86E":"images/10_Infinity_G35.webp","030236EE":"images/11_Lexus_IS300.webp","0219C94A":"images/12_Lincoln_Navigator.webp","03455D6B":"images/13_Mazda_MX5.webp","0000DC00":"images/14_Mazda_RX7.webp","0000DC01":"images/15_Mazda_RX8.webp","2D7C9B5D":"images/16_Mitsubishi_3000GT.webp","7502DA84":"images/17_Mitsubishi_Eclipse.webp","09D2EFF6":"images/18_Mitsubishi_Lancer.webp","0150FB80":"images/19_Nissan_240SX.webp","000AC6D1":"images/20_Nissan_350Z.webp","79AEBFEC":"images/21_Nissan_Sentra.webp","BE48375E":"images/22_Nissan_Sykline.webp","00004A76":"images/23_Peugeot_106.webp","00004EB7":"images/24_Peugeot_206.webp","0000ACC9":"images/25_Pontiac_GTO.webp","CF4458F8":"images/26_Subaru_WRX_STi.webp","545AEC60":"images/27_Toyota_Celica.webp","F77C13EB":"images/28_Toyota_Corolla.webp","03B8C48A":"images/29_Toyota_Supra.webp","0293FAD7":"images/30_Vauxhaul_Opel_Corsa.webp","00163087":"images/31_Volkswagen_Golf.webp","43A98EA7":"images/traffic/AMBULANCE.webp","000097A9":"images/traffic/BUS.webp","0294073B":"images/traffic/COUPE.webp","83FBE66E":"images/traffic/FIRETRUCK.webp","AAF20CDA":"images/traffic/HATCHBACK02.webp","A90CA25B":"images/traffic/PARCELVAN.webp","72F17A0B":"images/traffic/PICKUP.webp","0000DFFD":"images/traffic/SUV.webp","F27F6A53":"images/traffic/4DR_SEDAN.webp","90035175":"images/traffic/4DR_SEDAN02.webp","001D1775":"images/traffic/TAXI.webp","7BC0CF17":"images/traffic/TAXI02.webp","9F4E0878":"images/traffic/HATCHBACK.webp","EAF7FC91":"images/traffic/MINIVAN.webp","A69DA174":"images/traffic/PANELVAN.webp"};
 const embedded = window.__US_EMBEDDED_CAR_IMAGES__ || null;
 const normalized = key => String(key ?? '').toUpperCase().replace(/^0X/, '').padStart(8,'0');
 function srcFor(key){const id=normalized(key),file=files[id];if(!file)return null;return embedded?.[id] ? ('data:image/webp;base64,'+embedded[id]) : file;}
 function make(key,alt='',className=''){const source=srcFor(key);if(!source)return null;const img=document.createElement('img');img.src=source;img.alt=alt;img.className=className;img.decoding='async';img.loading='lazy';return img;}
 window.USCarImages=Object.freeze({srcFor,make,known: id=>!!files[normalized(id)],count:Object.keys(files).length});
+window.USTrafficNames=Object.freeze({
+ 'COUPE':['Traffic Coupe','Traffic-Coupé'], 'TAXI':['Taxi 1','Taxi 1'], 'TAXI02':['Taxi 2','Taxi 2'],
+ 'AMBULANCE':['Ambulance','Krankenwagen'], 'FIRETRUCK':['Fire Truck','Feuerwehrwagen'],
+ 'BUS':['Coach / Bus','Reisebus'], 'PICKUP':['Pickup Truck','Pickup'],
+ 'SUV':['Traffic SUV','Geländewagen'], 'PANELVAN':['Panel Van','Kastenwagen'],
+ 'PARCELVAN':['Parcel Van','Pakettransporter'], 'MINIVAN':['Minivan','Minivan'],
+ 'HATCHBACK':['Hatchback 1','Kleinwagen 1'], 'HATCHBACK02':['Hatchback 2','Kleinwagen 2'],
+ '4DR_SEDAN':['Sedan 1','Limousine 1'], '4DR_SEDAN02':['Sedan 2','Limousine 2']
+});
+window.USDisplayTraffic=(id)=>{const a=window.USTrafficNames[id];return a?a[window.USI18N?.getLanguage?.()==='de'?1:0]:id;};
+
 })();
 
 </script><!-- save-lab-core.js -->
@@ -1172,7 +1408,7 @@ window.UndergroundEmptyTemplates = Uint8Array.from(atob("AAAAAAAAAAAAAAAAAAAAAAI
  function meta(hash){
   const key=hex(hash),t=labels[key],known=core.TRAFFIC.find(x=>x.key===key);
   const kind={PANELVAN:'van',PARCELVAN:'van',MINIVAN:'van',BUS:'bus',COUPE:'coupe',FIRETRUCK:'truck',PICKUP:'pickup',SUV:'suv',AMBULANCE:'emergency',TAXI:'taxi',TAXI02:'taxi','4DR_SEDAN':'sedan','4DR_SEDAN02':'sedan',HATCHBACK:'hatch',HATCHBACK02:'hatch'};
-  return {name:known?.name||t?.[0]||core.CARS.get(key)||'Unbekanntes Fahrzeug',
+  return {name:known?(window.USDisplayTraffic?.(known.id)||known.name):(t?.[0]||core.CARS.get(key)||'Unknown vehicle'),
     intern:known?.id||t?.[1]||key,kind:known?kind[known.id]:(t?.[2]||'regular'),traffic:!!known,key};
  }
  function info(d,slot){assert(d);let off=at(slot),handle=core.u32(d,off+4),enabled=core.u32(d,off+12),type=core.u32(d,off+16),initialised=core.u32(d,off+20),hash=core.u32(d,off+28),m=meta(hash),active=!!handle&&!!enabled&&!!initialised;return {slot,off,handle,enabled,type,initialised,hash,active,...m};}
@@ -1330,7 +1566,7 @@ const en={
  '„500 km/h“ und „5× Beschleunigung“ sind hier Testziele, keine fest einstellbaren Save-Felder. Rohwerte 255 werden von der Engine in der Regel auf 200 begrenzt.':'“500 km/h” and “5× acceleration” are test goals, not directly configurable save fields. The engine usually clamps raw values of 255 to 200.',
  '11 Test-Spielstände erstellen':'CREATE 11 TEST SAVES','Letzter Patch-Bericht':'Last patch report','Noch kein Versuch erstellt.':'No test created yet.','Spielstand verwalten':'Manage save','Geladene Datei':'Loaded file','Noch keine Datei geöffnet.':'No file opened yet.','Unbearbeitetes Original herunterladen':'DOWNLOAD UNMODIFIED ORIGINAL','Bearbeiteten Export laden':'DOWNLOAD MODIFIED EXPORT',
  'ZIP-Dateien von nfsu2.xyz behalten den ursprünglichen Ordneraufbau, einschließlich':'ZIP files from nfsu2.xyz preserve the original folder structure, including',
- '. Bearbeitet werden nur die Karriere-Datei und, falls benötigt,':'. Only the career file and, when needed,','UNDERGROUND STUDIO · FAN-PROJEKT · SPIELSTÄNDE SICHERN':'UNDERGROUND STUDIO · FAN PROJECT · BACK UP YOUR SAVES',
+ '. Bearbeitet werden nur die Karriere-Datei und, falls benötigt,':'. Only the career file and, when needed,','NFSU2 STUDIO · FAN-PROJEKT · SPIELSTÄNDE SICHERN':'NFSU2 STUDIO · FAN PROJECT · BACK UP YOUR SAVES',
  'SLOT':'SLOT','Gesperrt':'Locked','Leer':'Empty','Freier Platz':'Empty slot','Leerer Garagenplatz':'Empty garage slot','Stufe':'Stage','ORIGINALPLATZ':'ORIGINAL SLOT','Slot':'Slot',' · belegt':' · occupied',' · frei':' · empty',
  'IN-GAME BILD':'IN-GAME IMAGE','INGAME-BILD LADEN':'LOAD IN-GAME PHOTO','+ INGAME-BILD':'+ IN-GAME PHOTO','BILD LÖSCHEN':'REMOVE PHOTO','INGAME-FOTO · EIGENE AUFNAHME':'IN-GAME PHOTO · YOUR SCREENSHOT','KEIN ORIGINALBILD · EIGENEN SCREENSHOT LADEN':'NO OFFICIAL IMAGE · ADD YOUR SCREENSHOT',
  'TRAFFIC-Fahrzeug':'TRAFFIC CAR','TEILE-FLAGS':'PART FLAGS','PERFORMANCE-FLAGS':'PERFORMANCE FLAGS',
@@ -1553,23 +1789,43 @@ function renderStats(){if(!state.loaded)return;
 function renderGarage(){if(!state.loaded)return;
  const grid=$('garageGrid');grid.textContent='';const count=state.garage?10:5;
  if(state.slot>count)state.slot=1;
+ const de=window.USI18N?.getLanguage?.()==='de';
  for(let i=1;i<=count;i++){
   const car=core.slotInfo(state.save,state.garage,i);
-  const b=document.createElement('button');b.className='vehicle'+(state.slot===i?' selected':'');
-  const de=window.USI18N?.getLanguage?.()==='de';const stateTxt=car.locked?(de?'Gesperrt':'Locked'):car.owned?(de?'Belegt':'Occupied'):(de?'Leer':'Empty');
+  const wrap=document.createElement('div');wrap.className='nfs-slot-wrap';
+  const b=document.createElement('button');b.type='button';b.className='vehicle'+(state.slot===i?' selected':'');
+  const stateTxt=car.locked?(de?'Gesperrt':'Locked'):car.owned?(de?'Belegt':'Occupied'):(de?'Leer':'Empty');
   const tagClass=car.locked?'locked':car.owned?'':'empty';
   b.innerHTML=`<div class="carpic">${car.owned?(car.traffic?(car.traffic.id==='BUS'?'🚌':['PANELVAN','PARCELVAN','MINIVAN'].includes(car.traffic.id)?'🚐':'🚕'):'🏎️'):'◌'}</div><div class="slot">SLOT ${i.toString().padStart(2,'0')}</div><div class="model"></div><span class="tag ${tagClass}">${stateTxt}</span>`;
-  b.querySelector('.model').textContent=car.owned?car.model:(de?'Freier Platz':'Empty slot');
+  b.querySelector('.model').textContent=car.owned?(car.traffic?window.USDisplayTraffic?.(car.traffic.id)||car.model:car.model):(de?'Freier Platz':'Empty slot');
   if(car.owned){
    const art=window.USCarImages?.make(car.key,car.model,'career-card-car-image');
    if(art){const pic=b.querySelector('.carpic');pic.classList.add('has-car-image');pic.replaceChildren(art);}
   }
-  b.onclick=()=>{state.slot=i;renderGarage();};grid.append(b);
+  b.onclick=()=>{state.slot=i;renderGarage();};
+  wrap.append(b);
+  if(car.owned){
+   const control=document.createElement('button');control.type='button';
+   control.className='nfs-slot-lock'+(car.locked?' is-locked':'');
+   control.disabled=i===1;control.title=i===1?(de?'Platz 1 muss für ein Auto entsperrt bleiben':'Slot 1 must remain unlocked'):'';
+   control.textContent=i===1?(de?'● Platz 1 erforderlich':'● Slot 1 required'):
+     (car.locked?(de?'◉ Platz entsperren':'◉ Unlock slot'):(de?'○ Platz sperren':'○ Lock slot'));
+   control.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();
+     if(i===1)return;
+     try{core.setUnlocked(state.save,state.garage,i,car.locked);
+       dirty(de?'Garagenplatz '+i+' aktualisiert.':'Garage slot '+i+' updated.');
+     }catch(e){message(errorText(e),true);renderGarage();}
+   });
+   wrap.append(control);
+  }
+  grid.append(wrap);
  }
  renderInspector();
 }
 function renderInspector(){const car=core.slotInfo(state.save,state.garage,state.slot);
- $('inspectorTitle').textContent=car.owned?car.model:'Leerer Garagenplatz';$('slotCaption').textContent='Slot '+state.slot;
+ $('inspectorTitle').textContent=car.owned?(car.traffic?(window.USDisplayTraffic?.(car.traffic.id)||car.model):car.model):
+    (window.USI18N?.getLanguage?.()==='de'?'Leerer Garagenplatz':'Empty garage slot');$('slotCaption').textContent='Slot '+state.slot;
+  window.NFSU2StudioRatings?.render?.(state.save,state.garage,state.slot,car);
  const carArt=car.owned?window.USCarImages?.srcFor(car.key):null;
  const carStage=$('careerCarImageBox'),carImage=$('careerCarImage');
  if(carArt){carImage.src=carArt;carImage.alt=car.model;carStage.classList.remove('hidden');}
@@ -1811,6 +2067,9 @@ const C=window.UndergroundMyCars,core=window.NFSU2,$=id=>document.getElementById
 let selectedSlot=6,selectedTemplate=6,selectedModel='T:COUPE',previewChoice=false,filter='all',search='',catalogSearch='',catalogType='all',undo=null,dragSlot=null;
 const originalCatalog=C.catalog();
 const catalog=C.catalogAll().all;
+const vehicleLabel=c=>c?.traffic?(window.USDisplayTraffic?.(String(c.id||c.intern).replace(/^T:/,''))||c.name):c?.name||'—';
+const bilingual=(en,de)=>window.USI18N?.getLanguage?.()==='de'?de:en;
+
 const label=n=>n===1?'Konfigurationsplatz':'Konfigurationsplätze';
 const fmt=i=>String(i).padStart(2,'0');
 const stat=(name,value)=>`<div class="mc-stat"><span>${name}</span><strong>${value}</strong></div>`;
@@ -1831,11 +2090,11 @@ function recordUndo(s){undo={slice:s.save.slice(C.BASE,C.END),when:Date.now()};}
 function execute(note,mutator){const s=activeContext();if(!s)return;try{recordUndo(s);mutator(s.save);notify(note);render();}catch(e){undo=null;window.UndergroundLabHost.message(e.message,true);}}
 function chooseTemplate(){return catalog.find(x=>x.id===selectedModel)||catalog.find(x=>x.id==='T:COUPE')||catalog[0];}
 function renderCatalog(){const el=$('mcTemplates');el.replaceChildren();
- const shown=catalog.filter(c=>(catalogType==='all'||(catalogType==='normal'&&!c.traffic)||(catalogType==='traffic'&&c.traffic))&&(c.name.toLowerCase().includes(catalogSearch.toLowerCase())||c.key.toLowerCase().includes(catalogSearch.toLowerCase())||c.id.toLowerCase().includes(catalogSearch.toLowerCase())));
+ const shown=catalog.filter(c=>(catalogType==='all'||(catalogType==='normal'&&!c.traffic)||(catalogType==='traffic'&&c.traffic))&&(vehicleLabel(c).toLowerCase().includes(catalogSearch.toLowerCase())||c.key.toLowerCase().includes(catalogSearch.toLowerCase())||c.id.toLowerCase().includes(catalogSearch.toLowerCase())));
  for(const car of shown){const btn=document.createElement('button');btn.className='mc-template'+(selectedModel===car.id?' selected':'');btn.type='button';
- btn.innerHTML=`<span class="mc-template-icon">${car.kind==='bus'?menuBusIcon:car.kind==='emergency'?menuEmergencyIcon:menuCarIcon}</span><span class="mc-template-copy"><b></b><small></small></span><span class="mc-template-tick"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="m8 5 7 7-7 7"/></svg></span>`;
- btn.querySelector('b').textContent=car.name;
- btn.querySelector('small').textContent=car.traffic?'TRAFFIC · '+(car.source?'MOD #'+fmt(car.source):'NO TEMPLATE'):'STREET CAR';
+ btn.innerHTML=`<span class="mc-template-icon">${car.traffic?window.NFSStudioIcons.traffic:window.NFSStudioIcons.street}</span><span class="mc-template-copy"><b></b><small></small></span><span class="mc-template-tick"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="m8 5 7 7-7 7"/></svg></span>`;
+ btn.querySelector('b').textContent=vehicleLabel(car);
+ btn.querySelector('small').textContent=car.traffic?bilingual('TRAFFIC CAR','VERKEHRSFAHRZEUG'):bilingual('STREET CAR','STRASSENFAHRZEUG');
  const art=window.USCarImages?.make(car.key,'','mc-template-vehicle-art');if(art){art.alt='';btn.insertBefore(art,btn.querySelector('.mc-template-copy'));}
  btn.onclick=()=>{selectedModel=car.id;previewChoice=true;if(car.source)selectedTemplate=car.source;render();};el.append(btn);}
  $('mcCatalogCount').textContent=shown.length+' / '+catalog.length;
@@ -1866,13 +2125,13 @@ function renderSlots(s){const all=C.list(s.save),el=$('mcSlots');el.replaceChild
 
  $('mcNoResults').classList.toggle('hidden',!!shown.length);$('mcCount').textContent=all.filter(x=>x.active).length+' / 20';$('mcTrafficCount').textContent=all.filter(x=>x.active&&x.traffic).length;
 }
-function renderInspector(s){const c=C.info(s.save,selectedSlot),t=chooseTemplate();$('mcCurrentSlot').textContent='SLOT '+fmt(selectedSlot);$('mcCurrentStatus').textContent=c.active?(c.traffic?'TRAFFIC CAR':'CUSTOM CAR'):'LEERER SLOT';$('mcCurrentStatus').dataset.state=c.active?'on':'off';$('mcCurrentName').textContent=c.active?c.name:'Kein Fahrzeug gespeichert';$('mcCurrentId').textContent=c.active?'0x'+c.key:'–';$('mcCurrentHandle').textContent=c.active?'0x'+core.hex(c.handle):'–';$('mcPreview').innerHTML=shape(c.active?c.kind:t.kind);$('mcPreviewLabel').textContent=c.active?(labels[c.kind]||'CUSTOM'):(labels[t.kind]||'TRAFFIC')+' / PREVIEW';$('mcTemplateName').textContent=t.name;$('mcTemplateSource').textContent=t.traffic?(t.source?'Traffic-Mod · Originalplatz '+fmt(t.source):'Traffic · no template'):'Street Car · Career / Stock source';
+function renderInspector(s){const c=C.info(s.save,selectedSlot),t=chooseTemplate();$('mcCurrentSlot').textContent='SLOT '+fmt(selectedSlot);$('mcCurrentStatus').textContent=c.active?(c.traffic?'TRAFFIC CAR':bilingual('STREET CAR','STRASSENFAHRZEUG')):bilingual('EMPTY SLOT','LEERER SLOT');$('mcCurrentStatus').dataset.state=c.active?'on':'off';$('mcCurrentName').textContent=c.active?c.name:bilingual('No car saved','Kein Fahrzeug gespeichert');$('mcCurrentId').textContent=c.active?'0x'+c.key:'–';$('mcCurrentHandle').textContent=c.active?'0x'+core.hex(c.handle):'–';$('mcPreview').innerHTML=shape(c.active?c.kind:t.kind);$('mcPreviewLabel').textContent=c.active?(labels[c.kind]||'CUSTOM'):(labels[t.kind]||'TRAFFIC')+' / PREVIEW';$('mcTemplateName').textContent=vehicleLabel(t);$('mcTemplateSource').textContent=t.traffic?(t.source?'Traffic-Mod · Originalplatz '+fmt(t.source):'Traffic · no template'):'Street Car · Career / Stock source';
  $('mcInstallAtNative').classList.toggle('hidden',!t.traffic||!t.source);$('mcInstallAtNative').disabled=!t.traffic||!t.source;$('mcInstallAtNative').innerHTML='<span>ORIGINALPLATZ '+fmt(t.source||1)+'</span>';$('mcInstallAtSelected').innerHTML='<span>INSTALL IN SLOT '+fmt(selectedSlot)+'</span>'; 
  $('mcRemove').disabled=!c.active;$('mcCopy').disabled=!c.active;
  $('mcCopyTarget').replaceChildren();for(let i=1;i<=20;i++){if(i===selectedSlot)continue;const opt=document.createElement('option');opt.value=i;opt.textContent='Slot '+fmt(i)+(C.info(s.save,i).active?' · belegt':' · frei');$('mcCopyTarget').append(opt);}
  $('mcUndo').disabled=!undo;
 }
-function render(){const s=activeContext();$('mcEmpty').classList.toggle('hidden',!!s);$('mcReady').classList.toggle('hidden',!s);if(!s){$('mcCount').textContent='– / 20';$('mcTrafficCount').textContent='–';renderCatalog();return;}renderSlots(s);renderInspector(s);renderCatalog();window.USExtra?.render(selectedSlot,selectedTemplate);}
+function render(){const s=activeContext();$('mcEmpty').classList.toggle('hidden',!!s);$('mcReady').classList.toggle('hidden',!s);if(!s){$('mcCount').textContent='– / 20';$('mcTrafficCount').textContent='–';renderCatalog();return;}renderSlots(s);renderInspector(s);renderCatalog();window.USExtra?.render(selectedSlot,selectedTemplate);window.USArcadeTrafficUI?.render(selectedSlot);}
 function onImported(){selectedSlot=6;selectedTemplate=6;selectedModel='T:COUPE';previewChoice=false;undo=null;dragSlot=null;render();}
 function askOverwrite(save,slot){const c=C.info(save,slot);return !c.active||confirm(`Slot ${fmt(slot)} ist bereits mit „${c.name}“ belegt. Wirklich überschreiben?`);}
 function bind(){
@@ -1903,20 +2162,37 @@ function bind(){
  };
  $('mcAddCar').onclick=()=>{
    const h=activeContext();if(!h)return;
+   // Clicking + Add Car after explicitly picking a model installs it; it no longer
+   // just scrolls back to the list. No implicit install of the default Coupe.
+   if(previewChoice){
+     const t=chooseTemplate();if(!t)return;
+     const current=C.info(h.save,selectedSlot);
+     const free=C.list(h.save).find(c=>!c.active);
+     const target=current.active&&free?free.slot:selectedSlot;
+     const occupied=C.info(h.save,target);
+     if(!confirm(bilingual(
+       `Add ${vehicleLabel(t)} to Arcade slot ${fmt(target)}?${occupied.active?' This replaces '+occupied.name+'.':''} Save-generated vehicles may require in-game verification.`,
+       `${vehicleLabel(t)} in Arcade-Platz ${fmt(target)} einsetzen?${occupied.active?' Das ersetzt '+occupied.name+'.':''} Neu erzeugte Fahrzeugkonfigurationen sollten im Spiel geprüft werden.`)))return;
+     selectedSlot=target;previewChoice=false;
+     execute(`${vehicleLabel(t)} installed in Arcade slot ${fmt(target)}.`,d=>C.installAny(d,h.garage,target,t.id));
+     return;
+   }
    const free=C.list(h.save).find(c=>!c.active);
    if(free)selectedSlot=free.slot;
    filter='all';search='';$('mcFilter').value='all';$('mcSearch').value='';
    catalogSearch='';$('mcCatalogSearch').value='';catalogType='all';$('mcCatalogType').value='all';
-   previewChoice=true;render();
+   render();
    $('mcCatalogTitle').scrollIntoView({behavior:'smooth',block:'center'});
    $('mcCatalogSearch').focus({preventScroll:true});
-   if(!free)window.UndergroundLabHost.message('All 20 slots are occupied. Select a slot to replace its car.');
+   if(!free)window.UndergroundLabHost.message(bilingual('All 20 slots are occupied. Select one to replace its car.','Alle 20 Plätze sind belegt. Wähle einen zum Ersetzen aus.'));
  };
  $('mcRemove').onclick=()=>{const s=activeContext();if(!s)return;if(!confirm(`Slot ${fmt(selectedSlot)} löschen? Die gespeicherte Fahrzeugkonfiguration wird durch den neutralen Original-Slot ersetzt. Nur mit Backup importieren.`))return;execute('Arcade-Slot '+fmt(selectedSlot)+' zurückgesetzt.',d=>C.clear(d,selectedSlot));};
  $('mcCopy').onclick=()=>{const s=activeContext();if(!s)return;const target=Number($('mcCopyTarget').value),source=selectedSlot;if(!target||!Number.isInteger(target))return;if(!confirm(`EXPERIMENT: Konfiguration ${fmt(source)} auf Platz ${fmt(target)} kopieren? Eine Platzverschiebung ist bisher nicht im Spiel bestätigt.`))return;if(!askOverwrite(s.save,target))return;selectedSlot=target;execute('Konfiguration kopiert – experimentelle Platzverschiebung.',d=>C.copy(d,source,target));};
  $('mcUndo').onclick=()=>{const s=activeContext();if(!s||!undo)return;s.save.set(undo.slice,C.BASE);undo=null;notify('Letzte Arcade-Aktion rückgängig gemacht.');render();};
 }
-bind();window.UndergroundTrafficUI={render,onImported,selectedModel:()=>chooseTemplate(),previewSelected:()=>previewChoice};render();
+bind();window.UndergroundTrafficUI={render,onImported,selectedModel:()=>chooseTemplate(),previewSelected:()=>previewChoice};
+window.addEventListener('underground-language-change',()=>render());
+render();
 })();
 
 </script><!-- mycars-tuning-core.js -->
@@ -2265,6 +2541,63 @@ window.USCareerTuningUI={render};render();})();
  return {GROUPS,ACTIVE_IDS,UNIQUE_NAMES,capture,restore,apply,applyUnique,maxOut,resetToStock,inspect};
 });
 
+</script><!-- nfsu2-studio-ratings-v1718.js -->
+<script>
+/* v1.7.21 · Read-only SAVE TUNING indices (0-100). These are NOT in-game
+   top-speed km/h, acceleration measurements or engine-produced handling bars.
+   Weights are heuristic visualizations of installed parts/uniques and circuit
+   dyno; never touch or mutate the game save. */
+(()=>{'use strict';
+ const $=id=>document.getElementById(id),S=window.NFSU2,A=window.USCareerShop;
+ const tr=(en,de)=>window.USI18N?.getLanguage?.()==='de'?de:en;
+ const clamp=(x,min=0,max=1)=>Math.max(min,Math.min(max,x));
+ function render(save,garage,slot,car){
+   const badge=$('us18SlotBadge');if(!badge)return;
+   badge.textContent=tr('SLOT ','PLATZ ')+String(slot).padStart(2,'0');
+   $('us18SpeedLabel').textContent=tr('TOP SPEED','HÖCHSTTEMPO');
+   $('us18AccelLabel').textContent=tr('ACCELERATION','BESCHLEUNIGUNG');
+   $('us18HandlingLabel').textContent='HANDLING';
+   $('us18MetricNote').textContent=tr('ESTIMATED SAVE TUNING · NOT ORIGINAL IN-GAME RATINGS',
+    'GESCHÄTZTE LEISTUNGSANZEIGE · KEINE ORIGINALEN INGAME-WERTE');
+   const panel=$('us18Metrics');panel.classList.toggle('is-unavailable',!car.owned||car.locked);
+   const display=(id,value)=>{
+     const hasValue=value!=null&&Number.isFinite(value),v=hasValue?Math.max(0,Math.min(100,Math.round(value))):null;
+     const label=$(id),bar=$(id+'Bar'),track=bar.parentElement;
+     label.textContent='';label.dataset.score=hasValue?String(v):'';
+     bar.style.width=hasValue?v+'%':'0%';
+     track.setAttribute('role','progressbar');track.setAttribute('aria-label',$(id+'Label')?.textContent||id);
+     if(hasValue){track.setAttribute('aria-valuenow',String(v));track.setAttribute('aria-valuemin','0');track.setAttribute('aria-valuemax','100');}
+     else track.removeAttribute('aria-valuenow');
+   };
+   if(!car.owned||car.locked){['us18Speed','us18Accel','us18Handling'].forEach(id=>display(id,null));return;}
+   try{
+    const parts=A.inspect(save,garage,slot);
+    const g=id=>parts.groups.find(x=>x.id===id);
+    // A car can contain incompatible/experimental flags. Map the installed
+    // known flags to the maximum mapped stage recipe, not to physics values.
+    const pct=id=>{const group=g(id),ref=A.GROUPS.find(x=>x.id===id);if(!group||!ref)return 0;
+      const maxStage=Math.max(1,...ref.stages.map(x=>x.length));
+      const stage=group.level==null?group.enabled.length/maxStage:group.level/3;
+      const ui=A.UNIQUE_NAMES.findIndex(x=>x.toLowerCase()===(id==='trans'?'transmission':id==='susp'?'suspension':id==='nos'?'nitrous':id==='tires'?'tires':id==='brakes'?'brakes':id==='engine'?'engine':id==='turbo'?'turbo':id==='ecu'?'ecu':'weight'));
+      return clamp(clamp(stage)*.84+(ui>=0&&parts.unique[ui]?0.16:0));};
+    // Tuned profiles have 5 event data sets; Circuit is the comparison basis.
+    // The game computes actual ratings from vehicle engine data not in the save.
+    const dyno=S.dynoData(save,garage,slot,0);
+    const mean=prefix=>{const xs=dyno.controls.filter(x=>x.id.startsWith(prefix));return xs.length?xs.reduce((sum,x)=>sum+x.value,0)/xs.length:100;};
+    const dynoDelta=clamp(((mean('ecu')+mean('turbo'))/2-100)/250,-.16,.16);
+    const final=dyno.controls.find(x=>x.id==='final')?.value??100;
+    const gearDelta=clamp((100-final)/220,-.10,.10);
+    const speed=100*clamp(.31*pct('engine')+.23*pct('turbo')+.23*pct('ecu')+.23*pct('trans')+dynoDelta*.45+gearDelta);
+    const accel=100*clamp(.25*pct('engine')+.18*pct('turbo')+.20*pct('ecu')+.20*pct('trans')+.10*pct('weight')+.07*pct('nos')+dynoDelta*.60-gearDelta);
+    const handling=100*clamp(.41*pct('susp')+.34*pct('tires')+.20*pct('brakes')+.05*pct('weight'));
+    display('us18Speed',speed);display('us18Accel',accel);display('us18Handling',handling);
+   }catch(err){['us18Speed','us18Accel','us18Handling'].forEach(id=>display(id,null));}
+ }
+ window.NFSU2StudioRatings={render};
+ window.addEventListener('underground-language-change',()=>{
+  const c=window.UndergroundLabHost?.get();if(c?.loaded)render(c.save,c.garage,c.slot,S.slotInfo(c.save,c.garage,c.slot));
+ });
+})();
 </script><!-- career-performance-shop-ui.js -->
 <script>
 /* Career performance shop; retains v1.3 save engine and English-first interface. */
@@ -2282,7 +2615,7 @@ window.USCareerTuningUI={render};render();})();
  $('shopSub').textContent=t('Install saved upgrade packages by category. No in-game shop unlock or horsepower prediction.',
  'Gespeicherte Tuningpakete je Kategorie. Keine Freischaltung des Ingame-Shops oder Leistungsprognose.');
  $('shopRestore').textContent=t('RESTORE SHOP ENTRY','SHOP-STARTSTAND WIEDERHERSTELLEN');
- $('shopUniqueTitle').textContent=t('OUTRUN UNIQUE UPGRADES','OUTRUN-UNIQUE-UPGRADES');
+  $('shopUniqueTitle').textContent=t('UNIQUE UPGRADES · STATUS','UNIQUE-UPGRADES · STATUS');
  hint.textContent=r.traffic?t('TRAFFIC EXPERIMENT: package bars are not real HP values. Keep a working K01 backup; Stage recipes can reduce performance.',
  'TRAFFIC-EXPERIMENT: Die Stufen sind keine echten PS-Werte. K01-Backup behalten; Pakete können Leistung verringern.'):
  t('Saved part flags only. Real handling depends on the game and installed vehicle data.',
@@ -2309,10 +2642,14 @@ window.USCareerTuningUI={render};render();})();
  row.append(name,flags,selection);list.append(row);
  }
  const unique=$('shopUniques');unique.replaceChildren();
- A.UNIQUE_NAMES.forEach((name,i)=>{const b=document.createElement('button');b.type='button';b.className='shop-unique'+(r.unique[i]?' active':'');
- b.textContent=(lang()==='de'?A.GROUPS[i].de:name)+(r.unique[i]?' ✓':' +');b.setAttribute('aria-pressed',String(!!r.unique[i]));
- b.onclick=()=>{try{A.applyUnique(c.save,c.garage,n,i,!r.unique[i]);window.UndergroundLabHost?.changed(t('Unique upgrade updated.','Unique-Upgrade aktualisiert.'));render();}
- catch(e){window.UndergroundLabHost?.message(e.message,true);}};unique.append(b);});}
+ A.UNIQUE_NAMES.forEach((name,i)=>{
+   const label=document.createElement('span');label.className='shop-unique-readonly'+(r.unique[i]?' is-installed':'');
+   const title=document.createElement('span');title.textContent=(lang()==='de'?A.GROUPS[i].de:name);
+   const state=document.createElement('strong');state.textContent=r.unique[i]?'✓ '+t('Installed','Installiert'):'—';
+   label.append(title,state);unique.append(label);
+ });
+ // Unique status appears directly after the Tires row in its original section.
+ }
  $('shopRestore').onclick=()=>{const c=ctx(),n=c?.slot||1;if(!c?.loaded)return;
  const snap=snapshots.get(n);if(!snap)return;
  if(!confirm(t('Restore the setup from when you first opened this car in the shop?','Tuningstand vom ersten Öffnen dieses Fahrzeugs im Shop wiederherstellen?')))return;
@@ -2431,7 +2768,7 @@ function eligibleSlots(d,g,mode,normalCareerOnly=false){
   for(let slot=1;slot<=max;slot++){
     try {
       const c=mode==='career'?S.slotInfo(d,g,slot):M.info(d,slot);
-      if(mode==='career'?(c.owned&&!c.locked&&(!normalCareerOnly||!c.traffic)):c.active)slots.push(slot);
+      if(mode==='career'?(c.owned&&!c.locked&&(!normalCareerOnly||!c.traffic)):(c.active&&!c.traffic))slots.push(slot);
     } catch(e) {
       // Empty/invalid records are skipped; a corrupt save fails at assertCareer.
     }
@@ -2613,7 +2950,7 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
  function render(){const root=$('trafficPresetPanel'),st=state();if(!root)return;
    root.classList.toggle('hidden',!st);if(!st)return;
    const coupe=isCoupe(st),val=P.status(st.c.save,st.c.garage,st.slot),base=baseline(st);
-   $('trafficPresetHeading').textContent=tx('PERFORMANCE · '+st.car.traffic.name.toUpperCase(),'LEISTUNG · '+st.car.traffic.name.toUpperCase());
+   $('trafficPresetHeading').textContent=tx('PERFORMANCE · '+(window.USDisplayTraffic?.(st.car.traffic.id)||st.car.traffic.name).toUpperCase(),'LEISTUNG · '+(window.USDisplayTraffic?.(st.car.traffic.id)||st.car.traffic.name).toUpperCase());
    $('trafficPresetEyebrow').textContent=tx('TRAFFIC CAR · PROFILE TUNING','TRAFFIC CAR · PROFIL-TUNING');
    $('trafficPresetCurrent').textContent=tx('CURRENT · ','AKTUELL · ')+label(val);
    $('trafficPresetLead').textContent=tx('Choose a profile directly. It tunes only this vehicle and updates all 5 race types.','Einfach Profil auswählen. Die Abstimmung gilt nur für dieses Auto und alle 5 Rennarten.');
@@ -2814,7 +3151,7 @@ window.addEventListener('underground-language-change',()=>{renderMode('career');
 (()=>{'use strict';
 const S=window.NFSU2,M=window.UndergroundMyCars,L=window.UndergroundCareerLab,T=window.UndergroundCareerTuning,A=window.USCareerShop;
 const host=window.UndergroundLabHost,$=id=>document.getElementById(id);
-let tab='shop',undoVisual=null,importIdentity=null,lastSelection=null;
+let tab='shop',undoVisual=null,importIdentity=null,lastSelection=null,visualDonorCtx=null,lastTuningCar=null;
 const lang=()=>window.USI18N?.getLanguage?.()||'en';
 const tr=(en,de)=>lang()==='de'?de:en;
 const h=()=>host.get();
@@ -2826,7 +3163,7 @@ const dataset=(c,n)=>n<=5?c.save:c.garage;
 const bytes=(src,start,length)=>src.slice(start,start+length);
 const hex8=n=>S.hex(n>>>0);
 const englishNames={COUPE:'Traffic Coupe',TAXI:'Taxi 1',TAXI02:'Taxi 2',AMBULANCE:'Ambulance',FIRETRUCK:'Fire Truck',BUS:'Coach / Bus',PICKUP:'Pickup Truck',SUV:'Traffic SUV',PANELVAN:'Van (Panel Van)',PARCELVAN:'Parcel Van',MINIVAN:'Minivan',HATCHBACK:'Hatchback 1',HATCHBACK02:'Hatchback 2','4DR_SEDAN':'Sedan 1','4DR_SEDAN02':'Sedan 2'};
-const carName=c=>c?.traffic&&lang()==='en'?(englishNames[c.traffic.id]||c.model):c?.model||'—';
+const carName=c=>c?.traffic?(window.USDisplayTraffic?.(c.traffic.id)||c.model):c?.model||'—';
 const allCount=c=>c.garage?10:5;
 const cloneOptions=(selector,opts,previous)=>{selector.replaceChildren();for(const [value,label] of opts)selector.add(new Option(label,value));if(opts.some(([value])=>value===previous))selector.value=previous;};
 const setText=(selector,en,de)=>{const el=$(selector);if(el)el.textContent=tr(en,de);};
@@ -2856,7 +3193,7 @@ function modelOptions(){const locale=lang()==='de'?'de':'en';
  const collator=new Intl.Collator(locale,{sensitivity:'base',numeric:true});
  const cars=[...S.CARS.entries()].sort((a,b)=>collator.compare(a[1],b[1])).map(([key,name])=>['N:'+key,name]);
  const {available,missing,templateByKey}=trafficCatalog();
- const show=c=>lang()==='en'?(englishNames[c.id]||c.name):c.name;
+ const show=c=>window.USDisplayTraffic?.(c.id)||c.name;
  const sort=(x,y)=>collator.compare(show(x),show(y));
  // Hash is the only uniqueness key; not a display label or source slot.
  const availableOptions=[...available].sort(sort).map(c=>{
@@ -2869,6 +3206,35 @@ function modelOptions(){const locale=lang()==='de'?'de':'en';
  ['traffic','── TRAFFIC CARS ('+availableOptions.length+') ──'],...availableOptions,
  ...(unavailableOptions.length?[['unavailable','── '+tr('NOT INSTALLABLE YET','NOCH NICHT HINZUFÜGBAR')+' ──'],...unavailableOptions]:[])];}
 function getCurrent(){const c=h();return c?.loaded?S.slotInfo(c.save,c.garage,c.slot):null;}
+function renderCareerCatalog(){
+ const grid=$('usCareerCatalogGrid'),select=$('us17CarSelect');if(!grid||!select)return;
+ const de=lang()==='de',search=($('usCareerCatalogSearch')?.value||'').trim().toLocaleLowerCase(),type=$('usCareerCatalogType')?.value||'all';
+ const models=modelOptions().filter(([value])=>/^[NT]:/.test(value));
+ const shown=models.filter(([value,label])=>(type==='all'||type==='traffic'&&value.startsWith('T:')||type==='normal'&&value.startsWith('N:'))&&label.toLocaleLowerCase().includes(search));
+ grid.replaceChildren();
+ for(const [value,label] of shown){
+   const isTraffic=value.startsWith('T:');
+   const key=isTraffic?S.TRAFFIC.find(x=>x.id===value.slice(2))?.key:value.slice(2);
+   const button=document.createElement('button');button.type='button';
+   button.className='us-career-model'+(select.value===value?' selected':'');
+   button.setAttribute('aria-pressed',String(select.value===value));
+   const glyph=document.createElement('span');glyph.className='us-career-model-icon';glyph.innerHTML=window.NFSStudioIcons?.[isTraffic?'traffic':'street']||'';
+   const photo=document.createElement('div');photo.className='us-career-model-image';
+   const image=key&&window.USCarImages?.make(key,'','us-career-model-art');if(image){image.alt='';photo.append(image);}
+   const copy=document.createElement('span');copy.className='us-career-model-label';
+   const title=document.createElement('b');title.textContent=label.split(' · ')[0];
+   const subtitle=document.createElement('small');subtitle.textContent=isTraffic?(de?'TRAFFIC CAR':'TRAFFIC CAR'):(de?'STRASSENFAHRZEUG':'STREET CAR');
+   copy.append(title,subtitle);button.append(glyph,copy,photo);
+   button.onclick=()=>{select.value=value;renderCareerCatalog();};grid.append(button);
+ }
+ $('usCareerCatalogCount').textContent=shown.length+' / '+models.length;
+ $('usCareerCatalogHeading').textContent=tr('SELECT VEHICLE','FAHRZEUG WÄHLEN');
+ $('usCareerCatalogSearch').placeholder=tr('Search vehicles…','Fahrzeuge suchen…');
+ const types=$('usCareerCatalogType').options;
+ types[0].textContent=tr('ALL VEHICLES','ALLE FAHRZEUGE');
+ types[1].textContent=tr('STREET CARS','STRASSENFAHRZEUGE');
+ types[2].textContent='TRAFFIC CARS';
+}
 function renderSelector(){const select=$('us17CarSelect'),c=h();
  const car=c?.loaded?getCurrent():null;
  const signature=c?.loaded?{save:c.save,slot:c.slot,key:car?.key,owned:!!car?.owned}:null;
@@ -2876,7 +3242,7 @@ function renderSelector(){const select=$('us17CarSelect'),c=h();
  const prev=changedSlot?'':select.value;
  cloneOptions(select,modelOptions(),prev);
  for(const o of select.options)if(['heading','traffic','unavailable'].includes(o.value)||o.value.startsWith('U:'))o.disabled=true;
- if(!c?.loaded){$('us17AddCar').disabled=true;$('us17RemoveCar').disabled=true;$('us17SlotOneNotice').hidden=true;lastSelection=null;return;}
+ if(!c?.loaded){renderCareerCatalog();$('us17AddCar').disabled=true;$('us17RemoveCar').disabled=true;$('us17SlotOneNotice').hidden=true;lastSelection=null;return;}
  $('us17AddCar').disabled=false;
  $('us17RemoveCar').disabled=c.slot===1||!car?.owned||!!car?.locked;
  const first=S.slotInfo(c.save,c.garage,1),bad=!first.owned||first.locked;
@@ -2894,18 +3260,30 @@ function renderSelector(){const select=$('us17CarSelect'),c=h();
   select.value=[...select.options].some(o=>o.value===current)?current:'';
  }
  lastSelection=signature;
+ renderCareerCatalog();
 }
 function refreshVisual(){const ctx=h();if(!ctx?.loaded)return;
  const idx=Number($('us17VisualIndex').value);if(!Number.isInteger(idx)||idx<0||idx>=170)return;
  const d=dataset(ctx,ctx.slot);if(!d)return;
  $('us17VisualHash').value=hex8(S.u32(d,bb(ctx.slot)+0x18+idx*4));
- const opts=[];for(let n=1;n<=allCount(ctx);n++){const c=S.slotInfo(ctx.save,ctx.garage,n);if(c.owned&&n!==ctx.slot)opts.push([String(n),'SLOT '+n+' · '+carName(c)]);}
- cloneOptions($('us17VisualDonor'),opts,$('us17VisualDonor').value);
- $('us17VisualCopy').disabled=opts.length===0;
+ const opts=[['','— '+tr('Select a slot','Auswählen')+' —']];
+ for(let n=1;n<=allCount(ctx);n++){const c=S.slotInfo(ctx.save,ctx.garage,n);if(c.owned&&n!==ctx.slot)opts.push([String(n),'SLOT '+n+' · '+carName(c)]);}
+ const prev=visualDonorCtx?.save===ctx.save&&visualDonorCtx?.slot===ctx.slot?$('us17VisualDonor').value:'';
+ cloneOptions($('us17VisualDonor'),opts,prev);
+ visualDonorCtx={save:ctx.save,slot:ctx.slot};
+ $('us17VisualCopy').disabled=!$('us17VisualDonor').value;
 }
 function refresh(){renderSelector();refreshVisual();window.USUnlockPartsUI?.render();
  const loaded=available(),current=getCurrent(),trafficMode=!!(loaded&&current?.owned&&!current.locked&&current.traffic);
  $('page-overview').dataset.tuningMode=trafficMode?'traffic':'standard';
+  // A newly selected regular car always opens the requested default Part Shop.
+  // Do not reset the tab on every redraw (e.g. after slider/part changes).
+  const ctx=loaded?h():null;
+  const vehicle={save:ctx?.save,slot:ctx?.slot,key:current?.key,owned:current?.owned};
+  const vehicleChanged=lastTuningCar && (lastTuningCar.save!==vehicle.save||lastTuningCar.slot!==vehicle.slot||lastTuningCar.key!==vehicle.key||lastTuningCar.owned!==vehicle.owned);
+  lastTuningCar=vehicle;
+  if(vehicleChanged&&!trafficMode&&tab!=='shop'){setTab('shop');return;}
+
  // Traffic Cars have no Appearance / Body Shop tab, even if a normal car's
  // last-opened tab was Shop. Force the simplified profile view.
  if(trafficMode&&tab!=='tune'){setTab('tune');return;}
@@ -2951,8 +3329,8 @@ function installCar(){const c=h();if(!c?.loaded)return warn(tr('Open a save firs
  'EXPERIMENTELLE REKONSTRUKTION: Für dieses Fahrzeug gibt es keine originale Mod-Vorlage. Der Datensatz stammt von '+(spec.id==='MINIVAN'?'Panel Van':'Kleinwagen 2')+'; nur die Fahrzeug-ID wurde geändert. Das rekonstruierte Modell wurde in der Karriere vom Nutzer als fahrbar bestätigt. Leistungstuning ist noch nicht bestätigt. Eine Arcade-Konfiguration kann ebenfalls überschrieben werden. Nur mit Backup testen.'
  ):tr('The Traffic Coupe K01 was tested in career slot 4. Other traffic models and slots are experimental.','Traffic-Coupé K01 wurde in Karriereplatz 4 getestet. Andere Traffic-Autos und Plätze sind experimentell.')):
  tr('Existing models use saved donor data. Performance always starts at stock. Factory appearance for unseen models is not guaranteed.','Bekannte Modelle nutzen gespeicherte Spenderdaten. Leistung startet immer auf Serie. Originaloptik unbekannter Modelle ist nicht garantiert.');
- if(!confirm(tr(`Install ${traffic?spec.name:S.CARS.get(key)} in slot ${target}? This ${car.owned?'replaces '+car.model:'fills the empty slot'}.\nPerformance upgrades and Dyno will be reset to stock.\n\n${explanation}\nKeep a backup.`,
- `${traffic?spec.name:S.CARS.get(key)} in Platz ${target} einsetzen? ${car.owned?'Ersetzt '+car.model:'Befüllt den leeren Platz'}.\nLeistungs-Upgrades und Dyno werden auf Serie gesetzt.\n\n${explanation}\nBackup behalten.`)))return;
+ if(!confirm(tr(`Install ${traffic?(window.USDisplayTraffic?.(spec.id)||spec.name):S.CARS.get(key)} in slot ${target}? This ${car.owned?'replaces '+car.model:'fills the empty slot'}.\nPerformance upgrades and Dyno will be reset to stock.\n\n${explanation}\nKeep a backup.`,
+ `${traffic?(window.USDisplayTraffic?.(spec.id)||spec.name):S.CARS.get(key)} in Platz ${target} einsetzen? ${car.owned?'Ersetzt '+car.model:'Befüllt den leeren Platz'}.\nLeistungs-Upgrades und Dyno werden auf Serie gesetzt.\n\n${explanation}\nBackup behalten.`)))return;
  const backup=new Uint8Array(c.save),garageBackup=c.garage&&new Uint8Array(c.garage);
  try{
   if(traffic){
@@ -3096,8 +3474,10 @@ function localizeNew(){const terms={
 }
 function prepare(){
  const select=$('us17VisualIndex');for(let i=0;i<170;i++)select.add(new Option(tr('Appearance slot ','Optischer Teileplatz ')+String(i+1).padStart(2,'0'),String(i)));
+ $('usCareerCatalogSearch').addEventListener('input',renderCareerCatalog);$('usCareerCatalogType').addEventListener('change',renderCareerCatalog);$('us17CarSelect').addEventListener('change',renderCareerCatalog);
  $('us17AddCar').onclick=installCar;$('us17RemoveCar').onclick=removeCar;$('us17ShopAll').onclick=shopAll;$('us17ShopUndoAll').onclick=undoShopAll;
  $('us17VisualIndex').onchange=refreshVisual;$('us17VisualApply').onclick=()=>applyVisual(false);
+ $('us17VisualDonor').addEventListener('change',()=>{$('us17VisualCopy').disabled=!$('us17VisualDonor').value;});
  $('us17VisualCopy').onclick=()=>applyVisual(true);$('us17VisualUndo').onclick=undoBody;
  document.querySelectorAll('[data-career-tab]').forEach(b=>b.onclick=()=>setTab(b.dataset.careerTab));
  $('garageGrid').addEventListener('click',()=>queueMicrotask(()=>{undoVisual=null;refresh();}));
@@ -3128,8 +3508,8 @@ window.USCareerV17={setTab,refresh};
    const availability=S.partsAvailability(c.save,c.garage,c.slot);
    $('usUnlockCount').textContent=availability.unlocked+' / '+availability.total;
    $('usUnlockTitle').textContent=tr('UNLOCK ALL PARTS','ALLE TEILE FREISCHALTEN');
-   $('usUnlockDescription').textContent=tr('Mark mapped body, graphics, specialties and performance parts available for this car. This does not install parts or alter Dyno. The in-game effect is experimental.',
-     'Markiert Karosserie-, Grafik-, Extra- und Performance-Teile für dieses Auto als verfügbar. Es wird nichts eingebaut und Dyno bleibt unverändert. Die Wirkung im Spiel ist experimentell.');
+   $('usUnlockDescription').textContent=tr('Mark mapped body, graphics, specialties and performance parts available for this car. This does not install parts or alter Dyno. Confirmed working in-game.',
+     'Markiert Karosserie-, Grafik-, Extra- und Performance-Teile für dieses Auto als verfügbar. Es wird nichts eingebaut und Dyno bleibt unverändert. Die Freischaltung funktioniert im Spiel.');
    $('usUnlockAll').textContent=tr('UNLOCK ALL PARTS','ALLE TEILE FREISCHALTEN');
    $('usUnlockAll').disabled=availability.unlocked===availability.total;
    $('usUnlockUndo').textContent=tr('UNDO UNLOCK','FREISCHALTUNG RÜCKGÄNGIG');
@@ -3137,8 +3517,8 @@ window.USCareerV17={setTab,refresh};
  }
  function unlock(){const c=context();if(!c)return;
    const car=S.slotInfo(c.save,c.garage,c.slot);if(!car.owned||car.locked)return;
-   if(!confirm(tr('Unlock all mapped parts for '+car.model+'? Existing installed parts and tuning remain unchanged. Save-format change only; back up before testing in game.',
-    'Alle erfassten Teile für '+car.model+' freischalten? Eingebaute Teile und Tuning bleiben unverändert. Wirkung im Spiel noch unbestätigt – vorher Backup sichern.')))return;
+   if(!confirm(tr('Unlock all mapped parts for '+car.model+'? Existing installed parts and tuning remain unchanged. Unlocked parts become available in the in-game garage. Keep a backup.',
+    'Alle erfassten Teile für '+car.model+' freischalten? Eingebaute Teile und Tuning bleiben unverändert. Die Teile stehen anschließend in der Ingame-Garage zur Verfügung. Backup behalten.')))return;
    try{const snapshot=S.unlockAllParts(c.save,c.garage,c.slot);
      undo={save:c.save,garage:c.garage,slot:c.slot,snapshot};
      window.UndergroundLabHost.changed(tr('Parts availability updated for the selected car. No equipment installed.',
@@ -3155,4 +3535,290 @@ window.USCareerV17={setTab,refresh};
  window.USUnlockPartsUI={render};render();
 })();
 
-</script></body></html>
+</script><script>
+
+/* NFSU2 Studio v1.7.16: Traffic-only Arcade profile bench.
+ * Same saved byte layouts as Career (+8 offsets in generic records).
+ * Never combine H01/PH01/D04: they were unplayable in actual NFSU2.
+ */
+(()=>{'use strict';
+const S=window.NFSU2,M=window.UndergroundMyCars,P=window.UndergroundTrafficPresets;
+const $=id=>document.getElementById(id), undo=new WeakMap();
+const tx=(en,de)=>window.USI18N?.getLanguage?.()==='de'?de:en;
+const MODES=['base','boost','final105','final125','turboHigh','powerWide','diagU5','diagU6','diagU8'];
+const messages={
+ boost:['B03 · Both Uniques','B03 · Beide Uniques','ECU + Turbo, final drive 115','ECU + Turbo, Endübersetzung 115'],
+ final105:['G01 · Top Speed','G01 · Höchstgeschwindigkeit','Longer final drive (105)','Längere Endübersetzung (105)'],
+ final125:['G02 · Acceleration','G02 · Beschleunigung','Shorter final drive (125)','Kürzere Endübersetzung (125)'],
+ turboHigh:['T01 · Turbo RPM','T01 · Turbo-Drehzahl','High-RPM boost experiment','Experiment: Turbo bei hohen Drehzahlen'],
+ powerWide:['P01 · Wide Power Band','P01 · Breites Leistungsband','Drivable on the Traffic Coupe, other cars unverified','Beim Traffic-Coupé fahrbar, sonst nicht bestätigt'],
+ diagU5:['D01 · Unique 5','D01 · Unique 5','Handling bar test; driving not confirmed','Handling-Anzeige: Fahrbarkeit offen'],
+ diagU6:['D02 · Unique 6','D02 · Unique 6','Isolated handling test','Einzelner Handling-Test'],
+ diagU8:['D03 · Unique 8','D03 · Unique 8','Isolated handling test','Einzelner Handling-Test']
+};
+let selected=6;
+const host=()=>{const h=window.UndergroundLabHost?.get();return h?.loaded?h:null;};
+const state=()=>{const h=host();if(!h)return null;try{
+ const car=M.info(h.save,selected);return car.active&&car.traffic?{h,car,slot:selected}:null;
+ }catch{return null;}};
+function capture(st){const b=M.at(st.slot),d=st.h.save;
+ return {uniques:d.slice(b+0x2f0,b+0x2f0+36),parts:d.slice(b+0x318,b+0x318+68),dyno:d.slice(b+0x35c,b+0x35c+205)};}
+function write(st,snap){if(!snap||snap.uniques?.length!==36||snap.parts?.length!==68||snap.dyno?.length!==205)throw Error('Invalid Arcade performance data.');
+ const b=M.at(st.slot),d=st.h.save;
+ d.set(snap.uniques,b+0x2f0);d.set(snap.parts,b+0x318);d.set(snap.dyno,b+0x35c);
+ if(M.info(d,st.slot).key!==st.car.key)throw Error('Arcade vehicle identity changed unexpectedly.');
+}
+const baseline=st=>st.car.intern==='COUPE'?'original':'stock';
+function status(st){const snap=capture(st),base=baseline(st);
+ if(P.same(snap,P.ref(base)))return base;
+ for(const test of P.TESTS)if(P.same(snap,P.ref(test.id)))return test.id;
+ for(const x of ['handling','powerHandling','diagStage'])if(P.same(snap,P.ref(x)))return x;
+ return 'custom';}
+const short=mode=>({
+ original:'K01',stock:tx('STOCK','SERIE'),boost:'B03',final105:'G01',final125:'G02',
+ turboHigh:'T01',powerWide:'P01',diagU5:'D01',diagU6:'D02',diagU8:'D03',
+ handling:'H01',powerHandling:'PH01',diagStage:'D04',custom:tx('CUSTOM','EIGEN')
+})[mode]||mode;
+function render(slot){if(Number.isInteger(slot))selected=slot;
+ const root=$('arcadeTrafficPresetPanel'),panel=$('mcTuneBody'),st=state();
+ panel?.classList.toggle('traffic-mode',!!st);
+ root?.classList.toggle('hidden',!st);
+ if(!st)return;
+ const base=baseline(st),val=status(st);
+ $('atpEyebrow').textContent=tx('TRAFFIC CAR · SIMPLE PROFILES','TRAFFIC CAR · EINFACHE PROFILE');
+ $('atpTitle').textContent=tx('PERFORMANCE · ','LEISTUNG · ')+ (window.USDisplayTraffic?.(st.car.intern)||st.car.name);
+ $('atpCurrent').textContent=tx('CURRENT · ','AKTUELL · ')+short(val);
+ $('atpLead').textContent=tx('Choose an individual profile. Changes affect this Arcade car only.','Profil direkt auswählen. Änderungen gelten nur für dieses Arcade-Auto.');
+ const choices=$('atpOptions');choices.replaceChildren();
+ for(const name of MODES){
+   const mode=name==='base'?base:name;
+   const text=mode===base?
+     [tx('Original setup','Serienabstimmung'),tx('Saved neutral baseline','Gespeicherter Ausgangszustand')]:messages[mode];
+   const b=document.createElement('button');b.type='button';b.className='traffic-preset-option'+(val===mode?' is-active':'');
+   b.setAttribute('aria-pressed',String(val===mode));b.dataset.profile=mode;
+   b.innerHTML='<span class="tp-card-top"><strong class="tp-card-code"></strong><span class="tp-card-status"></span></span><span class="tp-card-name"></span><span class="tp-card-description"></span>';
+   b.querySelector('.tp-card-code').textContent=short(mode);
+   b.querySelector('.tp-card-status').textContent=mode===val?tx('ACTIVE','AKTIV'):'';
+   b.querySelector('.tp-card-name').textContent=text[0];
+   b.querySelector('.tp-card-description').textContent=text[1];
+   b.onclick=()=>apply(mode);choices.append(b);
+ }
+ const key=undo.get(st.h.save)?.[st.slot],cur=capture(st);
+ $('atpUndo').disabled=!(key?.key===st.car.key&&P.same(cur,key.after));
+ $('atpUndo').textContent=tx('UNDO LAST PROFILE','LETZTES PROFIL RÜCKGÄNGIG');
+ $('atpWarning').textContent=['handling','powerHandling','diagStage'].includes(val)?
+  tx('This saved profile failed an in-game drive test. Choose B03 (Coupe) or Stock and export a backup.',
+    'Diese Abstimmung war im Spiel nicht fahrbar. B03 (Coupé) oder Serie wählen und Backup exportieren.'):
+  tx('P01 is confirmed driveable only on the Traffic Coupe. D01–D03 are unverified. H01, PH01 and D04 remain disabled.',
+     'P01 ist bisher nur beim Traffic-Coupé bestätigt. D01–D03 sind ungetestet. H01, PH01 und D04 bleiben gesperrt.');
+}
+function apply(mode){const st=state();if(!st)return;
+ if(![baseline(st),...P.TESTS.map(x=>x.id)].includes(mode))return;
+ if(mode===status(st))return;
+ if(!confirm(tx('Apply ','Profil ') +short(mode)+tx(' to Arcade slot ',' auf Arcade-Platz ')+String(st.slot).padStart(2,'0')+
+ '\n'+tx('This changes only the selected Traffic Car tuning. Keep a backup.','Nur das Tuning dieses Traffic Cars wird geändert. Backup sichern.')))return;
+ try{const old=capture(st);write(st,P.ref(mode));
+   const entries=undo.get(st.h.save)||{};entries[st.slot]={key:st.car.key,before:old,after:capture(st)};undo.set(st.h.save,entries);
+   window.UndergroundLabHost.changed(tx('Arcade Traffic profile saved. Export to test in game.','Arcade-Traffic-Profil gespeichert. Zum Testen exportieren.'));
+   render();
+ }catch(e){window.UndergroundLabHost.message(e.message,true);}
+}
+$('atpUndo')?.addEventListener('click',()=>{
+ const st=state(),u=st&&undo.get(st.h.save)?.[st.slot];if(!st||!u||u.key!==st.car.key||!P.same(capture(st),u.after))return;
+ try{write(st,u.before);delete undo.get(st.h.save)[st.slot];
+ window.UndergroundLabHost.changed(tx('Previous Arcade setup restored.','Vorheriges Arcade-Tuning wiederhergestellt.'));render();
+ }catch(e){window.UndergroundLabHost.message(e.message,true);}
+});
+window.addEventListener('underground-language-change',()=>render());
+window.addEventListener('underground-save-loaded',()=>{selected=6;render();});
+window.USArcadeTrafficUI={render,status:()=>{const st=state();return st?status(st):null;}};
+render();
+})();
+
+</script>
+
+<!-- nfsu2-studio-globalb-reader-v1720.js : local-only inspection, no redistribution of game assets -->
+<script>
+(()=>{'use strict';
+ const S=window.NFSU2,$=id=>document.getElementById(id);
+ const tr=(en,de)=>window.USI18N?.getLanguage?.()==='de'?de:en;
+ // Extracted numeric physics from the user-provided MODIFIED GlobalB.lzc.
+ // Only values needed for comparative estimates are embedded. The original
+ // copyrighted game archive is NOT distributed with this web editor.
+ const BUILTIN_RAW=[[1924326675,"PEUGOT",1.0550001,6500.0,3.79,5,[0.1,0.13,0.15,0.17,0.192,0.18,0.17,0.158,0.135],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.45,1.2,1.4250001,1.2]],[46793951,"FOCUS",1.15,6500.0,3.8200002,5,[0.12,0.13,0.14,0.155,0.17,0.182,0.17,0.145,0.125],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6000001,1.35,1.6000001,1.35]],[4152103915,"COROLLA",0.9700001,7000.0,3.484,5,[0.09,0.1,0.11,0.12,0.125,0.13,0.125,0.12,0.1],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.4250001,1.225,1.475,1.3000001]],[22084480,"240SX",1.22,6500.0,4.0830002,5,[0.14,0.15,0.16,0.18,0.2,0.216,0.203,0.17,0.15],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.7,1.4000001,1.6700001,1.4000001]],[54877547,"MIATA",1.04,7000.0,4.3000002,5,[0.11,0.125,0.13,0.135,0.14,0.145,0.1485,0.137,0.115],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6500001,1.45,1.6750001,1.45]],[43040845,"CIVIC",1.1800001,8000.0,4.4000001,5,[0.1,0.12,0.13,0.14,0.143,0.146,0.151,0.15,0.125],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6000001,1.4000001,1.6000001,1.4000001]],[1259341578,"PEUGOT106",0.9610001,6500.0,3.79,5,[0.1,0.125,0.135,0.144,0.143,0.141,0.139,0.137,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.45,1.225,1.465,1.25]],[43252439,"CORSA",1.082,6500.0,3.79,5,[0.1,0.13,0.15,0.16,0.163,0.165,0.163,0.14,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.5700001,1.35,1.6000001,1.4000001]],[1629936973,"HUMMER",2.9000001,5500.0,4.0999999,4,[0.2,0.3,0.4,0.47,0.5220001,0.5000001,0.47,0.432,0.38],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.8000001,1.6000001,1.8000001,1.6000001]],[35244362,"NAVIGATOR",2.7,5500.0,3.73,4,[0.3,0.35,0.45,0.4793001,0.46,0.44,0.42,0.4,0.35],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.7,1.46,1.7,1.47]],[3480242033,"ESCALADE",2.5,5500.0,3.73,4,[0.2,0.3,0.4,0.45,0.48,0.515,0.49,0.46,0.4],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.8500001,1.6700001,1.9000001,1.75]],[83690786,"TIBURON",1.37,6500.0,4.428,6,[0.16,0.18,0.2,0.22,0.239,0.226,0.213,0.207,0.18],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.8000001,1.5500001,1.8000001,1.5500001]],[2041495532,"SENTRA",1.3000001,6500.0,4.1329999,6,[0.14,0.17,0.2,0.23,0.243,0.23,0.215,0.2,0.175],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.5,1.3000001,1.5,1.3000001]],[1415244896,"CELICA",1.13,8000.0,4.5290003,6,[0.155,0.16,0.165,0.17,0.172,0.174,0.176,0.17,0.15],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.5400001,1.3000001,1.5250001,1.3000001]],[50476782,"IS300",1.4760001,6500.0,3.727,5,[0.2,0.23,0.25,0.27,0.2943,0.29,0.28,0.24,0.21],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6000001,1.4000001,1.6000001,1.4000001]],[62440586,"SUPRA",1.5500001,7000.0,3.27,6,[0.2,0.23,0.26,0.28,0.283,0.285,0.275,0.235,0.2],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6000001,1.35,1.6500001,1.38]],[1454215,"GOLF",1.33,6500.0,3.6500001,5,[0.18,0.2,0.2147,0.195,0.18,0.16,0.1446,0.11,0.08],[0.0,0.0,0.02,0.0396,0.0546,0.0746,0.09,0.095,0.1],[1.6200001,1.3000001,1.5900002,1.3000001]],[1107,"A3",1.495,7000.0,4.2350001,6,[0.22,0.24,0.28,0.319,0.315,0.3,0.29,0.267,0.22],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.615,1.4000001,1.6000001,1.4000001]],[56188,"RSX",1.255,8000.0,4.3899999,6,[0.14,0.15,0.16,0.17,0.18,0.19,0.192,0.189,0.165],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6500001,1.4000001,1.625,1.4000001]],[1963121284,"ECLIPSE",1.419,7000.0,4.1500001,5,[0.13,0.18,0.22,0.27,0.235,0.21,0.18,0.145,0.115],[0.0,0.0,0.01,0.02,0.05,0.065,0.075,0.07,0.065],[1.855,1.5600001,1.8500001,1.5600001]],[1767,"TT",1.52,7500.0,4.059,6,[0.21,0.26,0.32,0.315,0.305,0.29,0.286,0.225,0.19],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.75,1.5,1.6000001,1.5]],[56321,"RX8",1.24,8500.0,4.4400001,6,[0.16,0.18,0.19,0.2,0.21,0.215,0.213,0.212,0.185],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.7,1.48,1.7,1.5]],[706257,"350Z",1.45,7000.0,3.54,6,[0.21,0.25,0.31,0.35,0.36,0.37,0.351,0.3,0.255],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6800001,1.58,1.7,1.585]],[43118,"G35",1.5500001,7000.0,3.54,6,[0.21,0.25,0.3,0.34,0.36,0.365,0.3410001,0.29,0.24],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.7,1.5,1.75,1.5500001]],[763140957,"3000GT",1.728,7000.0,4.1550002,6,[0.2,0.31,0.407,0.38,0.33,0.32,0.301,0.24,0.2],[0.0,0.0,0.02,0.04,0.075,0.08,0.09,0.09,0.09],[1.74,1.48,1.74,1.48]],[44233,"GTO",1.6900001,6500.0,3.46,6,[0.25,0.32,0.39,0.45,0.495,0.475,0.456,0.38,0.31],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6700001,1.5250001,1.7,1.5500001]],[890656793,"MUSTANGGT",1.5600001,6000.0,3.5500002,5,[0.25,0.28,0.32,0.35,0.39,0.425,0.39,0.369,0.32],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[1.6500001,1.4000001,1.6700001,1.46]],[3192403806,"SKYLINE",1.5,8000.0,3.5450001,6,[0.18,0.2,0.22,0.24,0.243,0.235,0.229,0.18,0.15],[0.0,0.0,0.03,0.04,0.05,0.06,0.07,0.075,0.075],[1.8500001,1.7,1.9000001,1.75]],[164818934,"LANCEREVO8",1.4000001,7000.0,4.5290003,5,[0.15,0.2,0.32,0.359,0.34,0.31,0.27,0.2,0.15],[0.0,0.0,0.0,0.01,0.02,0.04,0.06,0.08,0.085],[1.6500001,1.4000001,1.6400001,1.4000001]],[56320,"RX7",1.22,8000.0,4.0999999,5,[0.12,0.135,0.15,0.17,0.18,0.19,0.1885,0.1495,0.125],[0.0,0.0,0.02,0.05,0.08,0.103,0.088,0.085,0.08],[1.7,1.5,1.75,1.6000001]],[3477362936,"IMPREZAWRX",1.48,7000.0,3.9000001,6,[0.2,0.25,0.3,0.35,0.365,0.33,0.286,0.22,0.17],[0.0,0.0,0.01,0.02,0.04,0.06,0.08,0.07,0.06],[1.6700001,1.4000001,1.6500001,1.4000001]],[1906549,"TAXI",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[2416136565,"4DR_SEDAN02",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[1135185575,"AMBULANCE",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[2076233495,"TAXI02",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[2795348340,"PANELVAN",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[43255611,"COUPE",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[2214323822,"FIRETRUCK",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[2836177499,"PARCELVAN",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[1928428043,"PICKUP",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[4068436563,"4DR_SEDAN",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[38825,"BUS",6.5,5000.0,4.8000002,5,[0.48837,0.6162701,0.68604,0.7209201,0.6511601,0.5813901,0.51162,0.43022,0.37208],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.5,1.7,3.0,2.8000002]],[57341,"SUV",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[3942120593,"MINIVAN",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[2672691320,"HATCHBACK",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]],[2867989722,"HATCHBACK02",1.8000001,6000.0,3.5500002,5,[0.13,0.152,0.1575,0.163,0.1685,0.174,0.17,0.145,0.12],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[2.0,1.6000001,2.0,1.6000001]]];
+ const builtinCars=()=>new Map(BUILTIN_RAW.map(([hash,name,mass,rpmMax,finalDrive,gears,torque,turbo,grip],index)=>
+   [hash,{hash,name,index,mass,rpmMax,finalDrive,gears,torque,turbo,grip}]));
+ const game={file:'Built-in · modified GlobalB',cars:builtinCars(),count:BUILTIN_RAW.length,valid:true,source:'builtin'};
+ let saveIndices={speed:0,accel:0,handling:0};
+ const readSaveIndices=()=>{saveIndices={speed:Number($('us18Speed')?.dataset.score)||0,accel:Number($('us18Accel')?.dataset.score)||0,handling:Number($('us18Handling')?.dataset.score)||0};};
+ const fnum=(v,d=2)=>Number.isFinite(v)?v.toLocaleString(tr('en-US','de-DE'),{maximumFractionDigits:d,minimumFractionDigits:d}):'—';
+ const round=v=>Number.isFinite(v)?Math.round(v).toLocaleString(tr('en-US','de-DE')):'—';
+ const fmtHash=n=>n.toString(16).toUpperCase().padStart(8,'0');
+ function assert(cond,msg){if(!cond)throw new Error(msg);}
+ function unpackJDLZ(input){
+   const dv=new DataView(input.buffer,input.byteOffset,input.byteLength);
+   const outputLength=dv.getUint32(8,true);
+   assert(outputLength>=1024&&outputLength<=30*1024*1024,'Invalid JDLZ output size.');
+   const compressedLength=dv.getUint32(12,true);
+   assert(compressedLength<=input.length&&compressedLength>=16,'Invalid JDLZ compressed length.');
+   const out=new Uint8Array(outputLength);
+   let p=16,op=0,flags1=1,flags2=1;
+   while(op<outputLength){
+     assert(p<input.length,'Incomplete JDLZ data.');
+     if(flags1===1)flags1=input[p++]|0x100;
+     if(flags2===1){assert(p<input.length,'Incomplete JDLZ flags.');flags2=input[p++]|0x100;}
+     if(flags1&1){
+       assert(p+1<input.length,'Incomplete JDLZ run.');
+       const b0=input[p++],b1=input[p++];
+       const len=(flags2&1)?(((b0&0xf0)<<4)|b1)+3:(b0&31)+3;
+       const dist=(flags2&1)?(b0&15)+1:(((b0&0xe0)<<3)|b1)+17;
+       assert(dist>0&&dist<=op&&op+len<=outputLength,'Invalid JDLZ back-reference.');
+       if(dist>=len)out.set(out.subarray(op-dist,op-dist+len),op);
+       else for(let k=0;k<len;k++)out[op+k]=out[op+k-dist];
+       op+=len;flags2>>=1;
+     }else{out[op++]=input[p++];}
+     flags1>>=1;
+   }
+   return out;
+ }
+ function decodeGameFile(bytes){
+   const signature=String.fromCharCode(...bytes.slice(0,4));
+   if(signature==='JDLZ')return unpackJDLZ(bytes);
+   assert(bytes.length<30*1024*1024,'Game data file is too large.');
+   return bytes;
+ }
+ function parseGameData(raw){
+   const bytes=decodeGameFile(raw);const view=new DataView(bytes.buffer,bytes.byteOffset,bytes.length);
+   const chunkId=0x34600, stride=0x890;
+   let carAt=-1, count=0;
+   for(let p=0;p+24<bytes.length;p++){
+     if(view.getUint32(p,true)!==chunkId)continue;
+     const size=view.getUint32(p+4,true);
+     if(size<stride*31||p+8+size>bytes.length)continue;
+     let start=p+8;
+     while(start<p+24&&bytes[start]===0x11)start++;
+     const possible=Math.floor((p+8+size-start)/stride);
+     if(possible<31||possible>100)continue;
+     if(![...bytes.slice(start,start+32)].some(x=>x>=65&&x<=90))continue;
+     carAt=start;count=possible;break;
+   }
+   assert(carAt>=0,'CarTypeInfo table missing. Use NFSU2 GLOBALB.lzc / GLOBALB.BUN.');
+   const cars=new Map();
+   for(let i=0;i<count;i++){
+     const base=carAt+i*stride;
+     const nameBytes=bytes.subarray(base,base+32);let name='';
+     for(const b of nameBytes){if(!b)break;if(b>=32&&b<=126)name+=String.fromCharCode(b);}
+     if(!name)continue;
+     const hash=view.getUint32(base+0xd0,true),phys=base+0x110;
+     const get=o=>view.getFloat32(phys+o,true);
+     const mass=get(0x110), rpmMax=get(0x1f4);
+     const torque=Array.from({length:9},(_,k)=>get(0x200+4*k));
+     const turbo=Array.from({length:9},(_,k)=>get(0x224+4*k));
+     const grip=[get(0xdc),get(0xe0),get(0xfc),get(0x100)];
+     cars.set(hash,{name,hash,index:i,mass,rpmMax,torque,turbo,grip,finalDrive:get(0x1b8),gears:view.getInt32(phys+0x1c8,true)});
+   }
+   assert(cars.size>=31,'Too few valid car records.');
+   return {cars,count:cars.size};
+ }
+ const empty=(t)=>{const root=$('us20CarPhysics');if(root)root.textContent=t;};
+ function row(label,value,wide=false){const el=document.createElement('div');el.className='us20-phys-cell'+(wide?' is-wide':'');
+   const caption=document.createElement('span');caption.className='us20-phys-label';caption.textContent=label;
+   const val=document.createElement('span');val.className='us20-phys-value';val.textContent=value;
+   el.append(caption,val);return el;}
+ function render(){
+   const status=$('us20GameDataStatus'),indicator=$('us20DataIndicator');if(!status||!indicator)return;
+   indicator.textContent=game.source==='builtin'?tr('BUILT-IN · '+game.count+' CARS','INTEGRIERT · '+game.count+' AUTOS'):game.source==='custom'?tr('CUSTOM · '+game.count+' CARS','EIGENE · '+game.count+' AUTOS'):tr('NOT AVAILABLE','NICHT VERFÜGBAR');
+   $('us21ResetBuiltIn').hidden=game.source!=='custom';
+   const c=window.UndergroundLabHost?.get();
+   if(!game.valid){empty(tr('Import your local game data to view verified base engine / chassis parameters.','Importiere deine lokale Spieldatenbank, um Motor- und Fahrwerksgrundwerte anzuzeigen.'));return;}
+   if(!c?.loaded||!c.save){empty(tr('Load a save to inspect a car.','Lade einen Spielstand, um ein Fahrzeug zu untersuchen.'));return;}
+   const info=S.slotInfo(c.save,c.garage,c.slot);
+   if(!info?.owned){empty(tr('No vehicle in selected slot.','Kein Fahrzeug im ausgewählten Slot.'));return;}
+   const hash=typeof info.key==='string'?parseInt(info.key.replace(/^0x/i,''),16):info.key;
+   const v=game.cars.get(hash);
+   if(!v){empty(tr('Vehicle identity not present in this GLOBALB.','Fahrzeug-ID ist nicht in dieser GLOBALB vorhanden.'));return;}
+   const root=$('us20CarPhysics');root.textContent='';
+   const peak=Math.max(...v.torque),peakTurbo=Math.max(...v.turbo);
+   const same=[...game.cars.values()].filter(x=>x.hash!==v.hash&&x.mass===v.mass&&x.rpmMax===v.rpmMax&&x.finalDrive===v.finalDrive&&x.torque.every((n,i)=>Math.abs(n-v.torque[i])<1e-6)&&x.turbo.every((n,i)=>Math.abs(n-v.turbo[i])<1e-6));
+   root.append(
+     row(tr('GAME MODEL','SPIELMODELL'),v.name+' · '+fmtHash(v.hash),true),
+     row(tr('BASE MASS · GAME UNITS','BASISMASSE · SPIELEINHEITEN'),fnum(v.mass)),
+     row(tr('MAX ENGINE RPM','MAX. MOTORDREHZAHL'),round(v.rpmMax)+' rpm'),
+     row(tr('BASE FINAL DRIVE','BASIS-ENDÜBERSETZUNG'),fnum(v.finalDrive,3)),
+     row(tr('FORWARD GEARS','VORWÄRTSGÄNGE'),String(v.gears)),
+     row(tr('PEAK ENGINE CURVE · INTERNAL','MAX. MOTORKURVE · INTERN'),fnum(peak,3)),
+     row(tr('PEAK TURBO CURVE · INTERNAL','MAX. TURBOKURVE · INTERN'),fnum(peakTurbo,3)),
+     row(tr('FRONT/REAR GRIP · BASE','GRIP VORN/HINTEN · BASIS'),fnum((v.grip[0]+v.grip[1])/2,2)+' / '+fnum((v.grip[2]+v.grip[3])/2,2),true),
+     row(tr('BASE TORQUE CURVE (9 RPM points)','BASIS-DREHMOMENTKURVE (9 DREHZAHL-PUNKTE)'),v.torque.map(x=>fnum(x,3)).join(' · '),true)
+   );
+   if(same.length)root.append(row(tr('IDENTICAL ENGINE BASELINES','IDENTISCHE MOTOR-GRUNDDATEN'),same.map(x=>x.name).join(' · '),true));
+   // The native game HUD rating formula is NOT known. This comparison uses the
+   // loaded game's baseline curves/mass/grip plus independent save-part indices.
+   // These are explicitly visual ESTIMATES, never engine-validated values.
+   const baseMetrics=(x)=>{
+     const mass=Math.max(0.3,x.mass),drive=Math.max(.1,x.finalDrive);
+     const pw=Math.max(0,...x.torque.map((t,i)=>Math.max(0,t+x.turbo[i])*(.16+.84*i/8)*x.rpmMax))/mass;
+     const grip=(x.grip.reduce((a,b)=>a+b,0)/4)/Math.sqrt(mass);
+     return {speed:Math.sqrt(pw+1)*Math.sqrt(x.rpmMax/drive),accel:pw,handling:grip};
+   };
+   const all=[...game.cars.values()].map(baseMetrics),actual=baseMetrics(v);
+   const normalized=(stat)=>{
+     const values=all.map(x=>x[stat]).sort((a,b)=>a-b),lo=values[0],hi=values[values.length-1];
+     return hi>lo?Math.max(0,Math.min(1,(actual[stat]-lo)/(hi-lo))):.5;
+   };
+   const labels={speed:'us18Speed',accel:'us18Accel',handling:'us18Handling'};
+   Object.entries(labels).forEach(([type,id])=>{
+     const score=Math.max(0,Math.min(100,Math.round(18+58*normalized(type)+Math.min(100,Math.max(0,saveIndices[type]??0))*.22)));
+     $(id).textContent='';$(id).dataset.score=String(score);
+     const bar=$(id+'Bar');bar.style.width=score+'%';
+     bar.parentElement.setAttribute('aria-valuenow',String(score));
+   });
+   $('us18MetricNote').textContent=tr('GLOBALB-BASED ESTIMATE · GAME STYLE ONLY · NOT ORIGINAL IN-GAME VALUES',
+      'GLOBALB-BASIERTE SCHÄTZUNG · NUR SPIELÄHNLICHE DARSTELLUNG · KEINE ORIGINALWERTE');
+ }
+ async function importFile(file){
+   if(!file)return;const status=$('us20GameDataStatus');
+   status.textContent=tr('Reading local game data…','Lese lokale Spieldaten…');
+   try{
+     const bytes=new Uint8Array(await file.arrayBuffer());
+     const parsed=parseGameData(bytes);
+     game.cars=parsed.cars;game.count=parsed.count;game.valid=true;game.file=file.name;game.source='custom';
+     status.textContent=file.name+' · '+parsed.count+tr(' vehicle records',' Fahrzeuge');
+     const c=window.UndergroundLabHost?.get();if(c?.loaded&&oldRender){oldRender(c.save,c.garage,c.slot,S.slotInfo(c.save,c.garage,c.slot));readSaveIndices();}
+     render();
+   }catch(error){status.textContent=tr('Import failed (existing data retained): ','Import fehlgeschlagen (bisherige Daten bleiben erhalten): ')+error.message;
+     render();}
+ }
+ function restoreBuiltIn(){
+   game.cars=builtinCars();game.count=BUILTIN_RAW.length;game.valid=true;game.file='Built-in · modified GlobalB';game.source='builtin';
+   $('us20GameDataStatus').textContent=tr('Included modified GLOBALB · 46 vehicles','Integrierte gemoddete GLOBALB · 46 Fahrzeuge');
+   refreshRatings();
+ }
+ function refreshRatings(){
+   const c=window.UndergroundLabHost?.get();
+   if(c?.loaded&&oldRender){oldRender(c.save,c.garage,c.slot,S.slotInfo(c.save,c.garage,c.slot));readSaveIndices();}
+   render();
+ }
+ window.NFSU2GamePhysics={parseGameData,render,getCar:(hash)=>game.cars.get(hash),getCount:()=>game.count,getSource:()=>game.source,restoreBuiltIn};
+ $('us20OpenGameData').addEventListener('click',()=>$('us20GameDataFile').click());
+ $('us21ResetBuiltIn').addEventListener('click',restoreBuiltIn);
+ $('us20GameDataFile').addEventListener('change',e=>{importFile(e.target.files?.[0]);e.target.value='';});
+ const oldRender=window.NFSU2StudioRatings?.render;
+ if(oldRender)window.NFSU2StudioRatings.render=function(...args){const r=oldRender(...args);readSaveIndices();render();return r;};
+ window.addEventListener('underground-language-change',()=>{
+   $('us20GameDataHeading').textContent=tr('GAME PHYSICS · GLOBALB','SPIELPHYSIK · GLOBALB');
+   $('us20OpenGameData').textContent=tr('LOAD OTHER GLOBALB','ANDERE GLOBALB LADEN');
+   $('us21ResetBuiltIn').textContent=tr('USE BUILT-IN DATA','INTEGRIERTE DATEN NUTZEN');
+   $('us20GameDataHelp').textContent=tr('Data from your modified GLOBALB is available automatically for all 46 vehicles. You can optionally load another GLOBALB for comparison; no full game archive is bundled.',
+    'Die Werte deiner gemoddeten GLOBALB sind für alle 46 Autos automatisch verfügbar. Optional kannst du eine andere GLOBALB zum Vergleichen laden; das vollständige Spielarchiv ist nicht enthalten.');
+   $('us20GameDataWarning').textContent=tr('Performance bars are estimates using loaded engine data and save-tuning indices, NOT the game’s original ratings. Modded GLOBALB data is read locally only; it does not change engine physics via save editing.',
+    'Die Leistungsbalken sind Schätzungen aus geladenen Motordaten und Spielstand-Tuning-Indizes, NICHT die Originalwerte des Spiels. Die GLOBALB wird nur lokal gelesen und verändert keine Engine-Physik über den Spielstand.');
+   render();
+ });
+ window.dispatchEvent(new Event('underground-language-change'));
+ $('us20GameDataStatus').textContent=tr('Included modified GLOBALB · 46 vehicles','Integrierte gemoddete GLOBALB · 46 Fahrzeuge');
+ render();
+})();
+</script>
+
+</body></html>
