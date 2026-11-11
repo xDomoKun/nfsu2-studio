@@ -1,14 +1,14 @@
-# Underground Studio v1.7.15
+# NFSU2 Studio v1.7.15
 
 **Browser Editor:**
 
-**🎮 [Underground-Studio v1.7.15](https://xdomokun.github.io/underground-studio/)**
+**🎮 [NSFU2-Studio v1.7.15](https://xdomokun.github.io/underground-studio/)**
 
 ---
 
 **Major Update — What's New Since v1.0**
 
-Underground Studio has evolved from a basic savegame editor into a comprehensive vehicle, garage, and performance customization tool for **Need for Speed: Underground 2**.
+NFSU2 Studio has evolved from a basic savegame editor into a comprehensive vehicle, garage, and performance customization tool for **Need for Speed: Underground 2**.
 
 Version 1.7.15 introduces expanded vehicle selection, improved Career and Arcade garage management, advanced performance tuning, new parts-unlocking functionality, and numerous interface improvements.
 
@@ -139,10 +139,10 @@ Underground Studio is an actively developed, unofficial savegame editor. Some ex
 
 ## ❤️ Thank You!
 
-**Underground Studio v1.7.15**
+**NFSU2 Studio v1.7.15**
 
 *Bring more possibilities to Underground 2.*
 
 ---
 
-*Underground Studio is an independent fan project and is not affiliated with Electronic Arts or EA Black Box.*
+*NFSU2 Studio is an independent fan project and is not affiliated with Electronic Arts or EA Black Box.*
