@@ -31,17 +31,6 @@ No installation required. The editor runs locally in your browser; your save fil
 
 The Top Speed, Acceleration and Handling bars are **estimates** based on savegame upgrades, tuning and available vehicle baseline data. They are inspired by the game's interface, but **do not reproduce the game's verified internal rating formula**. Higher bars do not guarantee higher real-world in-game performance.
 
-## Project structure
-
-```text
-nfsu2-studio/
-├── index.html       # Complete editor: HTML, CSS and JavaScript
-├── images/          # Street and Traffic Car previews
-└── README.md
-```
-
-The editor needs no build step. For GitHub Pages, place `index.html` and `images/` at the site root.
-
 ## Disclaimer
 
 NFSU2 Studio is an unofficial fan project and is not affiliated with or endorsed by Electronic Arts or EA Black Box. *Need for Speed* and related assets belong to their respective owners. Vehicle artwork and third-party components may have separate rights; no open-source license is implied for them.
