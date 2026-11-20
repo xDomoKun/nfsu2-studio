@@ -831,7 +831,7 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
 </head>
 <body>
 <div class="app">
-<aside class="sidebar"><div class="brand"><div class="logo"><span>N<span class="logo-slash">/</span>2</span></div><div class="brandcopy"><b>NFSU2<span>STUDIO</span></b><small>SAVE EDITOR · v1.7.23</small></div></div><div class="nav"><button class="active" data-page="mycars" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M4.1 10.4c2.7-.3 4.8.5 6 2.7M19.9 10.4c-2.7-.3-4.8.5-6 2.7M12 14.5V20.5"/></svg></span><span>ARCADE</span></button><button class="" data-page="overview" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 2c3.1-2.1 5.1 2 8.2 0 2.6-1.6 4.3-.3 6.8-.9v12c-2.5.6-4.2-.8-6.8.9-3.1 2-5.1-2.1-8.2 0"/><path d="M9 4.9v4.1h4V5.2m3.2-.2v4.1h3.6M5 13h4v4.2m4-8.2v4.2h4"/></svg></span><span>CAREER</span></button></div></aside>
+<aside class="sidebar"><div class="brand"><div class="logo"><span>N<span class="logo-slash">/</span>2</span></div><div class="brandcopy"><b>NFSU2<span>STUDIO</span></b><small>SAVE EDITOR · v1.7.24</small></div></div><div class="nav"><button class="active" data-page="mycars" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M4.1 10.4c2.7-.3 4.8.5 6 2.7M19.9 10.4c-2.7-.3-4.8.5-6 2.7M12 14.5V20.5"/></svg></span><span>ARCADE</span></button><button class="" data-page="overview" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 2c3.1-2.1 5.1 2 8.2 0 2.6-1.6 4.3-.3 6.8-.9v12c-2.5.6-4.2-.8-6.8.9-3.1 2-5.1-2.1-8.2 0"/><path d="M9 4.9v4.1h4V5.2m3.2-.2v4.1h3.6M5 13h4v4.2m4-8.2v4.2h4"/></svg></span><span>CAREER</span></button></div></aside>
 <main class="main">
 <header class="top"><div><div class="eyebrow" style="">NFS UNDERGROUND 2 / SAVE EDITOR</div><h1 id="title">Arcade</h1><p class="subtitle" id="subtitle">Arcade · 20 Plätze</p></div><div class="top-actions"><div aria-label="Language / Sprache" class="language-switch" role="group"><button aria-pressed="true" class="lang-btn active" data-lang="en" type="button">EN</button><span aria-hidden="true" class="language-divider"></span><button aria-pressed="false" class="lang-btn" data-lang="de" type="button">DE</button></div><button class="btn" id="openTop"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16V3m0 0L7 8m5-5 5 5M4 15v5h16v-5"></path></svg><span>LADEN</span></button><button class="btn primary" disabled="" id="saveTop"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v13m0 0 5-5m-5 5-5-5M4 17v4h16v-4"></path></svg><span>SPEICHERN</span></button></div></header>
 <div class="message hidden" id="message" role="status"></div>
@@ -3970,4 +3970,172 @@ render();
 })();
 </script>
 
+<!-- v1.7.24: integrated car-aware adaptive Dyno curves. Only local save data. -->
+<style>
+.adaptive-dyno-panel{margin:15px 0 9px;border:1px solid #54654b;background:#182521;color:#d3e4c5}
+.adaptive-dyno-panel>summary{padding:12px 14px;font:italic 15px Impact,'Arial Narrow',Arial,sans-serif;letter-spacing:.5px;cursor:pointer;color:#e2f5ba;background:linear-gradient(90deg,#344535,#202d28)}
+.adaptive-dyno-content{padding:13px 15px 14px;display:grid;gap:11px}
+.adaptive-dyno-desc{font-size:12px;color:#c4d1bf;line-height:1.5;margin:0}
+.adaptive-dyno-controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.adaptive-dyno-control{display:grid;gap:5px;font-size:11px;font-weight:700;letter-spacing:.3px;color:#d4eab7}
+.adaptive-dyno-control select,.adaptive-dyno-control input[type=range]{width:100%;min-width:0}
+.adaptive-dyno-control select{background:#15201e;color:#f4ffe3;border:1px solid #64715d;border-radius:3px;padding:8px}
+.adaptive-dyno-control output{font-weight:700;color:#f0fbdc;margin-left:4px}
+.adaptive-dyno-traffic{display:flex;align-items:center;gap:8px;font-size:11px;line-height:1.35;color:#ebd8b4}
+.adaptive-dyno-traffic[hidden]{display:none!important}
+.adaptive-dyno-traffic input{accent-color:#83be4f}
+.adaptive-dyno-status{font-size:11px;line-height:1.45;color:#b9cbaf}
+.adaptive-dyno-actions{display:flex;gap:8px;flex-wrap:wrap}
+.adaptive-dyno-actions button{flex:1;min-width:115px}
+@media(max-width:560px){.adaptive-dyno-controls{grid-template-columns:1fr}}
+</style>
+<script>
+/* Car-aware heuristics, NOT proven fastest dyno. Exact game curve adjustment
+   and in-game strength depend on package data. Uses model-specific curves
+   from locally embedded GLOBALB and independent save-only ECU/turbo bytes. */
+(()=>{'use strict';
+ const $=id=>document.getElementById(id),EXT=window.NFSU2ExtremeDyno,A=window.UndergroundAutoTune,PH=window.NFSU2GamePhysics;
+ if(!EXT||!A||!PH)return;
+ const tr=(en,de)=>window.USI18N?.getLanguage?.()==='de'?de:en;
+ const cache=new WeakMap(),panels=[];
+ const eq=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+ const shifted=(arr,n)=>{
+   if(!n)return arr.slice();
+   const out=Array(9).fill(0);
+   for(let i=0;i<9;i++)out[clamp(i+n,0,8)]=Math.max(out[clamp(i+n,0,8)],arr[i]);
+   return out;
+ };
+ function getEngine(ctx){
+  const value=typeof ctx.key==='string'?Number.parseInt(ctx.key.replace(/^0x/i,''),16):ctx.key;
+  return Number.isFinite(value)?PH.getCar(value):null;
+ }
+ function profile(event,car){
+  const source=A.RACE_PROFILES[event];
+  const turboProfiles=[
+   [80,85,90,100,115,130,140,135,125],
+   [70,75,80,95,115,140,160,175,175],
+   [100,105,110,115,120,120,110,100,95],
+   [105,105,110,115,120,115,105,95,90],
+   [75,80,90,105,125,140,155,160,145]
+  ];
+  if(!car)return {ecu:source.slice(),turbo:turboProfiles[event].slice(),peak:'—',physics:false};
+  const moment=car.torque.map((v,i)=>Math.max(0,v+(car.turbo[i]||0)));
+  const torqueIndex=moment.indexOf(Math.max(...moment));
+  const powers=moment.map((v,i)=>v*((i+1)/9));
+  const powerIndex=powers.indexOf(Math.max(...powers));
+  const goal=[Math.round(.45*powerIndex+.55*torqueIndex),Math.max(powerIndex,6),torqueIndex,Math.round(.25*powerIndex+.75*torqueIndex),Math.round(.70*powerIndex+.30*torqueIndex)][event];
+  const target=clamp(goal,2,7);
+  const sorted=source.map((v,i)=>({v,i})).filter(o=>o.v===200);
+  const origCenter=sorted.length?Math.round(sorted.reduce((z,o)=>z+o.i,0)/sorted.length):4;
+  const move=clamp(target-origCenter,-2,2);
+  return {ecu:shifted(source,move),turbo:shifted(turboProfiles[event],move),peak:Math.round(car.rpmMax*(target+1)/9),physics:true,move};
+ }
+ function fillPoint(original,target,intensity,extra){
+  const boosted=target>100?target+(200-target)*(extra/100):target;
+  return clamp(Math.round(original+(boosted-original)*intensity/100),0,200);
+ }
+ const groupKey=ctx=>ctx.mode+':'+ctx.slot;
+ function currentRecord(ctx){
+  const data=cache.get(ctx.h.save)?.[groupKey(ctx)];
+  return data&&data.key===ctx.key&&eq(data.after,EXT.read(ctx))?data:null;
+ }
+ function refresh(){for(const p of panels){
+  const c=EXT.context(p.mode),rec=c&&currentRecord(c);
+  p.root.querySelector('[data-adaptive-undo]').disabled=!rec;
+  const car=c&&getEngine(c);
+  const status=p.root.querySelector('[data-adaptive-status]');
+  status.textContent=!c?tr('Select an occupied vehicle.','Wähle ein belegtes Fahrzeug.'):
+   !car?tr('No GLOBALB data for this model: a general curve is used.','Keine GLOBALB-Daten für dieses Modell: Es wird eine allgemeine Kurve verwendet.'):
+   tr('GLOBALB model: ','GLOBALB-Modell: ')+car.name+' · '+Math.round(car.rpmMax)+' rpm · '+tr('model-specific RPM focus','modellspezifischer Drehzahlfokus');
+  p.root.querySelector('[data-adaptive-traffic]').hidden=!c?.traffic;
+ }}
+ function build(ctx,one,percent,extra,includeTrafficTurbo){
+  const before=EXT.read(ctx),after=before.map(row=>row.slice()),car=getEngine(ctx);
+  const events=one==='all'?[0,1,2,3,4]:[Number(one)];
+  for(const event of events){
+    const rec=profile(event,car);
+    const old=after[event];
+    for(let i=0;i<9;i++)old[7+i]=fillPoint(old[7+i],rec.ecu[i],percent,extra);
+    const allowTurbo=ctx.traffic?includeTrafficTurbo:(()=>{try{return !!A.recommendation(ctx.h.save,ctx.h.garage,ctx.mode,ctx.slot,event).turbo;}catch(_){return false;}})();
+    if(allowTurbo){for(let i=0;i<9;i++)old[16+i]=fillPoint(old[16+i],rec.turbo[i],percent,extra);}
+  }
+  return {before,after,car,events};
+ }
+ function run(p){
+  const ctx=EXT.context(p.mode);
+  if(!ctx)return window.UndergroundLabHost?.message(tr('Select a vehicle first.','Zuerst ein Fahrzeug auswählen.'),true);
+  const select=p.root.querySelector('[data-adaptive-event]').value;
+  const intensity=Number(p.root.querySelector('[data-adaptive-intensity]').value);
+  const extra=Number(p.root.querySelector('[data-adaptive-extra]').value);
+  const trafficTurbo=p.root.querySelector('[data-adaptive-turbo]').checked;
+  const result=build(ctx,select,intensity,extra,trafficTurbo);
+  if(eq(result.before,result.after))return window.UndergroundLabHost?.message(tr('No Dyno changes to apply.','Keine Dyno-Änderungen notwendig.'));
+  const scope=select==='all'?tr('all five races','alle fünf Rennarten'):(A.EVENTS[Number(select)]||select);
+  const note=tr('EXPERIMENTAL car-aware save tuning','EXPERIMENTELLES fahrzeugspezifisches Save-Tuning')+'\n'+
+    (result.car?result.car.name:tr('Generic model','Allgemeines Modell'))+' · '+scope+'\n'+
+    tr('Strength: ','Stärke: ')+intensity+'% · '+tr('Extra curve gain: ','Zusätzliche Kurvenverstärkung: ')+extra+'%'+
+    (ctx.traffic?'\n'+tr('Traffic Car: in-game drivability is NOT confirmed.','Traffic Car: Fahrbarkeit im Spiel NICHT bestätigt.'):'')+'\n\n'+
+    tr('Only selected saved ECU/Turbo curve bytes will change; other cars, parts and gears remain untouched. BACK UP your save.','Nur ausgewählte ECU-/Turbo-Kurvenbytes werden geändert; andere Autos, Teile und Gänge bleiben unberührt. Spielstand SICHERN.');
+  if(!confirm(note))return;
+  try{
+    EXT.write(ctx,result.after);
+    const items=cache.get(ctx.h.save)||{};
+    items[groupKey(ctx)]={key:ctx.key,before:result.before,after:EXT.read(ctx)};
+    cache.set(ctx.h.save,items);
+    window.UndergroundLabHost?.changed(tr('Car-aware Dyno tuning saved. Export a COPY and test in-game.','Fahrzeugspezifisches Dyno-Tuning gespeichert. Eine KOPIE exportieren und im Spiel testen.'));
+    window.USArcadeTrafficUI?.render?.();window.USTrafficPresetUI?.render?.();refresh();
+  }catch(e){window.UndergroundLabHost?.message(e.message,true);}
+ }
+ function undo(p){const ctx=EXT.context(p.mode),rec=ctx&&currentRecord(ctx);if(!rec)return;
+  try{EXT.write(ctx,rec.before);delete cache.get(ctx.h.save)[groupKey(ctx)];
+   window.UndergroundLabHost?.changed(tr('Previous Dyno curve restored.','Vorherige Dyno-Kurve wiederhergestellt.'));
+   window.USArcadeTrafficUI?.render?.();window.USTrafficPresetUI?.render?.();refresh();
+  }catch(e){window.UndergroundLabHost?.message(e.message,true);}
+ }
+ function add(mode,target){if(!target)return;
+  const root=document.createElement('details');root.className='adaptive-dyno-panel';
+  root.innerHTML=`<summary data-adaptive-title></summary><div class="adaptive-dyno-content">
+   <p class="adaptive-dyno-desc" data-adaptive-desc></p>
+   <div class="adaptive-dyno-controls">
+    <label class="adaptive-dyno-control"><span data-adaptive-event-title></span><select data-adaptive-event></select></label>
+    <label class="adaptive-dyno-control"><span><span data-adaptive-intensity-title></span><output data-adaptive-intensity-out>100%</output></span><input data-adaptive-intensity type="range" min="0" max="100" step="5" value="100"></label>
+    <label class="adaptive-dyno-control"><span><span data-adaptive-extra-title></span><output data-adaptive-extra-out>0%</output></span><input data-adaptive-extra type="range" min="0" max="100" step="5" value="0"></label>
+   </div>
+   <label class="adaptive-dyno-traffic" data-adaptive-traffic hidden><input type="checkbox" data-adaptive-turbo><span data-adaptive-traffic-title></span></label>
+   <div class="adaptive-dyno-status" data-adaptive-status></div>
+   <div class="adaptive-dyno-actions"><button type="button" class="btn small primary" data-adaptive-apply></button><button type="button" class="btn small" data-adaptive-undo disabled></button></div>
+  </div>`;
+  target.append(root);const p={mode,root};panels.push(p);
+  root.querySelector('[data-adaptive-apply]').onclick=()=>run(p);
+  root.querySelector('[data-adaptive-undo]').onclick=()=>undo(p);
+  for(const which of ['intensity','extra'])root.querySelector('[data-adaptive-'+which+']').oninput=e=>root.querySelector('[data-adaptive-'+which+'-out]').textContent=e.target.value+'%';
+  return p;
+ }
+ add('career',$('careerManualDetails'));
+ add('career',$('trafficPresetPanel'));
+ add('arcade',$('mcTuneBody')?.querySelector('details.us-manual'));
+ add('arcade',$('arcadeTrafficPresetPanel'));
+ function localize(){for(const p of panels){const r=p.root;
+  r.querySelector('[data-adaptive-title]').textContent=tr('MODEL-AWARE DYNO · EXPERIMENT','MODELL-DYNO · EXPERIMENT');
+  r.querySelector('[data-adaptive-desc]').textContent=tr('Uses built-in GLOBALB torque curves and race type to shift the ECU/Turbo powerband. 100% means the suggested profile, NOT 100% more horsepower. Extra gain pushes positive points toward the saved maximum of 200. Not a measured fastest setup.',
+  'Nutzt die integrierten GLOBALB-Drehmomentkurven und die Rennart für ECU-/Turbo-Drehzahlbereiche. 100 % bedeutet vollständiges Vorschlagsprofil, NICHT 100 % mehr PS. Zusätzliche Verstärkung schiebt positive Punkte zum Save-Maximum 200. Keine nachgewiesene Bestzeit-Abstimmung.');
+  r.querySelector('[data-adaptive-event-title]').textContent=tr('RACE TYPE','RENNART');
+  r.querySelector('[data-adaptive-intensity-title]').textContent=tr('PROFILE STRENGTH · ','PROFILSTÄRKE · ');
+  r.querySelector('[data-adaptive-extra-title]').textContent=tr('EXTRA CURVE GAIN · ','ZUSÄTZLICHE VERSTÄRKUNG · ');
+  r.querySelector('[data-adaptive-traffic-title]').textContent=tr('Also modify Turbo on Traffic Cars (unverified)','Turbo auch bei Traffic Cars verändern (unbestätigt)');
+  r.querySelector('[data-adaptive-apply]').textContent=tr('APPLY DYNO PROFILE','DYNO-PROFIL ANWENDEN');
+  r.querySelector('[data-adaptive-undo]').textContent=tr('UNDO DYNO PROFILE','DYNO-PROFIL RÜCKGÄNGIG');
+  const select=r.querySelector('[data-adaptive-event]'),prev=select.value||'all';select.replaceChildren();
+  select.add(new Option(tr('All five race types','Alle fünf Rennarten'),'all'));
+  A.EVENTS.forEach((e,i)=>select.add(new Option(tr(e,({'Circuit':'Rundkurs','Drag':'Drag','Drift':'Drift','Street X':'Street X','URL':'URL'})[e]),String(i))));
+  select.value=prev;
+ }refresh();}
+ window.addEventListener('underground-language-change',localize);
+ window.addEventListener('underground-save-loaded',refresh);
+ document.addEventListener('click',()=>queueMicrotask(refresh));
+ window.NFSU2AdaptiveDyno={build,profile,panels,refresh};
+ localize();
+})();
+</script>
 </body></html>
