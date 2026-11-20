@@ -817,10 +817,21 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
 @media(max-width:780px){#us17-edit .us18-metric{grid-template-columns:94px minmax(0,1fr)!important}}
 
 </style>
+<style>
+.extreme-dyno-panel{margin:16px 0 8px;padding:0;border:1px solid #526343;background:#1b2623;color:#c6d8b8}
+.extreme-dyno-panel summary{cursor:pointer;list-style-position:inside;padding:12px 15px;font:italic 15px Impact,'Arial Narrow',Arial,sans-serif;letter-spacing:.7px;color:#d2f7a1;background:linear-gradient(90deg,#334234,#1f2b25)}
+.extreme-dyno-panel p{font-size:12px;line-height:1.55;padding:0 15px;margin:13px 0;color:#bacab4}
+.extreme-dyno-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 15px 12px}
+.extreme-dyno-buttons button{width:100%;font-size:11px;min-width:0;white-space:normal}
+.extreme-dyno-footer{padding:10px 15px 15px;border-top:1px solid #425043;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:10px;color:#d0b78c}
+.extreme-dyno-footer button{flex-shrink:0}
+@media(max-width:560px){.extreme-dyno-buttons{grid-template-columns:1fr}.extreme-dyno-footer{flex-wrap:wrap}}
+</style>
+
 </head>
 <body>
 <div class="app">
-<aside class="sidebar"><div class="brand"><div class="logo"><span>N<span class="logo-slash">/</span>2</span></div><div class="brandcopy"><b>NFSU2<span>STUDIO</span></b><small>SAVE EDITOR · v1.7.21</small></div></div><div class="nav"><button class="active" data-page="mycars" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M4.1 10.4c2.7-.3 4.8.5 6 2.7M19.9 10.4c-2.7-.3-4.8.5-6 2.7M12 14.5V20.5"/></svg></span><span>ARCADE</span></button><button class="" data-page="overview" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 2c3.1-2.1 5.1 2 8.2 0 2.6-1.6 4.3-.3 6.8-.9v12c-2.5.6-4.2-.8-6.8.9-3.1 2-5.1-2.1-8.2 0"/><path d="M9 4.9v4.1h4V5.2m3.2-.2v4.1h3.6M5 13h4v4.2m4-8.2v4.2h4"/></svg></span><span>CAREER</span></button></div></aside>
+<aside class="sidebar"><div class="brand"><div class="logo"><span>N<span class="logo-slash">/</span>2</span></div><div class="brandcopy"><b>NFSU2<span>STUDIO</span></b><small>SAVE EDITOR · v1.7.23</small></div></div><div class="nav"><button class="active" data-page="mycars" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M4.1 10.4c2.7-.3 4.8.5 6 2.7M19.9 10.4c-2.7-.3-4.8.5-6 2.7M12 14.5V20.5"/></svg></span><span>ARCADE</span></button><button class="" data-page="overview" type="button"><span class="symbol"><svg class="nfs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3m0 2c3.1-2.1 5.1 2 8.2 0 2.6-1.6 4.3-.3 6.8-.9v12c-2.5.6-4.2-.8-6.8.9-3.1 2-5.1-2.1-8.2 0"/><path d="M9 4.9v4.1h4V5.2m3.2-.2v4.1h3.6M5 13h4v4.2m4-8.2v4.2h4"/></svg></span><span>CAREER</span></button></div></aside>
 <main class="main">
 <header class="top"><div><div class="eyebrow" style="">NFS UNDERGROUND 2 / SAVE EDITOR</div><h1 id="title">Arcade</h1><p class="subtitle" id="subtitle">Arcade · 20 Plätze</p></div><div class="top-actions"><div aria-label="Language / Sprache" class="language-switch" role="group"><button aria-pressed="true" class="lang-btn active" data-lang="en" type="button">EN</button><span aria-hidden="true" class="language-divider"></span><button aria-pressed="false" class="lang-btn" data-lang="de" type="button">DE</button></div><button class="btn" id="openTop"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16V3m0 0L7 8m5-5 5 5M4 15v5h16v-5"></path></svg><span>LADEN</span></button><button class="btn primary" disabled="" id="saveTop"><svg aria-hidden="true" class="nfs-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v13m0 0 5-5m-5 5-5-5M4 17v4h16v-4"></path></svg><span>SPEICHERN</span></button></div></header>
 <div class="message hidden" id="message" role="status"></div>
@@ -850,6 +861,10 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
  <h3 id="atpTitle">TRAFFIC PERFORMANCE</h3></div><span class="traffic-preset-current" id="atpCurrent">CURRENT · CUSTOM</span></div>
  <p class="traffic-preset-lead" id="atpLead">Only presets are available for Traffic Cars. Each changes this vehicle's five race setups.</p>
  <div class="traffic-preset-options" id="atpOptions"></div>
+<details class="tp-diagnostics" id="atpSaveLabDetails" style="margin-top:12px"><summary id="atpSaveLabSummary">SAVE-ONLY MOTOR &amp; GEARBOX TESTS · UNVERIFIED</summary>
+<p id="atpSaveLabLead" class="traffic-preset-hint">Compares stored ECU, turbo and final-drive adjustments only. No live physics changes.</p>
+<div class="traffic-preset-options tp-diagnostic-grid" id="atpSaveLabOptions"></div></details>
+
  <div class="inline-action"><button class="btn small" id="atpUndo" type="button" disabled>UNDO LAST PROFILE</button></div>
  <p class="traffic-preset-hint" id="atpWarning"></p>
  </section>
@@ -933,6 +948,14 @@ body{font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:var(--te
 <button class="traffic-preset-option" id="trafficPresetTurboHigh" type="button"><span class="tp-card-top"><strong class="tp-card-code">T01</strong><span class="tp-card-status"></span></span><span class="tp-card-name"></span><span class="tp-card-description"></span></button>
 <div class="tp-experimental-heading" id="trafficPresetExperimentsTitle">PERFORMANCE · TEST PROFILES</div>
 <button class="traffic-preset-option" id="trafficPresetPowerWide" type="button"><span class="tp-card-top"><strong class="tp-card-code">P01</strong><span class="tp-card-status"></span></span><span class="tp-card-name"></span><span class="tp-card-description"></span></button>
+<details class="tp-diagnostics" id="trafficSaveLabDetails"><summary id="trafficSaveLabSummary">SAVE-ONLY MOTOR &amp; GEARBOX TESTS · UNVERIFIED</summary>
+<p id="trafficSaveLabLead" class="traffic-preset-hint">Independent ECU, turbo and final-drive comparisons. Does not add RPM, gears or live engine power.</p>
+<div class="traffic-preset-options tp-diagnostic-grid">
+<button class="traffic-preset-option" id="trafficPresetSaveEcu" type="button"><span class="tp-card-top"><strong class="tp-card-code">S01</strong><span class="tp-card-status"></span></span><span class="tp-card-name"></span><span class="tp-card-description"></span></button>
+<button class="traffic-preset-option" id="trafficPresetSaveTurbo" type="button"><span class="tp-card-top"><strong class="tp-card-code">S02</strong><span class="tp-card-status"></span></span><span class="tp-card-name"></span><span class="tp-card-description"></span></button>
+<button class="traffic-preset-option" id="trafficPresetPowerFinal105" type="button"><span class="tp-card-top"><strong class="tp-card-code">S03</strong><span class="tp-card-status"></span></span><span class="tp-card-name"></span><span class="tp-card-description"></span></button>
+<button class="traffic-preset-option" id="trafficPresetPowerFinal125" type="button"><span class="tp-card-top"><strong class="tp-card-code">S04</strong><span class="tp-card-status"></span></span><span class="tp-card-name"></span><span class="tp-card-description"></span></button>
+</div></details>
 <details class="tp-diagnostics" id="trafficDiagnosticDetails"><summary id="trafficDiagnosticSummary">HANDLING · DIAGNOSTIC TESTS (UNVERIFIED)</summary>
 <p id="trafficDiagnosticLead" class="traffic-preset-hint">D01 currently gives the highest reported Handling rating. Real grip and drivability are still unconfirmed. D04 failed and has been disabled. Make a backup before testing.</p>
 <div class="traffic-preset-options tp-diagnostic-grid">
@@ -2803,7 +2826,7 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
 
 </script><!-- traffic-performance-presets.js -->
 <script>
-/* Underground Studio v1.7.12 — Save-only Traffic Performance Test Bench.
+/* NFSU2 Studio v1.7.22 — Save-only Traffic Performance Test Bench.
  * B03 is a subjective, in-game favorite confirmed on the Career Traffic Coupe.
  * All other Traffic Cars and B03 derivatives are experiments; this never edits
  * vehicle identity/appearance/purchase flags or the game engine's physics.
@@ -2823,13 +2846,17 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
  const POWER_WIDE=[0,100,200,200,200,200,200,100,0];
  const PART_BYTES=new Uint8Array(PART_HEX.match(/../g).map(x=>parseInt(x,16)));
  if(PART_BYTES.length!==68)throw Error('Invalid reference performance flags.');
- const MODES=new Set(['original','stock','boost','final105','final125','turboHigh','powerWide','handling','powerHandling','diagU5','diagU6','diagU8','diagStage']);
+ const MODES=new Set(['original','stock','boost','final105','final125','turboHigh','powerWide','handling','powerHandling','diagU5','diagU6','diagU8','diagStage','saveEcuWide','saveTurboWide','powerFinal105','powerFinal125']);
  const TESTS=[
    {id:'boost',en:'B03 · COUPE TEST FAVORITE',de:'B03 · COUPÉ-TESTFAVORIT',purpose:'reference'},
    {id:'final105',en:'G01 · LONGER FINAL DRIVE (105)',de:'G01 · LÄNGERE ENDÜBERSETZUNG (105)',purpose:'top speed test'},
    {id:'final125',en:'G02 · SHORTER FINAL DRIVE (125)',de:'G02 · KÜRZERE ENDÜBERSETZUNG (125)',purpose:'acceleration test'},
    {id:'turboHigh',en:'T01 · HIGH-RPM TURBO (TEST)',de:'T01 · HOCHDREHZAHL-TURBO (TEST)',purpose:'turbo curve test'},
    {id:'powerWide',en:'P01 · WIDE POWER BAND (DRIVABLE)',de:'P01 · BREITES LEISTUNGSBAND (FAHRBAR)',purpose:'ECU and Turbo curve test'},
+   {id:'saveEcuWide',en:'S01 · WIDE ECU ONLY (SAVE TEST)',de:'S01 · NUR BREITE ECU-KURVE (SAVE-TEST)',purpose:'isolate ECU dyno'},
+   {id:'saveTurboWide',en:'S02 · WIDE TURBO ONLY (SAVE TEST)',de:'S02 · NUR BREITE TURBO-KURVE (SAVE-TEST)',purpose:'isolate turbo dyno'},
+   {id:'powerFinal105',en:'S03 · P01 + LONGER FINAL (105)',de:'S03 · P01 + LÄNGERE ENDÜBERSETZUNG (105)',purpose:'top speed comparison'},
+   {id:'powerFinal125',en:'S04 · P01 + SHORTER FINAL (125)',de:'S04 · P01 + KÜRZERE ENDÜBERSETZUNG (125)',purpose:'acceleration comparison'},
    {id:'diagU5',en:'D01 · UNIQUE FLAG 5 (TEST)',de:'D01 · UNIQUE-FLAG 5 (TEST)',purpose:'one flag relative to B03'},
    {id:'diagU6',en:'D02 · UNIQUE FLAG 6 (TEST)',de:'D02 · UNIQUE-FLAG 6 (TEST)',purpose:'one flag relative to B03'},
    {id:'diagU8',en:'D03 · UNIQUE FLAG 8 (TEST)',de:'D03 · UNIQUE-FLAG 8 (TEST)',purpose:'one flag relative to B03'}
@@ -2854,10 +2881,13 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
      if(preset==='diagU5')v.setUint32(5*4,1,true);
      if(preset==='diagU6')v.setUint32(6*4,1,true);
      if(preset==='diagU8')v.setUint32(8*4,1,true);
-     const final=preset==='final105'?105:preset==='final125'?125:115;
-     const wide=preset==='powerWide'||preset==='powerHandling';
-     const ecu=wide?POWER_WIDE:ECU;
-     const turbo=wide?POWER_WIDE:(preset==='turboHigh'?TURBO_HIGH:ECU);
+     const final=['final105','powerFinal105'].includes(preset)?105:['final125','powerFinal125'].includes(preset)?125:115;
+     // Each S-profile changes exactly one saved Dyno domain relative to B03/P01.
+     // No CarTypeInfo, per-wheel grip, live acceleration or gearing count can be saved here.
+     const wideEcu=['powerWide','powerHandling','saveEcuWide','powerFinal105','powerFinal125'].includes(preset);
+     const wideTurbo=['powerWide','powerHandling','saveTurboWide','powerFinal105','powerFinal125'].includes(preset);
+     const ecu=wideEcu?POWER_WIDE:ECU;
+     const turbo=wideTurbo?POWER_WIDE:(preset==='turboHigh'?TURBO_HIGH:ECU);
      for(let e=0;e<5;e++){
        const b=e*41;
        dyno[b+9]=final;
@@ -2926,7 +2956,7 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
  const notice=(msg,bad=false)=>window.UndergroundLabHost?.message(msg,bad);
  const changed=msg=>window.UndergroundLabHost?.changed(msg);
  const undo=new WeakMap();
- const CARDS=[['trafficPresetOriginal','base'],['trafficPresetBoost','boost'],['trafficPresetFinal105','final105'],['trafficPresetFinal125','final125'],['trafficPresetTurboHigh','turboHigh'],['trafficPresetPowerWide','powerWide'],['trafficPresetDiagU5','diagU5'],['trafficPresetDiagU6','diagU6'],['trafficPresetDiagU8','diagU8']];
+ const CARDS=[['trafficPresetOriginal','base'],['trafficPresetBoost','boost'],['trafficPresetFinal105','final105'],['trafficPresetFinal125','final125'],['trafficPresetTurboHigh','turboHigh'],['trafficPresetPowerWide','powerWide'],['trafficPresetSaveEcu','saveEcuWide'],['trafficPresetSaveTurbo','saveTurboWide'],['trafficPresetPowerFinal105','powerFinal105'],['trafficPresetPowerFinal125','powerFinal125'],['trafficPresetDiagU5','diagU5'],['trafficPresetDiagU6','diagU6'],['trafficPresetDiagU8','diagU8']];
  function state(){const c=host();if(!c)return null;
    try{const slot=c.slot||1,car=S.slotInfo(c.save,c.garage,slot);
      return car.owned&&!car.locked&&car.traffic?{c,slot,car}:null;
@@ -2934,7 +2964,7 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
  }
  const isCoupe=st=>st.car.traffic.id==='COUPE';
  const baseline=st=>isCoupe(st)?'original':'stock';
- const label=mode=>({original:'K01',stock:tx('STOCK','SERIE'),boost:'B03',final105:'G01',final125:'G02',turboHigh:'T01',powerWide:'P01',diagU5:'D01',diagU6:'D02',diagU8:'D03',diagStage:'D04 · '+tx('UNPLAYABLE','NICHT FAHRBAR'),handling:'H01 · '+tx('UNPLAYABLE','NICHT FAHRBAR'),powerHandling:'PH01 · '+tx('UNPLAYABLE','NICHT FAHRBAR'),custom:tx('CUSTOM','EIGEN')})[mode]||mode;
+ const label=mode=>({original:'K01',stock:tx('STOCK','SERIE'),boost:'B03',final105:'G01',final125:'G02',turboHigh:'T01',powerWide:'P01',saveEcuWide:'S01',saveTurboWide:'S02',powerFinal105:'S03',powerFinal125:'S04',diagU5:'D01',diagU6:'D02',diagU8:'D03',diagStage:'D04 · '+tx('UNPLAYABLE','NICHT FAHRBAR'),handling:'H01 · '+tx('UNPLAYABLE','NICHT FAHRBAR'),powerHandling:'PH01 · '+tx('UNPLAYABLE','NICHT FAHRBAR'),custom:tx('CUSTOM','EIGEN')})[mode]||mode;
  function record(st){const e=undo.get(st.c.save)?.[st.slot];return e?.key===st.car.key&&P.same(P.capture(st.c.save,st.c.garage,st.slot),e.after)?e:null;}
  function card(el,mode,title,detail,current){
    const active=current===mode;
@@ -2962,6 +2992,10 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
      final125:[tx('G02 · Acceleration test','G02 · Anzugs-Test'),tx('B03 with shorter final drive: 125','B03 mit kürzerer Endübersetzung: 125')],
      turboHigh:[tx('T01 · Turbo test','T01 · Turbo-Test'),tx('B03 with extended high-RPM turbo plateau','B03 mit längerem Turbo-Plateau bei hoher Drehzahl')],
      powerWide:[tx('P01 · Wide power band','P01 · Breites Leistungsband'),tx('B03 with broader ECU + Turbo curves; experimental','B03 mit breiteren ECU- und Turbo-Kurven; experimentell')],
+     saveEcuWide:[tx('S01 · ECU only','S01 · Nur ECU'),tx('B03 + widened ECU; original B03 Turbo retained','B03 + breitere ECU; Turbo bleibt wie B03')],
+     saveTurboWide:[tx('S02 · Turbo only','S02 · Nur Turbo'),tx('B03 + widened Turbo; original B03 ECU retained','B03 + breiterer Turbo; ECU bleibt wie B03')],
+     powerFinal105:[tx('S03 · P01 long gearing','S03 · P01 lange Übersetzung'),tx('P01 with final-drive save value 105','P01 mit gespeicherter Endübersetzung 105')],
+     powerFinal125:[tx('S04 · P01 short gearing','S04 · P01 kurze Übersetzung'),tx('P01 with final-drive save value 125','P01 mit gespeicherter Endübersetzung 125')],
      diagU5:[tx('Unique flag 5 only','Nur Unique-Flag 5'),tx('B03 + one flag (ID 5); effect unknown','B03 + nur ein Flag (ID 5); Wirkung unbekannt')],
      diagU6:[tx('Unique flag 6 only','Nur Unique-Flag 6'),tx('B03 + one flag (ID 6); effect unknown','B03 + nur ein Flag (ID 6); Wirkung unbekannt')],
      diagU8:[tx('Unique flag 8 only','Nur Unique-Flag 8'),tx('B03 + one flag (ID 8); effect unknown','B03 + nur ein Flag (ID 8); Wirkung unbekannt')],
@@ -2980,6 +3014,9 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
    }
    $('trafficPresetScope').textContent=tx('Only this car is changed. Rating bars reflect stored flags, not proven speed or cornering grip.','Nur dieses Auto wird geändert. Bewertungsbalken zeigen Speicherwerte – keine bewiesene Höchstgeschwindigkeit oder Kurvenhaftung.');
    $('trafficPresetExperimentsTitle').textContent=tx('POWER · CONFIRMED / EXPERIMENTAL','LEISTUNG · BESTÄTIGT / EXPERIMENTELL');
+   $('trafficSaveLabSummary').textContent=tx('SAVE-ONLY POWER TESTS · UNVERIFIED','SAVE-ONLY LEISTUNGSTESTS · UNBESTÄTIGT');
+   $('trafficSaveLabLead').textContent=tx('S01/S02 isolate saved ECU vs. Turbo curve; S03/S04 compare P01 final gearing. The original game engine RPM, gear count and wheel grip are NOT modified. Test one profile at a time.','S01/S02 trennen ECU- und Turbo-Kurve im Spielstand; S03/S04 testen die Endübersetzung von P01. Drehzahllimit, Ganganzahl und Radhaftung der Spielphysik bleiben UNVERÄNDERT. Jedes Profil einzeln testen.');
+   if(['saveEcuWide','saveTurboWide','powerFinal105','powerFinal125'].includes(val))$('trafficSaveLabDetails').open=true;
    $('trafficDiagnosticSummary').textContent=tx('HANDLING · ISOLATED DIAGNOSTIC TESTS','HANDLING · EINZELNE DIAGNOSETESTS');
    $('trafficDiagnosticLead').textContent=tx('D01 produced the highest reported HANDLING BAR, but road handling and drivability are NOT verified. D02 and D03 remain untested. D04 was unplayable and has been removed. Test only one save variant at a time.','D01 zeigt laut deinem Test den höchsten HANDLING-BALKEN; Fahrbarkeit und Kurvenhaftung sind noch NICHT bestätigt. D02 und D03 sind ungetestet. D04 war nicht fahrbar und wurde entfernt. Varianten immer einzeln testen.');
    if(['diagU5','diagU6','diagU8','diagStage'].includes(val))$('trafficDiagnosticDetails').open=true;
@@ -2998,10 +3035,11 @@ return {EVENTS,RACE_PROFILES,readAll,original,recommendation,apply,applyAll,rest
    const base=baseline(st);
    if(mode==='original'&&base!=='original'||mode==='stock'&&base!=='stock')return;
    const isDiagnostic=['diagU5','diagU6','diagU8'].includes(mode);
+   const isSaveLab=['saveEcuWide','saveTurboWide','powerFinal105','powerFinal125'].includes(mode);
    const description=mode===base?tx('restore the baseline saved tuning','gespeicherte Basisabstimmung wiederherstellen'):
      tx('apply ','anwenden: ')+label(mode)+' ('+tx('unverified outside Coupe B03','außerhalb Coupé B03 unbestätigt')+')';
    if(!confirm(tx('Apply profile to slot ','Profil auf Platz ')+slot+' · '+st.car.model+'?\n\n'+
-      description+'\n'+(isDiagnostic?tx('WARNING: UNVERIFIED HANDLING DIAGNOSTIC. Your vehicle may fall or become unplayable. Always export to a COPY of the save.\n\n','WARNUNG: UNBESTÄTIGTER HANDLING-TEST. Das Auto könnte fallen oder unspielbar werden. Nur eine KOPIE des Spielstands testen.\n\n'):'')+tx('Changes 68 performance bytes, 9 Unique flags and 5 Dyno sets of this vehicle only. Identity, visuals and other cars remain unchanged. Undo works until you make another manual edit.',
+      description+'\n'+(isSaveLab?tx('UNVERIFIED SAVE-ONLY DYNO TEST. Does not affect live physics or add engine RPM/gears. Always test on a backup.\n\n','UNBESTÄTIGTER SAVE-ONLY-DYNO-TEST. Keine Änderung der Live-Physik und keine zusätzlichen Gänge/Drehzahl. Immer mit Sicherung testen.\n\n'):'')+(isDiagnostic?tx('WARNING: UNVERIFIED HANDLING DIAGNOSTIC. Your vehicle may fall or become unplayable. Always export to a COPY of the save.\n\n','WARNUNG: UNBESTÄTIGTER HANDLING-TEST. Das Auto könnte fallen oder unspielbar werden. Nur eine KOPIE des Spielstands testen.\n\n'):'')+tx('Changes 68 performance bytes, 9 Unique flags and 5 Dyno sets of this vehicle only. Identity, visuals and other cars remain unchanged. Undo works until you make another manual edit.',
       'Ändert 68 Leistungsbytes, neun Unique-Flags und fünf Dyno-Datensätze nur dieses Autos. Fahrzeug-ID, Optik und andere Autos bleiben unverändert. Rückgängig bis zur nächsten manuellen Änderung.')))return;
    try{
      const prior=P.capture(c.save,c.garage,slot),key=st.car.key;
@@ -3546,12 +3584,17 @@ const S=window.NFSU2,M=window.UndergroundMyCars,P=window.UndergroundTrafficPrese
 const $=id=>document.getElementById(id), undo=new WeakMap();
 const tx=(en,de)=>window.USI18N?.getLanguage?.()==='de'?de:en;
 const MODES=['base','boost','final105','final125','turboHigh','powerWide','diagU5','diagU6','diagU8'];
+const SAVE_LAB=['saveEcuWide','saveTurboWide','powerFinal105','powerFinal125'];
 const messages={
  boost:['B03 · Both Uniques','B03 · Beide Uniques','ECU + Turbo, final drive 115','ECU + Turbo, Endübersetzung 115'],
  final105:['G01 · Top Speed','G01 · Höchstgeschwindigkeit','Longer final drive (105)','Längere Endübersetzung (105)'],
  final125:['G02 · Acceleration','G02 · Beschleunigung','Shorter final drive (125)','Kürzere Endübersetzung (125)'],
  turboHigh:['T01 · Turbo RPM','T01 · Turbo-Drehzahl','High-RPM boost experiment','Experiment: Turbo bei hohen Drehzahlen'],
  powerWide:['P01 · Wide Power Band','P01 · Breites Leistungsband','Drivable on the Traffic Coupe, other cars unverified','Beim Traffic-Coupé fahrbar, sonst nicht bestätigt'],
+ saveEcuWide:['S01 · ECU only','S01 · Nur ECU','B03 + wider ECU curve only','B03 + nur breitere ECU-Kurve'],
+ saveTurboWide:['S02 · Turbo only','S02 · Nur Turbo','B03 + wider Turbo curve only','B03 + nur breitere Turbo-Kurve'],
+ powerFinal105:['S03 · P01 + long final','S03 · P01 + lange Übersetzung','P01 with saved final value 105','P01 mit Endwert 105'],
+ powerFinal125:['S04 · P01 + short final','S04 · P01 + kurze Übersetzung','P01 with saved final value 125','P01 mit Endwert 125'],
  diagU5:['D01 · Unique 5','D01 · Unique 5','Handling bar test; driving not confirmed','Handling-Anzeige: Fahrbarkeit offen'],
  diagU6:['D02 · Unique 6','D02 · Unique 6','Isolated handling test','Einzelner Handling-Test'],
  diagU8:['D03 · Unique 8','D03 · Unique 8','Isolated handling test','Einzelner Handling-Test']
@@ -3576,7 +3619,7 @@ function status(st){const snap=capture(st),base=baseline(st);
  return 'custom';}
 const short=mode=>({
  original:'K01',stock:tx('STOCK','SERIE'),boost:'B03',final105:'G01',final125:'G02',
- turboHigh:'T01',powerWide:'P01',diagU5:'D01',diagU6:'D02',diagU8:'D03',
+ turboHigh:'T01',powerWide:'P01',saveEcuWide:'S01',saveTurboWide:'S02',powerFinal105:'S03',powerFinal125:'S04',diagU5:'D01',diagU6:'D02',diagU8:'D03',
  handling:'H01',powerHandling:'PH01',diagStage:'D04',custom:tx('CUSTOM','EIGEN')
 })[mode]||mode;
 function render(slot){if(Number.isInteger(slot))selected=slot;
@@ -3589,8 +3632,11 @@ function render(slot){if(Number.isInteger(slot))selected=slot;
  $('atpTitle').textContent=tx('PERFORMANCE · ','LEISTUNG · ')+ (window.USDisplayTraffic?.(st.car.intern)||st.car.name);
  $('atpCurrent').textContent=tx('CURRENT · ','AKTUELL · ')+short(val);
  $('atpLead').textContent=tx('Choose an individual profile. Changes affect this Arcade car only.','Profil direkt auswählen. Änderungen gelten nur für dieses Arcade-Auto.');
- const choices=$('atpOptions');choices.replaceChildren();
- for(const name of MODES){
+ const choices=$('atpOptions');choices.replaceChildren();$('atpSaveLabOptions').replaceChildren();
+ $('atpSaveLabSummary').textContent=tx('SAVE-ONLY POWER TESTS · UNVERIFIED','SAVE-ONLY LEISTUNGSTESTS · UNBESTÄTIGT');
+ $('atpSaveLabLead').textContent=tx('Isolated ECU/Turbo/final-drive experiments stored only in this save. No live RPM, gearing count or grip modifications.','Einzelne ECU-/Turbo-/Übersetzungsversuche nur im Spielstand. Keine Live-Änderung der Drehzahl, Ganganzahl oder Haftung.');
+ if(SAVE_LAB.includes(val))$('atpSaveLabDetails').open=true;
+ for(const name of [...MODES,...SAVE_LAB]){
    const mode=name==='base'?base:name;
    const text=mode===base?
      [tx('Original setup','Serienabstimmung'),tx('Saved neutral baseline','Gespeicherter Ausgangszustand')]:messages[mode];
@@ -3601,7 +3647,7 @@ function render(slot){if(Number.isInteger(slot))selected=slot;
    b.querySelector('.tp-card-status').textContent=mode===val?tx('ACTIVE','AKTIV'):'';
    b.querySelector('.tp-card-name').textContent=text[0];
    b.querySelector('.tp-card-description').textContent=text[1];
-   b.onclick=()=>apply(mode);choices.append(b);
+   b.onclick=()=>apply(mode);(SAVE_LAB.includes(mode)?$('atpSaveLabOptions'):choices).append(b);
  }
  const key=undo.get(st.h.save)?.[st.slot],cur=capture(st);
  $('atpUndo').disabled=!(key?.key===st.car.key&&P.same(cur,key.after));
@@ -3818,6 +3864,109 @@ render();
  window.dispatchEvent(new Event('underground-language-change'));
  $('us20GameDataStatus').textContent=tr('Included modified GLOBALB · 46 vehicles','Integrierte gemoddete GLOBALB · 46 Fahrzeuge');
  render();
+})();
+</script>
+
+<script>
+/* NFSU2 Studio 1.7.23: Save-only independent Dyno limit experiments.
+   Values of 200 are the MAX USEFUL SAVED BYTE, not verified +100% horsepower.
+   Only saved 25 controls x five events are modified, no game physics writes. */
+(()=>{'use strict';
+ const S=window.NFSU2,T=window.UndergroundTrafficTuning,M=window.UndergroundMyCars;
+ const $=id=>document.getElementById(id),undo=new WeakMap();
+ const tr=(en,de)=>window.USI18N?.getLanguage?.()==='de'?de:en;
+ const EVENTS=5;
+ const GROUPS={ecu:id=>id.startsWith('ecu'),turbo:id=>id.startsWith('turbo'),drive:id=>id==='final'||id.startsWith('gear'),all:id=>id==='final'||id.startsWith('gear')||id.startsWith('ecu')||id.startsWith('turbo')};
+ const FIELDS=['final',...Array.from({length:6},(_,i)=>'gear'+(i+1)),...Array.from({length:9},(_,i)=>'ecu'+(i+1)),...Array.from({length:9},(_,i)=>'turbo'+(i+1))];
+ const ui=[];
+ function context(mode){
+  const h=window.UndergroundLabHost?.get();if(!h?.loaded)return null;
+  if(mode==='career'){
+    const slot=h.slot,car=S.slotInfo(h.save,h.garage,slot);
+    if(!car.owned||car.locked)return null;
+    return {mode,h,slot,key:car.key,traffic:!!car.traffic};
+  }
+  const slot=window.USAutoTuneUI?.arcadeSlot||6,car=M.info(h.save,slot);
+  if(!car.active)return null;
+  return {mode,h,slot,key:car.key,traffic:!!car.traffic};
+ }
+ function read(ctx){
+  if(!ctx)throw Error('No selected vehicle.');
+  const matrix=[];
+  for(let e=0;e<EVENTS;e++){
+   const all=ctx.mode==='career'?S.dynoData(ctx.h.save,ctx.h.garage,ctx.slot,e).controls:T.dynoRead(ctx.h.save,ctx.slot,e);
+   const values=new Map(all.map(x=>[x.id,x.value]));
+   if(FIELDS.some(id=>!Number.isInteger(values.get(id))))throw Error('Dyno data is incomplete.');
+   matrix.push(FIELDS.map(id=>values.get(id)));
+  }
+  return matrix;
+ }
+ function write(ctx,matrix){
+  if(!Array.isArray(matrix)||matrix.length!==5||matrix.some(row=>!Array.isArray(row)||row.length!==25||row.some(v=>!Number.isInteger(v)||v<0||v>200)))throw Error('Invalid Dyno snapshot.');
+  // Full validation before changing any save data.
+  if(context(ctx.mode)?.slot!==ctx.slot||context(ctx.mode)?.key!==ctx.key)throw Error('Selected car has changed.');
+  for(let e=0;e<EVENTS;e++)for(let j=0;j<FIELDS.length;j++){
+   if(ctx.mode==='career')S.dynoWrite(ctx.h.save,ctx.h.garage,ctx.slot,e,FIELDS[j],matrix[e][j]);
+   else T.dynoField(ctx.h.save,ctx.slot,e,FIELDS[j],matrix[e][j]);
+  }
+ }
+ const equal=(a,b)=>!!a&&!!b&&a.length===b.length&&a.every((r,e)=>r.every((v,j)=>v===b[e]?.[j]));
+ const keyOf=(mode,slot)=>mode+':'+slot;
+ function record(ctx){const old=undo.get(ctx.h.save)?.[keyOf(ctx.mode,ctx.slot)];return old&&old.key===ctx.key&&equal(old.after,read(ctx))?old:null;}
+ function updateUI(){for(const item of ui){const ctx=context(item.mode);const u=ctx&&record(ctx);item.node.querySelector('[data-extreme-undo]').disabled=!u;item.node.querySelector('[data-extreme-description]').textContent=tr('Set selected saved Dyno points to 200/200 across all five race types. ECU and Turbo are separate from drivetrain; the game may clamp values or become unplayable.', 'Gewählte Dyno-Speicherwerte für alle fünf Rennarten auf 200/200 setzen. ECU und Turbo sind vom Getriebe getrennt; das Spiel kann begrenzen oder das Auto fahrunfähig machen.');}}
+ function apply(ctx,group){
+  const orig=read(ctx),next=orig.map(row=>row.map((v,i)=>GROUPS[group](FIELDS[i])?200:v));
+  if(equal(orig,next))return window.UndergroundLabHost?.message(tr('Selected Dyno points already store 200/200.','Gewählte Dyno-Punkte stehen bereits auf 200/200.'));
+  const names={ecu:'ECU (9)',turbo:'Turbo (9)',drive:tr('Drivetrain (7)','Antrieb (7)'),all:tr('ALL 25','ALLE 25')};
+  const gearRisk=group==='drive'||group==='all';
+  if(!confirm(tr('EXPERIMENTAL SAVE-ONLY TEST: ', 'EXPERIMENTELLER SAVE-ONLY-TEST: ')+names[group]+
+   tr(' → 200/200, all five race types, only for slot ',' → 200/200, alle fünf Rennarten, nur für Slot ')+ctx.slot+ 
+   '\n\n'+tr('200 is the maximum useful saved byte, not guaranteed +100% torque or speed. ', '200 ist der maximale nutzbare Save-Wert, keine garantierten +100 % Drehmoment oder Geschwindigkeit. ')+
+   (gearRisk?tr('WARNING: All gears at maximum can cause invalid driving behaviour or be clamped by the game. ','WARNUNG: Alle Gänge auf Maximum können die Fahrbarkeit beeinträchtigen oder vom Spiel begrenzt werden. '):'')+
+   tr('BACK UP your original save. You can undo until further edits.','Originalspielstand SICHERN. Rückgängig ist bis zu weiteren Änderungen möglich.')))return;
+  try{write(ctx,next);const records=undo.get(ctx.h.save)||{};records[keyOf(ctx.mode,ctx.slot)]={key:ctx.key,prior:orig,after:read(ctx)};undo.set(ctx.h.save,records);
+   window.UndergroundLabHost?.changed(tr('Extreme Dyno values saved (test only). Export a COPY of your save.', 'Extreme Dyno-Werte gespeichert (nur Test). Eine KOPIE des Spielstands exportieren.'));
+   window.USExtra?.render?.(window.USAutoTuneUI?.arcadeSlot||6);
+   window.USArcadeTrafficUI?.render?.();window.USTrafficPresetUI?.render?.();updateUI();
+  }catch(e){window.UndergroundLabHost?.message(e.message,true);}
+ }
+ function revert(ctx){const rec=record(ctx);if(!rec)return window.UndergroundLabHost?.message(tr('Undo unavailable: vehicle or saved Dyno changed.','Rückgängig nicht möglich: Fahrzeug oder Dyno-Daten verändert.'),true);
+  try{write(ctx,rec.prior);delete undo.get(ctx.h.save)[keyOf(ctx.mode,ctx.slot)];
+   window.UndergroundLabHost?.changed(tr('Previous Dyno values restored.','Vorherige Dyno-Werte wiederhergestellt.'));
+   window.USExtra?.render?.(window.USAutoTuneUI?.arcadeSlot||6);window.USArcadeTrafficUI?.render?.();window.USTrafficPresetUI?.render?.();updateUI();
+  }catch(e){window.UndergroundLabHost?.message(e.message,true);}
+ }
+ function panel(mode,target){if(!target)return;
+  const det=document.createElement('details');det.className='extreme-dyno-panel';
+  det.innerHTML=`<summary></summary><p data-extreme-description></p><div class="extreme-dyno-buttons"></div><div class="extreme-dyno-footer"><span data-extreme-warning></span><button type="button" class="btn small" data-extreme-undo disabled></button></div>`;
+  const buttons=det.querySelector('.extreme-dyno-buttons');
+  for(const group of ['ecu','turbo','drive','all']){
+   const b=document.createElement('button');b.type='button';b.className='btn small'+(group==='all'?' primary':'');b.dataset.group=group;
+   b.onclick=()=>{const c=context(mode);if(c)apply(c,group);else window.UndergroundLabHost?.message(tr('Select an occupied, unlocked car first.','Zuerst ein belegtes, entsperrtes Auto auswählen.'),true);};
+   buttons.append(b);
+  }
+  det.querySelector('[data-extreme-undo]').onclick=()=>{const ctx=context(mode);if(ctx)revert(ctx);};
+  target.append(det);ui.push({node:det,mode});
+ }
+ // Both Career and Arcade: standard cars retain the detailed manual Dyno;
+ // Traffic Cars retain their simple profile layout with a collapsed experiment.
+ panel('career',$('careerManualDetails'));
+ panel('career',$('trafficPresetPanel'));
+ panel('arcade',$('mcTuneBody')?.querySelector('details.us-manual'));
+ panel('arcade',$('arcadeTrafficPresetPanel'));
+ function localize(){for(const item of ui){
+  const n=item.node;n.querySelector('summary').textContent=tr('EXTREME DYNO · SAVE-ONLY EXPERIMENT','EXTREMER DYNO · SAVE-ONLY-EXPERIMENT');
+  for(const button of n.querySelectorAll('[data-group]')){
+   button.textContent=({ecu:tr('ECU · ALL 9 MAX','ECU · ALLE 9 MAX'),turbo:tr('TURBO · ALL 9 MAX','TURBO · ALLE 9 MAX'),drive:tr('DRIVETRAIN · ALL 7 MAX','ANTRIEB · ALLE 7 MAX'),all:tr('ALL 25 → 200','ALLE 25 → 200')})[button.dataset.group];
+  }
+  n.querySelector('[data-extreme-undo]').textContent=tr('UNDO EXTREME DYNO','EXTREM-DYNO RÜCKGÄNGIG');
+  n.querySelector('[data-extreme-warning]').textContent=tr('Untested in game · only save bytes change','Im Spiel ungetestet · nur Save-Bytes geändert');
+ }updateUI();}
+ window.addEventListener('underground-language-change',localize);
+ window.addEventListener('underground-save-loaded',()=>{undo.set(window.UndergroundLabHost?.get()?.save||{},{});updateUI();});
+ document.addEventListener('click',()=>queueMicrotask(updateUI));
+ window.NFSU2ExtremeDyno={FIELDS,read,apply,write,context};
+ localize();
 })();
 </script>
 
